@@ -1,0 +1,42 @@
+<% provide(:title, "View Policy") %>
+
+<p id="notice"><%= notice %></p>
+<div class="jumbotron">
+
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>Category</td>
+      <td><%= @rule.rules_category.name %></td>
+    </tr>
+    <tr>
+      <td>Title</td>
+      <td><%= @rule.title %></td>
+    </tr>
+    <tr>
+      <td>Definition</td>
+      <td><%= @rule.definition %></td>
+    </tr>
+    <tr>
+      <td>Active</td>
+      <td><%= @rule.active.humanize %></td>
+    </tr>
+    <tr>
+      <td>Logged by</td>
+      <td><%= @rule.user.fullname %></td>
+    </tr>
+    </tbody>
+  </table>
+<br>
+
+</div>
+<div class="breadcrumb">
+  <%= link_to 'Edit', edit_rule_path(@rule) , class:'fa fa-edit'%> |
+  <%= link_to 'Back', rules_path, class:'fa fa-arrow-left' %>
+</div>

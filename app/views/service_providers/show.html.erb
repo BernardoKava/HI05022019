@@ -1,0 +1,56 @@
+<% provide(:title, "View Service Provider") %>
+<p id="notice"><%= notice %></p>
+
+<div class="jumbotron">
+
+
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>Name</td>
+      <td><%= link_to @service_provider.name, @service_provider.link %></td>
+    </tr>
+    <tr>
+      <td>Address</td>
+      <td><%= @service_provider.address %></td>
+    </tr>
+    <tr>
+      <td>Telephone</td>
+      <td><%= @service_provider.telephone %></td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td><%= @service_provider.email %><</td>
+    </tr>
+    <tr>
+      <td>Acc number</td>
+      <td><%= @service_provider.acc_number %></td>
+    </tr>
+    <tr>
+      <td>Link</td>
+      <td><%= @service_provider.link %></td>
+    </tr>
+    <tr>
+      <td>Logged by</td>
+      <td><%= @service_provider.user.fullname %></td>
+    </tr>
+    <tr>
+      <td>Active</td>
+      <td><%= @service_provider.active.humanize %></td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<div class="breadcrumb">
+  <%= link_to 'Edit', edit_service_provider_path(@service_provider), class:'fa fa-edit' %> |
+  <%= link_to 'Back', service_providers_path, class:'fa fa-arrow-left'%>
+</div>
+

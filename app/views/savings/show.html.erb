@@ -1,0 +1,261 @@
+<% provide(:title, "Saving") %>
+<p id="notice"><%= notice %></p>
+
+<div class="breadcrumb">
+<h3>Monthly Savings: <%= @saving.name %></h3>
+</div>
+
+<div class="breadcrumb" style="background-color: rgba(22,151,168,0.6); color: whitesmoke">
+  <h4>A. Savings Details: </h4>
+</div>
+
+
+<div>
+  <div class="row">
+    <div class="col-sm-6">
+
+      <div class="jumbotron">
+        <h2 style="font-size: 15px;background-color: navy;color: white"><strong> Saving Details</strong></h2>
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <tr>
+            <td>Month</td>
+            <td><%= @saving.month %> </td>
+          </tr>
+          <tr>
+            <td>Year</td>
+            <td><%= @saving.year %></td>
+          </tr>
+          <tr>
+            <td>Accounting date</td>
+            <td><%= @saving.saving_date.strftime("%d, %b  %Y") %></td>
+          </tr>
+          <tr>
+            <td>Name</td>
+            <td><%= @saving.name %></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-sm-6">
+
+      <div class="jumbotron">
+        <h2 style="font-size: 15px;background-color: navy;color: white"><strong> Savings Financial Summary</strong></h2>
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th>Title</th>
+            <th>Amount(€)</th>
+            <th>Literal</th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <tr>
+            <td>Total Lodgement (€)</td>
+            <td>€ <%= @totallodgement %> </td>
+            <td><%= @totallodgement.humanize %></td>
+          </tr>
+          <tr>
+            <td>Total Withdrawal (€)</td>
+            <td>€ <%= @totalwithdrawal %> </td>
+            <td><%= @totalwithdrawal.humanize %></td>
+          </tr>
+          <tr>
+            <td>Reconciliation (€)</td>
+            <td>€ <%=@recons%></td>
+            <td><%= @recons.humanize %></td>
+          </tr>
+          <tr>
+            <td>Balance (€)</td>
+            <td> € <%= @balance %></td>
+            <td><%= @balance.humanize %></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="breadcrumb">
+  <%= link_to 'Edit', edit_saving_path(@saving), class:'fa fa-edit' %> |
+  <%= link_to 'Back', savings_path, class:'fa fa-arrow-left' %>
+</div>
+<hr>
+
+<div class="breadcrumb" style="background-color: rgba(22,151,168,0.6); color: whitesmoke">
+  <h4>B. Lodgements and Withdrawals:</h4>
+</div>
+
+<div>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="jumbotron">
+        <div><h2 style="font-size: 15px;background-color: goldenrod;color: white"><strong>Lodgements:</strong></h2></div>
+
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th>Year</th>
+            <th>Month</th>
+            <th>Day</th>
+            <th>Details </th>
+            <th>Owner</th>
+            <th>Amount(€)</th>
+            <th>Institution</th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <% @lodgments.each do |income| %>
+            <tr>
+              <td><%= income.year %></td>
+              <td><%= income.month %></td>
+              <td><%= income.day %></td>
+              <td><%= income.details %></td>
+              <td><%= income.person.fullname %></td>
+              <td><%= income.amount %></td>
+              <td><%= income.institution %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="jumbotron">
+        <div><h2 style="font-size: 15px;background-color: goldenrod;color: white"><strong>Withdrawal:</strong></h2></div>
+
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th>Year</th>
+            <th>Month</th>
+            <th>Day</th>
+            <th>Details </th>
+            <th>Owner</th>
+            <th>Amount(€)</th>
+            <th>Institution</th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <% @withdrawals.each do |expense| %>
+            <tr>
+              <td><%= expense.year %></td>
+              <td><%= expense.month %></td>
+              <td><%= expense.day %></td>
+              <td><%= expense.details %></td>
+              <td><%= expense.person.fullname %></td>
+              <td><%= expense.amount %></td>
+              <td><%= expense.institution %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="breadcrumb">
+  <%= link_to 'Edit', edit_saving_path(@saving), class:'fa fa-edit' %> |
+  <%= link_to 'Back', savings_path, class:'fa fa-arrow-left' %>
+</div>
+
+<hr>
+<div class="breadcrumb" style="background-color: rgba(22,151,168,0.6); color: whitesmoke">
+  <h4>C. Comments:</h4>
+</div>
+
+
+<div>
+  <h2 style="font-size: 15px;background-color: navy;color: white"><strong> Comments</strong></h2>
+
+  <div>
+
+    <% for comment in @saving.comments %>
+
+      <div class="jumbotron">
+
+        <div>
+          <strong>Comments:</strong><br><br>
+          <textarea rows="4" cols="80" readonly> <%=h comment.commentary %> </textarea>
+        </div>
+        <br>
+        <div>
+          Registered on:
+          <%=h comment.created_at.strftime("%d %b. %Y") %>
+        </div>
+        <div>
+          ID:
+          <%=h comment.id %>
+        </div>
+
+      </div>
+    <% end %>
+
+  </div>
+
+</div>
+
+<div class="breadcrumb">
+  <%= link_to 'Edit', edit_saving_path(@saving), class:'fa fa-edit' %> |
+  <%= link_to 'Back', savings_path, class:'fa fa-arrow-left' %>
+</div>
+
+<hr>
+
+
+<div class="breadcrumb">
+  <div>
+    Created on:
+    <%=h @saving.created_at.strftime("%d %b. %Y") %>
+  </div>
+  <br>
+  <div>
+    Updated on:
+    <%=h @saving.updated_at.strftime("%d %b. %Y") %>
+  </div>
+  <br>
+  <div>
+    Saving Number:
+    SN - <%=h @saving_number %>
+  </div>
+  <br>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

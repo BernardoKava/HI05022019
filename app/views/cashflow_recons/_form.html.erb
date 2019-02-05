@@ -1,0 +1,41 @@
+
+<%= simple_form_for(@cashflow_recon) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="control-group">
+          <div class ="controls">
+            <%= f.association :cashflow, collection: Cashflow.order(:name),label_method: :name, prompt: "Choose a cashflow", label:"Cashflow" %>
+
+          </div>
+        </div>
+        <div class="control-group">
+          <div class ="controls">
+            <%= f.association :person, collection: Person.order(:fullname),label_method: :fullname, prompt: "Choose an authoriser", label:"Authorised by" %>
+
+          </div>
+        </div>
+        <%= f.input :authorisation_date %>
+        <%= f.input :correction_amount,placeholder:'Correction Amount...' %>
+
+      </div>
+      <div class="col-sm-6">
+        <div class="form-inputs">
+          <%= f.input :user_id,:as => :hidden, :input_html => { :value => current_user.id} %>
+          <%= f.input :error_details,placeholder:'Error Details...' %>
+          <%= f.input :reconciliation_rationale,placeholder:'Enter Rationale...' %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="form-actions">
+    <%= f.button :submit,"Save" %>
+  </div>
+<% end %>

@@ -1,0 +1,2 @@
+class Bankcard < ApplicationRecord
+end

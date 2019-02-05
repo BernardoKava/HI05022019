@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bankaccount_id: 1
+  person_id: 1
+  card_number: MyString
+  expiry_date: 2019-02-05
+  security_code: MyString
+  active: false
+  note: MyText
+
+two:
+  bankaccount_id: 1
+  person_id: 1
+  card_number: MyString
+  expiry_date: 2019-02-05
+  security_code: MyString
+  active: false
+  note: MyText

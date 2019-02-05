@@ -1,0 +1,41 @@
+<% provide(:title, "Resource") %>
+<p id="notice"><%= notice %></p>
+  <div class="jumbotron">
+
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th></th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>Name:</td>
+        <td><%= link_to @resource.name,@resource.link %></td>
+      </tr>
+      <tr>
+        <td>Description:</td>
+        <td><%= @resource.description %></td>
+      </tr>
+      <tr>
+        <td>Logged by:</td>
+        <td><%= @resource.user.fullname %></td>
+      </tr>
+      <tr>
+        <td>Link:</td>
+        <td><%= @resource.link %><</td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+
+<div class="breadcrumb">
+  <%= link_to 'Edit', edit_resource_path(@resource) , class:'fa fa-edit' %> |
+  <%= link_to 'Back', resources_path , class:'fa fa-arrow-left' %>
+
+</div>
+
+<br>

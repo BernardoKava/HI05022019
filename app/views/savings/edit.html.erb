@@ -1,0 +1,12 @@
+<% provide(:title, "Edit Saving") %>
+<div class="breadcrumb">
+  <h3>Edit Saving</h3>
+</div>
+<hr>
+
+<%= render 'form', saving: @saving %>
+
+<div class="breadcrumb">
+<%= link_to 'View', @saving,class:'fa fa-eye' %> |
+<%= link_to 'Back', savings_path,class:'fa fa-arrow-left'%>
+</div>

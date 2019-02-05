@@ -1,0 +1,11 @@
+<% provide(:title, "Edit Inventory") %>
+<h1 style="font-size: 30px;color: goldenrod" >Editing Inventory</h1>
+
+<%= render 'form', inventory: @inventory %>
+
+<div class="breadcrumb">
+  <%= link_to 'Show', @inventory ,class: 'fa fa-eye'%> |
+  <%= link_to 'Back', inventories_path, class: 'fa fa-caret-square-o-left' %>
+
+</div>
+

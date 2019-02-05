@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Bankaccount:</strong>
+  <%= @bankcard.bankaccount_id %>
+</p>
+
+<p>
+  <strong>Person:</strong>
+  <%= @bankcard.person_id %>
+</p>
+
+<p>
+  <strong>Card number:</strong>
+  <%= @bankcard.card_number %>
+</p>
+
+<p>
+  <strong>Expiry date:</strong>
+  <%= @bankcard.expiry_date %>
+</p>
+
+<p>
+  <strong>Security code:</strong>
+  <%= @bankcard.security_code %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @bankcard.active %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @bankcard.note %>
+</p>
+
+<%= link_to 'Edit', edit_bankcard_path(@bankcard) %> |
+<%= link_to 'Back', bankcards_path %>

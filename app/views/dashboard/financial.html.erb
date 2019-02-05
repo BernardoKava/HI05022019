@@ -1,0 +1,53 @@
+<% provide(:title, "Financial Modules") %>
+<div class="fa fa-money", id="dashboard">
+  Financial Modules
+</div>
+<br>
+<br>
+<div class="jumbotron">
+  <div class="container">
+
+    <nav class="navbar navbar-default">
+
+        <ul class="nav navbar-nav">
+          <li><%= link_to "Budgets Module", budgets_path %></li>
+          <li><%= link_to "Income", search_incomes_path %></li>
+          <li><%= link_to "Expenditure", search_expenses_path%></li>
+        </ul>
+    </nav>
+
+
+    <nav class="navbar navbar-default">
+
+      <ul class="nav navbar-nav">
+        <li><%= link_to "Cashflows Module", cashflows_path %></li>
+        <li><%= link_to "Inflows", search_inflows_path %></li>
+        <li><%= link_to "Outflows", search_outflows_path %></li>
+      </ul>
+    </nav>
+
+
+    <nav class="navbar navbar-default">
+
+      <ul class="nav navbar-nav">
+        <li><%= link_to "Savings Module", savings_path %></li>
+        <li><%= link_to "Lodgements", search_lodgements_path %></li>
+        <li><%= link_to "Withdrawals", search_withdrawals_path %></li>
+      </ul>
+    </nav>
+
+
+    <nav class="navbar navbar-default">
+
+      <ul class="nav navbar-nav">
+        <li><%= link_to "Ledgers Module", ledgers_path %></li>
+      </ul>
+    </nav>
+
+
+
+
+  </div>
+</div>
+
+

@@ -1,0 +1,3 @@
+module CashflowsHelper
+
+end

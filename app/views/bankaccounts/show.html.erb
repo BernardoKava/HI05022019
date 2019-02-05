@@ -1,0 +1,53 @@
+<% provide(:title, "View Bank Accounts") %>
+<p id="notice"><%= notice %></p>
+
+
+
+<div class="breadcrumb">
+  <h3><%= @bankaccount.person.fullname %>'s <%=@bankaccount.account_name  %> Details</h3>
+</div>
+
+
+<div class="jumbotron">
+
+  <table class="table table-striped">
+    <tbody>
+    <tr>
+      <td>Account Name:</td>
+      <td><%=@bankaccount.account_name  %> </td>
+    </tr>
+    <tr>
+      <td>Financial Institution:</td>
+      <td><%=@bankaccount.financialinstitution.name  %> </td>
+    </tr>
+    <tr>
+      <td>Account Number:</td>
+      <td><%= @bankaccount.account_number %> </td>
+    </tr>
+    <tr>
+      <td>Sort Code:</td>
+      <td><%= @bankaccount.sort_code %> </td>
+    </tr>
+    <tr>
+      <td>Iban:</td>
+      <td><%= @bankaccount.iban %> </td>
+    </tr>
+    <tr>
+      <td>Bic:</td>
+      <td><%= @bankaccount.bic %> </td>
+    </tr>
+    <tr>
+      <td>Owner:</td>
+      <td><%= @bankaccount.person.fullname %> </td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
+
+
+<div class="breadcrumb">
+  <%= link_to 'Edit', edit_bankaccount_path(@bankaccount), class:'fa fa-edit' %> |
+  <%= link_to 'Back', bankaccounts_path, class:'fa fa-arrow-left' %>
+</div>
+
