@@ -42,8 +42,40 @@
     </tr>
     </tbody>
   </table>
-
 </div>
+
+<div class="breadcrumb" style="background-color: #546aff"></div>
+
+<div class="jumbotron" style="background-color: aliceblue;color: #B00100">
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th>Bank Account</th>
+      <th>Owner </th>
+      <th>Card Number</th>
+      <th>Expiry Date</th>
+      <th>Security Code</th>
+      <th>Active</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @bankcards.each do |card| %>
+      <tr>
+        <td data-toggle= "tooltip"  data-placement="top" title="<%= card.note %>">
+          <%= card.bankaccount.account_name%>
+        </td>
+        <td><%= card.person.fullname %></td>
+        <td><%= card.card_number %></td>
+        <td><%= card.expiry_date.strftime("%d %b. %Y")%></td>
+        <td><%= card.security_code %></td>
+        <td><%= card.active.humanize %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
 
 
 <div class="breadcrumb">

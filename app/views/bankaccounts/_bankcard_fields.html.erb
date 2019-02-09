@@ -1,0 +1,28 @@
+
+<div class="nested-fields">
+  <div class="jumbotron" style="background-color: bisque">
+
+    <div class="control-group">
+      <div class ="controls">
+        <%= f.association :person, collection: Person.order(:fullname),label_method: :fullname, prompt: "Choose an owner", label:"Owner" %>
+      </div>
+    </div>
+    <br>
+    <div>
+      <%= f.input :card_number, placeholder: "Card number..." %>
+      <%= f.input :expiry_date, placeholder: "Expiry Date..."%>
+      <%= f.input :security_code,placeholder: "Security Code..." %>
+      <%= f.input :note , placeholder:"Notes..."%>
+      <%= f.input :active %>
+    </div>
+    <hr>
+  </div>
+  <div class="breadcrumb">
+    <%= link_to_remove_association 'Remove', f ,class: 'fa fa-close', style:"font-size:15px;color:red"%>
+  </div>
+</div>
+
+
+
+
+

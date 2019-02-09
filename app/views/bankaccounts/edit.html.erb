@@ -1,7 +1,13 @@
 <% provide(:title, "Edit Bank Account") %>
-<h1>Editing Bank Account</h1>
+
+<div class="breadcrumb">
+  <h3>Editing Bank Account</h3>
+</div>
+
 
 <%= render 'form', bankaccount: @bankaccount %>
-
-<%= link_to 'Show', @bankaccount %> |
-<%= link_to 'Back', bankaccounts_path %>
+<br>
+<div class="breadcrumb">
+  <%= link_to 'View', @bankaccount, class:'fa fa-eye' %> |
+  <%= link_to 'Back', bankaccounts_path, class:'fa fa-arrow-left' %>
+</div>

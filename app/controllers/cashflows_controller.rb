@@ -140,6 +140,13 @@ class CashflowsController < ApplicationController
     @inflow_follow_up   = Inflow.where(cashflow_id: @ref,follow_up: true).order("date_posted DESC")
     @outflow_follow_up  = Outflow.where(cashflow_id: @ref,follow_up: true).order("date_posted DESC")
 
+    if @inflow_follow_up.empty?
+      @message_for_empty1 = "There are no transactions to follow-up!"
+    end
+    if @inflow_follow_up.empty?
+      @message_for_empty2 = "There are no transactions to follow-up!"
+    end
+
   end
 
 

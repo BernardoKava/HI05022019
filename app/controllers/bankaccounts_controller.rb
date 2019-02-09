@@ -10,6 +10,7 @@ class BankaccountsController < ApplicationController
   # GET /bankaccounts/1
   # GET /bankaccounts/1.json
   def show
+    @bankcards = Bankcard.where(bankaccount_id: @bankaccount.id)
   end
 
   # GET /bankaccounts/new
