@@ -1,0 +1,49 @@
+<% provide(:title, "View") %>
+<p id="notice"><%= notice %></p>
+
+<div class="breadcrumb"style="background-color: darkgreen;color: white">
+  <h3>Activity: <%= @plannedactivity.name %></h3>
+</div>
+
+
+
+<div class="jumbotron"style="background-color: lightgoldenrodyellow;color: navy">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>Name</td>
+      <td><%= @plannedactivity.name %></td>
+    </tr>
+    <tr>
+      <td>Description</td>
+      <td><%= @plannedactivity.description %></td>
+    </tr>
+    <tr>
+      <td>Activity date</td>
+      <td><%= @plannedactivity.activity_date.strftime("%d %b. %Y")  %></td>
+    </tr>
+    <tr>
+      <td>Target amount </td>
+      <td><%= @plannedactivity.target_amount %></td>
+    </tr>
+    <tr>
+      <td>Owner</td>
+      <td><%= @plannedactivity.person.fullname %></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="breadcrumb"style="background-color: khaki">
+  <%= link_to 'Edit', edit_plannedactivity_path(@plannedactivity),class:'fa fa-edit' %> |
+  <%= link_to 'Back', plannedactivities_path , class:'fa fa-arrow-left'%>
+</div>
+
+

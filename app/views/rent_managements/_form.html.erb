@@ -4,14 +4,28 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <div class=" jumbotron">
-      <%= f.input :year %>
-      <%= f.input :month %>
-      <%= f.input :amount %>
-      <%= f.input :date_collected %>
-      <%= f.input :details %>
-      <%= f.input :collected_by %>
-      <%= f.input :user_id ,:as => :hidden, :input_html => { :value => current_user.id} %>
+    <div class=" jumbotron"style="background-color: bisque;color: navy">
+
+      <div class="row">
+        <div class="col-sm-4">
+          <%= f.input :year %>
+          <%= f.input :month %>
+          <%= f.input :amount %>
+        </div>
+        <div class="col-sm-4">
+          <%= f.input :date_collected %>
+          <%= f.input :details %>
+          <%= f.input :collected_by %>
+          <%= f.input :user_id ,:as => :hidden, :input_html => { :value => current_user.id} %>
+        </div>
+      </div>
+
+
+
+
+
+
+
     </div>
 
   </div>

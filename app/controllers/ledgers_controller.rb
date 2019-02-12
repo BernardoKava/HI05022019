@@ -37,6 +37,8 @@ class LedgersController < ApplicationController
 
     @ledger.annual_total_income=@annual_total_inflow
     @ledger.annual_total_expenditure=@annual_total_outflow
+    @ledger.annual_budgeted_income=@annual_total_income
+    @ledger.annual_budgeted_expenses=@annual_total_expenses
 
     # Ledger number
     @ledger_number =  (@ledger.id + 10000 )

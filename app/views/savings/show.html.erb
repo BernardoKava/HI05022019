@@ -1,7 +1,7 @@
 <% provide(:title, "Saving") %>
 <p id="notice"><%= notice %></p>
 
-<div class="breadcrumb">
+<div class="breadcrumb" style="background-color: darkgreen;color: white">
 <h3>Monthly Savings: <%= @saving.name %></h3>
 </div>
 
@@ -14,7 +14,7 @@
   <div class="row">
     <div class="col-sm-6">
 
-      <div class="jumbotron">
+      <div class="jumbotron"style="background-color: aliceblue;color: navy">
         <h2 style="font-size: 15px;background-color: navy;color: white"><strong> Saving Details</strong></h2>
         <table class="table table-striped">
           <thead>
@@ -48,7 +48,7 @@
     </div>
     <div class="col-sm-6">
 
-      <div class="jumbotron">
+      <div class="jumbotron"style="background-color: aliceblue;color: navy">
         <h2 style="font-size: 15px;background-color: navy;color: white"><strong> Savings Financial Summary</strong></h2>
         <table class="table table-striped">
           <thead>
@@ -86,7 +86,7 @@
     </div>
   </div>
 </div>
-<div class="breadcrumb">
+<div class="breadcrumb"style="background-color: khaki">
   <%= link_to 'Edit', edit_saving_path(@saving), class:'fa fa-edit' %> |
   <%= link_to 'Back', savings_path, class:'fa fa-arrow-left' %>
 </div>
@@ -99,7 +99,7 @@
 <div>
   <div class="row">
     <div class="col-sm-6">
-      <div class="jumbotron">
+      <div class="jumbotron"style="background-color: rgba(0,176,0,0.15);color: navy">
         <div><h2 style="font-size: 15px;background-color: goldenrod;color: white"><strong>Lodgements:</strong></h2></div>
 
         <table class="table table-hover">
@@ -124,7 +124,7 @@
               <td><%= income.details %></td>
               <td><%= income.person.fullname %></td>
               <td><%= income.amount %></td>
-              <td><%= income.institution %></td>
+              <td><%= income.financialinstitution.name %></td>
             </tr>
           <% end %>
           </tbody>
@@ -132,7 +132,7 @@
       </div>
     </div>
     <div class="col-sm-6">
-      <div class="jumbotron">
+      <div class="jumbotron"style="background-color: mistyrose;color: navy">
         <div><h2 style="font-size: 15px;background-color: goldenrod;color: white"><strong>Withdrawal:</strong></h2></div>
 
         <table class="table table-hover">
@@ -157,7 +157,7 @@
               <td><%= expense.details %></td>
               <td><%= expense.person.fullname %></td>
               <td><%= expense.amount %></td>
-              <td><%= expense.institution %></td>
+              <td><%= expense.financialinstitution.name %></td>
             </tr>
           <% end %>
           </tbody>
@@ -166,7 +166,44 @@
     </div>
   </div>
 </div>
-<div class="breadcrumb">
+
+<div class="jumbotron"style="background-color: bisque;color: navy">
+  <h2 style="font-size: 15px;background-color: navy;color: white"><strong> Savings Financial Summary</strong></h2>
+  <table class="table table-striped"style="background-color: aliceblue">
+    <thead>
+    <tr>
+      <th>Title</th>
+      <th>Amount(€)</th>
+      <th>Literal</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr>
+      <td>Total Lodgement (€)</td>
+      <td>€ <%= @totallodgement %> </td>
+      <td><%= @totallodgement.humanize %></td>
+    </tr>
+    <tr>
+      <td>Total Withdrawal (€)</td>
+      <td>€ <%= @totalwithdrawal %> </td>
+      <td><%= @totalwithdrawal.humanize %></td>
+    </tr>
+    <tr>
+      <td>Reconciliation (€)</td>
+      <td>€ <%=@recons%></td>
+      <td><%= @recons.humanize %></td>
+    </tr>
+    <tr>
+      <td>Balance (€)</td>
+      <td> € <%= @balance %></td>
+      <td><%= @balance.humanize %></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="breadcrumb" style="background-color: khaki">
   <%= link_to 'Edit', edit_saving_path(@saving), class:'fa fa-edit' %> |
   <%= link_to 'Back', savings_path, class:'fa fa-arrow-left' %>
 </div>
@@ -184,7 +221,7 @@
 
     <% for comment in @saving.comments %>
 
-      <div class="jumbotron">
+      <div class="jumbotron" style="background-color: palegoldenrod">
 
         <div>
           <strong>Comments:</strong><br><br>
@@ -192,7 +229,7 @@
         </div>
         <br>
         <div>
-          Registered on:
+          Commented on:
           <%=h comment.created_at.strftime("%d %b. %Y") %>
         </div>
         <div>
@@ -207,7 +244,7 @@
 
 </div>
 
-<div class="breadcrumb">
+<div class="breadcrumb" style="background-color: khaki">
   <%= link_to 'Edit', edit_saving_path(@saving), class:'fa fa-edit' %> |
   <%= link_to 'Back', savings_path, class:'fa fa-arrow-left' %>
 </div>
@@ -215,7 +252,7 @@
 <hr>
 
 
-<div class="breadcrumb">
+<div class="breadcrumb"style="background-color: darkgreen;color: white">
   <div>
     Created on:
     <%=h @saving.created_at.strftime("%d %b. %Y") %>

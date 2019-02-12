@@ -1,0 +1,47 @@
+<% provide(:title, "Activities") %>
+
+<p id="notice"><%= notice %></p>
+
+
+
+<div class="breadcrumb"style="background-color: darkgreen;color: white">
+  <h3>Planned Activities</h3>
+</div>
+
+<div class="jumbotron"style="background-color: lightgoldenrodyellow;color: navy">
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Activity date</th>
+      <th>Target amount</th>
+      <th>Person</th>
+      <th colspan="3"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @plannedactivities.each do |plannedactivity| %>
+      <tr>
+        <td><%= link_to plannedactivity.name, plannedactivity%></td>
+        <td><%= plannedactivity.activity_date %></td>
+        <td><%= plannedactivity.target_amount %></td>
+        <td><%= plannedactivity.person.fullname %></td>
+        <td><%= link_to 'View', plannedactivity , class:'fa fa-eye'%></td>
+        <td><%= link_to 'Edit', edit_plannedactivity_path(plannedactivity),class:'fa fa-edit' %></td>
+        <td><%= link_to 'Delete', plannedactivity, method: :delete, data: { confirm: 'Are you sure?' },class:'fa fa-remove' %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= will_paginate @plannedactivities %>
+
+
+<br>
+
+<div class="breadcrumb"style="background-color: khaki">
+  <%= link_to 'New Planned Activity', new_plannedactivity_path,class:'fa fa-plus' %>
+</div>
+

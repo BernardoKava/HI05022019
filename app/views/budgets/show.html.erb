@@ -3,7 +3,7 @@
 
 
 
-<div class="breadcrumb">
+<div class="breadcrumb"style="background-color: darkgreen;color: white">
   <h3>Monthly Budget: <%= @budget.name %></h3>
 </div>
 
@@ -18,7 +18,7 @@
   <div class="row">
     <div class="col-sm-6">
 
-      <div class="jumbotron">
+      <div class="jumbotron"style="background-color: aliceblue;color: navy">
         <h2 style="font-size: 15px;background-color: navy;color: white"><strong> Budget Details</strong></h2>
         <table class="table table-striped">
           <thead>
@@ -52,7 +52,7 @@
     </div>
     <div class="col-sm-6">
 
-      <div class="jumbotron">
+      <div class="jumbotron"style="background-color: aliceblue;color: navy">
         <h2 style="font-size: 15px;background-color: navy;color: white"><strong> Budget Financial Summary</strong></h2>
         <table class="table table-striped">
           <thead>
@@ -85,7 +85,7 @@
     </div>
   </div>
 </div>
-<div class="breadcrumb">
+<div class="breadcrumb"style="background-color: khaki">
   <%= link_to 'Edit', edit_budget_path(@budget), class:'fa fa-edit' %> |
   <%= link_to 'Back', budgets_path, class:'fa fa-arrow-left'  %>
 </div>
@@ -98,7 +98,7 @@
 <div>
   <div class="row">
     <div class="col-sm-6">
-      <div class="jumbotron">
+      <div class="jumbotron"style="background-color: rgba(0,176,0,0.08);color: darkgreen">
         <div><h2 style="font-size: 15px;background-color: goldenrod;color: white"><strong>Income:</strong></h2></div>
 
         <table class="table table-hover">
@@ -127,7 +127,7 @@
       </div>
     </div>
     <div class="col-sm-6">
-      <div class="jumbotron">
+      <div class="jumbotron"style="background-color: mistyrose;color: darkred">
         <div><h2 style="font-size: 15px;background-color: goldenrod;color: white"><strong>Expenses:</strong></h2></div>
 
         <table class="table table-hover">
@@ -157,13 +157,42 @@
     </div>
   </div>
 </div>
-<div class="breadcrumb">
+<div class="breadcrumb"style="background-color: khaki">
   <%= link_to 'Edit', edit_budget_path(@budget), class:'fa fa-edit' %> |
   <%= link_to 'Back', budgets_path, class:'fa fa-arrow-left'  %>
 </div>
 <hr>
 
+<div class="jumbotron"style="background-color:bisque;color: navy">
+  <h2 style="font-size: 15px;background-color: navy;color: white"><strong> Budget Financial Summary</strong></h2>
+  <table class="table table-striped"style="background-color: aliceblue">
+    <thead>
+    <tr>
+      <th>Title</th>
+      <th>Amount(€)</th>
+      <th>Literal</th>
+    </tr>
+    </thead>
 
+    <tbody>
+    <tr>
+      <td>Total Income (€)</td>
+      <td>€ <%= @totalincome %> </td>
+      <td><%= @totalincome.humanize %></td>
+    </tr>
+    <tr>
+      <td>Total Expenses (€)</td>
+      <td>€ <%= @totalexpense %> </td>
+      <td><%= @totalexpense.humanize %></td>
+    </tr>
+    <tr>
+      <td>Balance (€)</td>
+      <td> € <%= @balance %></td>
+      <td><%= @balance.humanize %></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
 <div class="breadcrumb" style="background-color: rgba(22,151,168,0.6); color: whitesmoke">
   <h4>C. Income and Expenditure Classification:</h4>
 </div>
@@ -171,7 +200,7 @@
 
 <div class="row">
   <div class="col-sm-6">
-    <div class="jumbotron">
+    <div class="jumbotron"style="background-color: aliceblue;color: navy">
       <h2 style="font-size: 15px;background-color: navy;color: white"><strong> Income Breakdown</strong></h2>
       <table class="table table-striped">
         <thead>
@@ -209,7 +238,7 @@
 
   </div>
   <div class="col-sm-6">
-    <div class="jumbotron">
+    <div class="jumbotron"style="background-color: aliceblue;color: navy">
       <h2 style="font-size: 15px;background-color: navy;color: white"><strong> Expenses Breakdown</strong></h2>
 
       <table class="table table-striped">
@@ -366,7 +395,7 @@
 </div>
 
 
-<div class="breadcrumb">
+<div class="breadcrumb"style="background-color: khaki">
   <%= link_to 'Edit', edit_budget_path(@budget), class:'fa fa-edit' %> |
   <%= link_to 'Back', budgets_path, class:'fa fa-arrow-left'  %>
 </div>
@@ -384,7 +413,7 @@
 
     <% for comment in @budget.comments %>
 
-      <div class="jumbotron">
+      <div class="jumbotron"style="background-color: bisque;color: navy">
 
         <div>
           <strong>Comments:</strong><br><br>
@@ -392,7 +421,7 @@
         </div>
         <br>
         <div>
-          Registered on:
+          Commented on:
           <%=h comment.created_at.strftime("%d %b. %Y") %>
         </div>
         <div>
@@ -411,13 +440,13 @@
 
 <br>
 
-<div class="breadcrumb">
+<div class="breadcrumb"style="background-color: khaki">
   <%= link_to 'Edit', edit_budget_path(@budget), class:'fa fa-edit' %> |
   <%= link_to 'Back', budgets_path, class:'fa fa-arrow-left'  %>
 </div>
 <hr>
 
-<div class="breadcrumb">
+<div class="breadcrumb"style="background-color: darkgreen;color: white">
   <div>
     Created on:
     <%=h @budget.created_at.strftime("%d %b. %Y") %>

@@ -3,10 +3,8 @@
 
 <% if current_user.access_granted == true %>
 
-<div class="breadcrumb">
-  <div class="fa fa-dashboard", id="dashboard">
-    My Dashboard
-  </div>
+<div class="breadcrumb"style="background-color: aliceblue ">
+  <h2 class="fa fa-dashboard">Dashboard</h2>
 </div>
 
   <% if current_user.admin == true %>
@@ -17,7 +15,6 @@
 
   <% end %>
 
-<br/><br/>
   <% if @inflow_fu_count == 0 && @outflow_fu_count == 0 %>
     <div class="breadcrumb">
       <h5>Great - <%= @inflow_fu_count %> income record(s) and <%= @outflow_fu_count %> expense record(s) to follow-up!</h5>
@@ -33,249 +30,302 @@
   </div>
 
 
-  <div class="row">
-    <div class="col-sm-4">
-      <div><h2 style="font-size: 15px;background-color: goldenrod;color: white"><strong>Budgets:</strong></h2></div>
-      <div class="jumbotron">
-        <table class="table table-striped">
-          <thead>
-          <tr>
-            <th>Month</th>
-            <th>Year</th>
-            <th>Budget date</th>
-            <th>Name</th>
-
-          </tr>
-          </thead>
-
-          <tbody>
-          <% @budgets.each do |budget| %>
-            <tr>
-              <td><%= link_to budget.month, budget%></td>
-              <td><%= budget.year %></td>
-              <td><%= budget.budget_date.strftime("%d %b. %Y") %></td>
-              <td><%= budget.name %></td>
-            </tr>
-          <% end %>
-          </tbody>
-        </table>
-        <%= will_paginate @budgets %>
-
-        <hr>
-
-        <%= link_to "Financial Modules", dashboard_financial_path, class:'fa fa-money' %>
-      </div>
-    </div>
-
-
-
-    <div class="col-sm-4">
-
-      <div><h2 style="font-size: 15px;background-color: goldenrod;color: white"><strong>Cashflows:</strong></h2></div>
-      <div class="jumbotron">
-
-        <table class=" table table-striped">
-          <thead>
-          <tr>
-            <th>Month</th>
-            <th>Year</th>
-            <th>Accounting date</th>
-            <th>Name</th>
-
-          </tr>
-          </thead>
-
-          <tbody>
-          <% @cashflows.each do |cashflow| %>
-            <tr>
-              <td><%= link_to cashflow.month, cashflow %></td>
-              <td><%= cashflow.year %></td>
-              <td><%= cashflow.accounting_date.strftime("%d, %b  %Y") %></td>
-              <td><%= cashflow.name %></td>
-            </tr>
-          <% end %>
-          </tbody>
-        </table>
-        <%= will_paginate @cashflows %>
-        <hr>
-        <%= link_to "Financial Modules", dashboard_financial_path, class:'fa fa-money' %>
-      </div>
-    </div>
-
-
-    <div class="col-sm-4">
-
-      <div><h2 style="font-size: 15px;background-color: goldenrod;color: white"><strong>Ledgers:</strong></h2></div>
-      <div class="jumbotron">
-
-        <table class="table table-striped">
-          <thead>
-          <tr>
-            <th>Month</th>
-            <th>Year</th>
-            <th>Ledger date</th>
-            <th>Name</th>
-          </tr>
-          </thead>
-
-          <tbody>
-          <% @ledgers.each do |ledger| %>
-            <tr>
-              <td><%= link_to ledger.month, ledger %></td>
-              <td><%= ledger.year %></td>
-              <td><%= ledger.ledger_date %></td>
-              <td><%= ledger.name %></td>
-            </tr>
-          <% end %>
-          </tbody>
-        </table>
-        <%= will_paginate @ledgers %>
-        <hr>
-        <%= link_to "Financial Modules", dashboard_financial_path, class:'fa fa-money' %>
-
-      </div>
-    </div>
-  </div>
-
-  <hr>
-  <hr>
-
-  <div class="breadcrumb"style="background-color: cadetblue; color: white">
-    Savings | Incoming Posts
-  </div>
 
   <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-4">
 
-      <div><h2 style="font-size: 15px;background-color: goldenrod;color: white"><strong>Savings:</strong></h2></div>
-      <div class="jumbotron">
-
+      <div class="breadcrumb"style="background-color: khaki;color: navy">
+        Ledger | <%= @dash_year %>
+      </div>
+      <div class="jumbotron"style="background-color: lightgoldenrodyellow;color: navy">
         <table class="table table-striped">
           <thead>
           <tr>
-            <th>Month</th>
-            <th>Year</th>
-            <th>Saving date</th>
-            <th>Name</th>
+            <th>Title</th>
+            <th>Amount(€)</th>
+            <th>Literal</th>
           </tr>
           </thead>
 
           <tbody>
-          <% @savings.each do |saving| %>
-            <tr>
-              <td><%= link_to saving.month, saving %></td>
-              <td><%= saving.year %></td>
-              <td><%= saving.saving_date.strftime("%d %b. %Y") %></td>
-              <td><%= saving.name %></td>
-            </tr>
-          <% end %>
+          <tr>
+            <td>Annual Total Inflow (€): </td>
+            <td>€ <%= @annual_total_inflow %></td>
+            <td><%= @annual_total_inflow.humanize %></td>
+          </tr>
+          <tr>
+            <td>Annual Total Outflow (€)</td>
+            <td>€ <%= @annual_total_outflow %></td>
+            <td><%= @annual_total_outflow.humanize %></td>
+          </tr>
+          <tr>
+            <td>Cashflow Annual Remainder(€)</td>
+            <td>€ <%=  @annual_remainder %></td>
+            <td><%= @annual_Remainder.humanize %></td>
+          </tr>
+          <tr>
+            <td>Annual Total Budgeted Income (€): </td>
+            <td>€ <%= @annual_budgeted_income %></td>
+            <td><%= @annual_budgeted_income.humanize %></td>
+          </tr>
+          <tr>
+            <td>Annual Total Budgeted Expenses(€)</td>
+            <td>€ <%= @annual_budgeted_expense %></td>
+            <td><%= @annual_budgeted_expense.humanize %></td>
+          </tr>
           </tbody>
         </table>
-        <%= will_paginate @savings %>
-        <hr>
-        <%= link_to "Financial Modules", dashboard_financial_path, class:'fa fa-money' %>
-
       </div>
 
+
     </div>
-
-    <div class="col-sm-6">
-
-      <div><h2 style="font-size: 15px;background-color: goldenrod;color: white"><strong>Incoming Posts:</strong></h2></div>
-      <div class="jumbotron">
+    <div class="col-sm-4">
+      <div class="breadcrumb"style="background-color: khaki;color: navy">
+        Budget | Month: <%= @dash_month %> | <%= @dash_year %>
+      </div>
+      <div class="jumbotron"style="background-color: lightgoldenrodyellow;color: navy">
         <table class="table table-striped">
           <thead>
           <tr>
-            <th>Delivery date</th>
+            <th>Title</th>
+            <th>Amount(€)</th>
+            <th>Literal</th>
           </tr>
           </thead>
 
           <tbody>
-          <% @deliveries.each do |delivery| %>
-            <tr>
-              <td><%= link_to delivery.delivery_date.strftime("%d, %b  %Y"),delivery %></td>
-            </tr>
-          <% end %>
+          <tr>
+          <tr>
+            <td>Monthly Income(€): </td>
+            <td>€ <%= @monthly_income %></td>
+            <td><%= @monthly_income.humanize %></td>
+          </tr>
+          <tr>
+            <td>Monthly Expenditure(€)</td>
+            <td>€ <%= @monthly_expense %></td>
+            <td><%= @monthly_expense.humanize %></td>
+          </tr>
           </tbody>
         </table>
-        <%= will_paginate @deliveries %>
-        <hr>
+      </div>
+
+
+    </div>
+    <div class="col-sm-4">
+      <div class="breadcrumb"style="background-color: khaki;color: navy">
+        Savings | <%= @dash_year %>
+      </div>
+      <div class="jumbotron"style="background-color: lightgoldenrodyellow;color: navy">
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th>Title</th>
+            <th>Amount(€)</th>
+            <th>Literal</th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <tr>
+          <tr>
+            <td> Total Lodgement(€): </td>
+            <td>€ <%= @annual_lodgement %></td>
+            <td><%= @annual_lodgement.humanize %></td>
+          </tr>
+          <tr>
+            <td>Total Withdrawal(€)</td>
+            <td>€ <%= @annual_withdrawal %></td>
+            <td><%= @annual_withdrawal.humanize %></td>
+          </tr>
+          <tr>
+            <td> Annual Savings Balance(€)</td>
+            <td>€ <%= @annual_savings_balance %></td>
+            <td><%= @annual_savings_balance.humanize %></td>
+          </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
 
-
-<hr>
-  <hr>
-
-  <div class="breadcrumb"style="background-color: cadetblue; color: white">
-    Inventory | People
+  <div class="breadcrumb" style="background-color: cadetblue; color: white">
+    Loans | Rent | Budgeted Activities
   </div>
-
 
   <div class="row">
-    <div class="col-sm-6">
-
-      <div><h2 style="font-size: 15px;background-color: goldenrod;color: white"><strong>Possession Inventories:</strong></h2></div>
-      <div class="jumbotron">
-
-
+    <div class="col-sm-4">
+      <div class="breadcrumb"style="background-color: khaki;color: navy">
+        Active Loans | <%= @dash_year %>
+      </div>
+      <div class="jumbotron"style="background-color: lightgoldenrodyellow;color: navy">
         <table class="table table-striped">
           <thead>
           <tr>
-            <th>Department</th>
-            <th>Period from</th>
-            <th>Period to</th>
-
+            <th>Loan Reference</th>
+            <th>Owner</th>
+            <th>Amount Borrowed(€)</th>
+            <th>Outstanding Amount(€)</th>
           </tr>
           </thead>
 
           <tbody>
-          <% @inventories.each do |inventory| %>
+          <% @loans.each do |loan| %>
             <tr>
-              <td><%= link_to inventory.department.name, inventory %></td>
-              <td><%= inventory.period_from %></td>
-              <td><%= inventory.period_to %></td>
+              <td><%= loan.loan_reference %></td>
+              <td><%= loan.person.fullname %></td>
+              <td><%= loan.amount %></td>
+              <td><%= loan.outstanding %></td>
             </tr>
           <% end %>
           </tbody>
         </table>
-        <%= will_paginate @inventories %>
-        <hr>
       </div>
     </div>
-
-    <div class="col-sm-6">
-
-      <div><h2 style="font-size: 15px;background-color: goldenrod;color: white"><strong>House Occupants Personal Information Record:</strong></h2></div>
-      <div class="jumbotron">
+    <div class="col-sm-4">
+      <div class="breadcrumb"style="background-color: khaki;color: navy" >
+        Rent | <%= @dash_year %>
+      </div>
+      <div class="jumbotron"style="background-color: lightgoldenrodyellow;color: navy">
         <table class="table table-striped">
           <thead>
           <tr>
-            <th>Name</th>
-            <th>Surname</th>
+            <th>Collection Date</th>
+            <th>Amount</th>
+            <th>Annual Total</th>
           </tr>
           </thead>
 
           <tbody>
-          <% @people.each do |person| %>
+          <% @rents.each do |rent| %>
             <tr>
-              <td><%= link_to person.name, person %></td>
-              <td><%= person.surname %></td>
+              <td><%= rent.date_collected.strftime("%d, %b  %Y") %></td>
+              <td><%= rent.amount %></td>
+              <td><%= @rent_total %></td>
             </tr>
           <% end %>
           </tbody>
         </table>
 
-        <hr>
 
       </div>
 
+    </div>
+    <div class="col-sm-4">
+      <div class="breadcrumb"style="background-color: khaki;color: navy">
+        Activities | <%= @dash_year %>
+      </div>
+      <div class="jumbotron"style="background-color: lightgoldenrodyellow;color: navy">
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th>Activity Name</th>
+            <th>Activity Date</th>
+            <th>Activity Cost</th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <% @activities.each do |activity| %>
+            <tr>
+              <td><%= activity.name %></td>
+              <td><%= activity.activity_date.strftime("%d, %b  %Y") %></td>
+              <td><%= activity.target_amount %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
+  <div class="breadcrumb" style="background-color: cadetblue; color: white">
+    Incoming Postal Documents | Outstanding Issues
+  </div>
+  <div class="breadcrumb" style="background-color: khaki;color: navy">
+    Incoming Postal Documents | <%= @dash_year %>
+  </div>
+  <div class="jumbotron"style="background-color: lightgoldenrodyellow;color: navy">
 
-  <hr>
-  <%= will_paginate @people %>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Received by</th>
+        <th>Delivery Date</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <td><%= post.post_type.name %></td>
+          <td><%= post.description %></td>
+          <td><%= post.delivery.person.fullname %></td>
+          <td><%= post.delivery.delivery_date.strftime("%d, %b  %Y") %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="breadcrumb" style="background-color: khaki;color: navy">
+    Outstanding Issues | <%= @dash_year %>
+  </div>
+  <div class="jumbotron"style="background-color: lightgoldenrodyellow;color: navy">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Title </th>
+        <th>Target Completion Date</th>
+        <th>Corrective Action Owner</th>
+        <th>Issue Title</th>
+        <th>Issue Owner</th>
+
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @corrective_actions.each do |action| %>
+        <tr>
+          <td><%= action.title %></td>
+          <td><%= action.target_completion_date.strftime("%d, %b  %Y") %></td>
+          <td><%= action.person.fullname %></td>
+          <td><%= action.issue_management.issue_title %></td>
+          <td><%= action.issue_management.person.fullname %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="breadcrumb" style="background-color: cadetblue; color: white">
+    <%= link_to "Back to Top", dashboard_index_path %>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <% else %>
 
   <p> Your account setup request is being reviewed. Your request will be approved within 24 hours.</p>

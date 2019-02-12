@@ -1,0 +1,13 @@
+<% provide(:title, "New") %>
+
+<div class="breadcrumb">
+  <h3>New Planned Activity</h3>
+</div>
+
+<%= render 'form', plannedactivity: @plannedactivity %>
+
+<br>
+<div class="breadcrumb">
+  <%= link_to 'Back', plannedactivities_path,class:'fa fa-arrow-left' %>
+</div>
+

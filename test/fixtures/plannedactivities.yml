@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  activity_date: 2019-02-09
+  target_amount: 
+  user_id: 1
+  person_id: 1
+
+two:
+  name: MyString
+  description: MyText
+  activity_date: 2019-02-09
+  target_amount: 
+  user_id: 1
+  person_id: 1

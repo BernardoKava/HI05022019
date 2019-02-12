@@ -91,7 +91,7 @@ class PeopleController < ApplicationController
                                      emails_attributes: [:id, :email,:user_id,:active, :_destroy],
                                      telephones_attributes:
                                          [:id, :phone, :user_id, :active, :_destroy],
-                                     addresses_attributes:[:id,:address,:user_id,:active,:_destroy],
+                                     addresses_attributes:[:id,:from,:to,:address,:user_id,:active,:_destroy],
                                      qualifications_attributes:[:id, :active,:name,
                                                                 :school,:from, :to, :grade, :user_id,:_destroy],
                                      employments_attributes:[:id, :company,:company_address,:company_telephone,:company_email,

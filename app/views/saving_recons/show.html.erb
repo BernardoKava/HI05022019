@@ -1,61 +1,57 @@
 <% provide(:title, "View Saving Recons") %>
 <p id="notice"><%= notice %></p>
 
-<div class="jumbotron">
 
-
-  <div>
-    <strong>Cashflow:</strong><br><br>
-    <textarea rows="1" cols="80" readonly>
-  <%= @saving_recon.saving.name %>
-  </textarea>
-  </div>
-
-  <div>
-    <strong>User:</strong><br><br>
-    <textarea rows="1" cols="80" readonly>
-  <%= @saving_recon.user.fullname %>
-  </textarea>
-  </div>
-
-  <div>
-    <strong>Error details:</strong><br><br>
-    <textarea rows="1" cols="80" readonly>
-  <%= @saving_recon.error_details %>
-  </textarea>
-  </div>
-
-  <div>
-    <strong>Reconciliation rationale:</strong><br><br>
-    <textarea rows="1" cols="80" readonly>
-  <%= @saving_recon.reconciliation_rationale %>
-  </textarea>
-  </div>
-
-  <div>
-    <strong>Correction amount:</strong><br><br>
-    <textarea rows="1" cols="80" readonly>
-  <%= @saving_recon.correction_amount %>
-  </textarea>
-  </div>
-
-  <div>
-    <strong>Authorised by:</strong><br><br>
-    <textarea rows="1" cols="80" readonly>
-  <%= @saving_recon.person.fullname %>
-  </textarea>
-  </div>
-
-  <div>
-    <strong>Authorisation date:</strong><br><br>
-    <textarea rows="1" cols="80" readonly>
-  <%= @saving_recon.authorisation_date.strftime("%d %b. %Y") %>
-  </textarea>
-  </div>
-
+<div class="breadcrumb"style="background-color: darkgreen;color: white">
+  <h3>Reconciliation Item</h3>
 </div>
 
-<div class="breadcrumb">
+<div class="jumbotron"style="background-color: lightgoldenrodyellow;color: navy">
+
+
+  <table class="table table-striped"style="color: navy" >
+    <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr>
+      <td>Savings</td>
+      <td><%= @saving_recon.saving.name %> </td>
+    </tr>
+    <tr>
+      <td>User</td>
+      <td><%= @saving_recon.user.fullname %></td>
+    </tr>
+    <tr>
+      <td>Error details</td>
+      <td><%= @saving_recon.error_details %></td>
+    </tr>
+    <tr>
+      <td>Reconciliation rationale</td>
+      <td><%= @saving_recon.reconciliation_rationale %></td>
+    </tr>
+    <tr>
+      <td>Correction amount</td>
+      <td><%= @saving_recon.correction_amount %></td>
+    </tr>
+    <tr>
+      <td>Authorised by</td>
+      <td><%= @saving_recon.person.fullname %></td>
+    </tr>
+    <tr>
+      <td>Authorisation date</td>
+      <td> <%= @saving_recon.authorisation_date.strftime("%d %b. %Y") %></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="breadcrumb"style="background-color: khaki">
   <%= link_to 'Edit', edit_saving_recon_path(@saving_recon), class:'fa fa-edit' %> |
   <%= link_to 'Back', saving_recons_path, class:'fa fa-arrow-left'  %>
 

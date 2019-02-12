@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_05_233518) do
+ActiveRecord::Schema.define(version: 2019_02_12_224032) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 2019_02_05_233518) do
     t.integer "person_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "from"
+    t.date "to"
   end
 
   create_table "bankaccounts", force: :cascade do |t|
@@ -175,6 +177,7 @@ ActiveRecord::Schema.define(version: 2019_02_05_233518) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "active"
   end
 
   create_table "deliveries", force: :cascade do |t|
@@ -423,6 +426,8 @@ ActiveRecord::Schema.define(version: 2019_02_05_233518) do
     t.decimal "act_outflow_pharmacy"
     t.decimal "act_outflow_furniture"
     t.text "note"
+    t.decimal "annual_budgeted_income"
+    t.decimal "annual_budgeted_expenses"
   end
 
   create_table "legacy_ulsterbanks", force: :cascade do |t|
@@ -463,6 +468,7 @@ ActiveRecord::Schema.define(version: 2019_02_05_233518) do
     t.datetime "updated_at", null: false
     t.boolean "internal_loan"
     t.decimal "outstanding"
+    t.boolean "active"
   end
 
   create_table "lodgements", force: :cascade do |t|
@@ -483,6 +489,7 @@ ActiveRecord::Schema.define(version: 2019_02_05_233518) do
     t.string "origination"
     t.text "rationale"
     t.string "day"
+    t.integer "plannedactivity_id"
   end
 
   create_table "monthtitles", force: :cascade do |t|
@@ -536,6 +543,18 @@ ActiveRecord::Schema.define(version: 2019_02_05_233518) do
     t.string "person_number"
     t.string "pps_number"
     t.boolean "system_item"
+  end
+
+  create_table "plannedactivities", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.date "activity_date"
+    t.decimal "target_amount"
+    t.integer "user_id"
+    t.integer "person_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "active"
   end
 
   create_table "post_types", force: :cascade do |t|
@@ -699,6 +718,7 @@ ActiveRecord::Schema.define(version: 2019_02_05_233518) do
     t.string "origination"
     t.text "rationale"
     t.string "day"
+    t.integer "plannedactivity_id"
   end
 
   create_table "yeartitles", force: :cascade do |t|

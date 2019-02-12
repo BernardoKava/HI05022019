@@ -2,12 +2,17 @@
 
 <div class="nested-fields">
 
-  <div class="form-inputs">
-    <%= f.input :phone %>
-    <%= f.input :user_id ,:as => :hidden, :input_html => { :value => current_user.id}%>
-    <%= f.input :active %>
+  <div class="jumbotron"style="background-color: palegoldenrod;color: navy">
+    <div class="form-inputs">
+      <%= f.input :phone %>
+      <%= f.input :user_id ,:as => :hidden, :input_html => { :value => current_user.id}%>
+      <%= f.input :active %>
+    </div>
+    <div class="breadcrumb">
+      <%= link_to_remove_association 'Remove', f ,class: 'fa fa-close', style:"font-size:15px;color:red"%>
+    </div>
+
   </div>
 
-  <%= link_to_remove_association 'Remove', f ,class: 'fa fa-close', style:"font-size:15px;color:red"%>
 
 </div>

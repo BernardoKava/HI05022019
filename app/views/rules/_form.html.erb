@@ -4,14 +4,16 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <div class="jumbotron">
+    <div class="jumbotron"style="background-color: lightgoldenrodyellow;color: navy">
+
 
       <div class="control-group">
-        <%= f.label :rules_category_id, "Category",class: 'control-label' %>
         <div class ="controls">
-          <%= f.collection_select :rules_category_id, RulesCategory.order(:name), :id, :name, include_blank: true %>
+          <%= f.association :rules_category, collection: RulesCategory.order(:name),label_method: :name, prompt: "Choose a Category", label:"Category" %>
         </div>
       </div>
+      <br>
+
       <%= f.input :policy_code, value: @policy_code %>
       <%= f.input :title %>
       <%= f.input :definition %>

@@ -2,12 +2,12 @@
 
 <p id="notice"><%= notice %></p>
 
-<div class="breadcrumb">
+<div class="breadcrumb"style="background-color: darkgreen;color: white">
   <h3>Loan</h3>
 </div>
 
 
-<div class="jumbotron">
+<div class="jumbotron"style="background-color: lightgoldenrodyellow;color: navy">
   <table class="table table-striped">
     <thead>
     <tr>
@@ -66,6 +66,10 @@
       <td>booked for:</td>
       <td> <%= @loan_registration.person.fullname %></td>
     </tr>
+    <tr>
+      <td>Active:</td>
+      <td> <%= @loan_registration.active.humanize %></td>
+    </tr>
 
     </tbody>
   </table>
@@ -74,7 +78,7 @@
 
 
 
-<div class="breadcrumb">
+<div class="breadcrumb"style="background-color: khaki">
   <%= link_to 'Edit', edit_loan_registration_path(@loan_registration) , class:'fa fa-edit'%> |
   <%= link_to 'Back', loan_registrations_path  , class:'fa fa-arrow-left'%>
 </div>

@@ -3,14 +3,14 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-<div class="breadcrumb">
+<div class="breadcrumb"style="background-color: darkcyan;color: white">
   Issue
 </div>
-  <div class="jumbotron">
+  <div class="jumbotron"style="background-color: lightgoldenrodyellow;color: navy">
     <div class="row">
       <div class="col-sm-6">
         <div class="form-inputs">
-          <div class="jumbotron">
+          <div class="jumbotron"style="background-color: mistyrose;color: navy">
             <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id} %>
             <%= f.input :issue_title %>
             <%= f.input :description %>
@@ -33,7 +33,7 @@
     </div>
   </div>
 
-  <div class="breadcrumb">
+  <div class="breadcrumb" style="background-color: darkcyan;color: white">
     Corrective Action(s) & Comments
   </div>
 
@@ -71,15 +71,6 @@
 
     </div>
   </div>
-
-
-
-
-
-
-
-
-
 
   <div class="form-actions">
     <%= f.button :submit, "Save" %>

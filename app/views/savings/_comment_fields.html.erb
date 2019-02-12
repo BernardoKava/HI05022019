@@ -1,13 +1,15 @@
 
 <div class="nested-fields">
- <div class="jumbotron">
+ <div class="jumbotron" style="background-color: palegoldenrod;color: navy">
    <div class="form-inputs">
      <%= f.input :commentary ,placeholder:'Add a comment...'%>
      <%= f.input :user_id,:as => :hidden, :input_html => { :value => current_user.id}%>
    </div>
 
+<div class="breadcrumb" style="background-color: khaki">
+  <%= link_to_remove_association 'Remove', f ,class: 'fa fa-close', style:"font-size:15px;color:red"%>
+</div>
 
-   <%= link_to_remove_association 'Remove', f ,class: 'fa fa-close', style:"font-size:15px;color:red"%>
 
  </div>
  </div>

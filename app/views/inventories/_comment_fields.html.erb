@@ -1,16 +1,22 @@
 
 <div class="nested-fields">
 
+  <div class="jumbotron"style="background-color: palegoldenrod;color: navy">
+    <div class="field">
 
-  <div class="field">
+      <%= f.hidden_field :user_id, class: 'form-control', value: current_user.id %>
+    </div>
 
-    <%= f.hidden_field :user_id, class: 'form-control', value: current_user.id %>
+    <div class="field">
+      <%= f.label  "Commentary:"  %>
+      <%= f.text_area :commentary , class: 'form-control',placeholder:'Add a comment...'%>
+    </div>
+    <div class="breadcrumb"style="background-color: khaki">
+      <%= link_to_remove_association 'Remove', f ,class: 'fa fa-close', style:"font-size:15px;color:red"%>
+    </div>
+
   </div>
 
-  <div class="field">
-    <%= f.label  "Commentary:"  %>
-    <%= f.text_area :commentary , class: 'form-control',placeholder:'Add a comment...'%>
-  </div>
-  <%= link_to_remove_association 'Remove', f ,class: 'fa fa-close', style:"font-size:15px;color:red"%>
+
 </div>
 

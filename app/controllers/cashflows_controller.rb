@@ -143,7 +143,7 @@ class CashflowsController < ApplicationController
     if @inflow_follow_up.empty?
       @message_for_empty1 = "There are no transactions to follow-up!"
     end
-    if @inflow_follow_up.empty?
+    if @outflow_follow_up.empty?
       @message_for_empty2 = "There are no transactions to follow-up!"
     end
 

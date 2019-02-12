@@ -1,7 +1,7 @@
 <% provide(:title, "View") %>
 <p id="notice"><%= notice %></p>
 
-<div class="jumbotron">
+<div class="jumbotron"style="color: navy;background-color: palegoldenrod">
 
   <table class="table table-striped">
     <thead>
@@ -25,7 +25,7 @@
     </tr>
     <tr>
       <td>Date collected:</td>
-      <td><%= @rent_management.date_collected %></td>
+      <td><%= @rent_management.date_collected.strftime("%d %b. %Y")  %></td>
     </tr>
     <tr>
       <td>Collected by:</td>
@@ -46,7 +46,7 @@
 
 
 
-<div class="breadcrumb">
+<div class="breadcrumb"style="background-color: khaki">
   <%= link_to 'Edit', edit_rent_management_path(@rent_management), class:'fa fa-edit'%> |
   <%= link_to 'Back', rent_managements_path, class:'fa fa-arrow-left' %>
 </div>

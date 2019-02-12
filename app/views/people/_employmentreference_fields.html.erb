@@ -2,15 +2,15 @@
 
 <div class="nested-fields">
 
-
+<div class="jumbotron"style="background-color: lightgoldenrodyellow;color: navy">
   <div class="form-inputs">
 
     <div class="control-group">
-      <%= f.label :employment_id, "Company",class: 'control-label' %>
       <div class ="controls">
-        <%= f.collection_select :employment_id, Employment.order(:company), :id, :company, include_blank: true %>
+        <%= f.association :employment, collection: Employment.order(:company),label_method: :company, prompt: "Choose a Company", label:"Company" %>
       </div>
     </div>
+    <br>
 
     <%= f.input :referee_name %>
     <%= f.input :referee_telephone %>
@@ -21,7 +21,14 @@
 
   </div>
 
+  <div class="breadcrumb"style="background-color: khaki">
+    <%= link_to_remove_association 'Remove', f ,class: 'fa fa-close', style:"font-size:15px;color:red"%>
+  </div>
 
-  <%= link_to_remove_association 'Remove', f ,class: 'fa fa-close', style:"font-size:15px;color:red"%>
+</div>
+
+
+
+
 
 </div>

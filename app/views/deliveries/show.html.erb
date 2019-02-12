@@ -2,10 +2,10 @@
 <p id="notice"><%= notice %></p>
 
 
-<div class="breadcrumb">
+<div class="breadcrumb"style="background-color: darkgreen;color: white">
 <h3>Daily Postal Delivery</h3>
 </div>
-<div class="jumbotron">
+<div class="jumbotron"style="background-color: lightgoldenrodyellow;color: navy">
   <table class="table table-striped">
     <thead>
     <tr>
@@ -35,7 +35,7 @@
 
       <% for post in @delivery.posts %>
 
-        <div class="jumbotron">
+        <div class="jumbotron"style="background-color: bisque;color: navy">
 
 
           <table class="table table-striped">
@@ -81,14 +81,14 @@
       <h2 style="font-size: 15px;background-color: navy;color: white"><strong>Comments</strong></h2>
       <% for comment in @delivery.comments %>
 
-        <div class="jumbotron">
+        <div class="jumbotron"style="background-color: lightgoldenrodyellow;color: navy">
           <div>
             <strong>Type:</strong><br><br>
             <textarea rows="6" cols="80" readonly> <%=h comment.commentary %> </textarea>
           </div>
           <br>
           <div>
-            Registered on:
+            Commented on:
             <%=h comment.created_at.strftime("%d %b. %Y") %>
           </div>
           <div>
@@ -105,13 +105,13 @@
 
 <br>
 
-<div class="breadcrumb">
+<div class="breadcrumb"style="background-color: khaki">
 <%= link_to 'Edit', edit_delivery_path(@delivery), class:'fa fa-edit' %> |
 <%= link_to 'Back', deliveries_path, class:'fa fa-arrow-left' %>
 </div>
 <hr>
 <br>
-<div class="breadcrumb">
+<div class="breadcrumb"style="background-color: darkgreen;color: white">
   <div>
     Created on:
     <%=h @delivery.created_at.strftime("%d %b. %Y") %>

@@ -1,14 +1,14 @@
 <% provide(:title, "Person") %>
 <p id="notice"><%= notice %></p>
 
-<div class="breadcrumb">
-  <h3>Person Profile</h3>
+<div class="breadcrumb"style="background-color: darkgreen;color: white">
+  <h3><%= @person.fullname %>'s Profile [PN: <%=h @person_number %>]</h3>
 </div>
 <hr>
 
   <div class="col-sm-4">
     <div class="breadcrumb">
-      <table class="table table-striped">
+      <table class="table table-striped"style="background-color: lightgoldenrodyellow;color: navy">
         <thead>
         <tr>
           <th>Created on</th>
@@ -27,7 +27,7 @@
     </div>
   </div>
   <div class="col-sm-4">
-    <div class="jumbotron">
+    <div class="jumbotron"style="background-color: lightgoldenrodyellow;color: navy">
       <table class="table table-striped">
         <thead>
         <tr>
@@ -37,7 +37,7 @@
         </thead>
         <tbody>
         <tr>
-          <td>Full Name:</td>
+          <td>Full Name</td>
           <td><%= @person.fullname %> </td>
         </tr>
         <tr>
@@ -57,8 +57,8 @@
     </div>
   </div>
 </div>
-
-<div class="breadcrumb">
+<br>
+<div class="breadcrumb"style="background-color: khaki">
   <%= link_to 'Edit', edit_person_path(@person), class:'fa fa-edit' %> |
   <%= link_to 'Back', people_path, class:'fa fa-arrow-left' %>
 </div>
@@ -79,7 +79,7 @@
 
       <div>
         <% for email in @person.emails %>
-          <div class="jumbotron">
+          <div class="jumbotron"style="background-color: lightgoldenrodyellow;color: navy">
 
             <table class="table table-hover">
               <thead>
@@ -98,7 +98,7 @@
                 <td><%=h email.active.humanize  %></td>
               </tr>
               <tr>
-                <td>Registered on:</td>
+                <td>Registered on</td>
                 <td><%=h email.created_at.strftime("%d %b. %Y") %></td>
               </tr>
               </tbody>
@@ -118,7 +118,7 @@
 
       <% for telephone in @person.telephones %>
 
-        <div class="jumbotron">
+        <div class="jumbotron"style="background-color: goldenrod;color: navy">
 
           <table class="table table-hover">
             <thead>
@@ -155,7 +155,7 @@
 
       <% for address in @person.addresses %>
 
-        <div class="jumbotron">
+        <div class="jumbotron"style="background-color: bisque;color: navy">
           <table class="table table-hover">
             <thead>
             <tr>
@@ -167,6 +167,14 @@
             <tr>
               <td>Address</td>
               <td><%=h address.address %></td>
+            </tr>
+            <tr>
+              <td>From</td>
+              <td><%=h address.from.strftime("%d %b. %Y") %></td>
+            </tr>
+            <tr>
+              <td>To</td>
+              <td><%=h address.to.strftime("%d %b. %Y") %></td>
             </tr>
             <tr>
               <td>Active</td>
@@ -185,7 +193,7 @@
 </div>
 </div>
 <br>
-<div class="breadcrumb">
+<div class="breadcrumb"style="background-color: khaki">
   <%= link_to 'Edit', edit_person_path(@person), class:'fa fa-edit' %> |
   <%= link_to 'Back', people_path, class:'fa fa-arrow-left' %>
 </div>
@@ -205,7 +213,7 @@
 
       <% for qualification in @person.qualifications %>
 
-        <div class="jumbotron">
+        <div class="jumbotron"style="background-color: lightgoldenrodyellow;color: navy">
 
           <table class="table table-hover">
             <thead>
@@ -225,11 +233,11 @@
             </tr>
             <tr>
               <td>From </td>
-              <td> <%=h qualification.from %></td>
+              <td> <%=h qualification.from.strftime("%d %b. %Y") %></td>
             </tr>
             <tr>
               <td>To </td>
-              <td> <%=h qualification.to %></td>
+              <td> <%=h qualification.to.strftime("%d %b. %Y") %></td>
             </tr>
             <tr>
               <td>Grade </td>
@@ -258,7 +266,7 @@
 
       <% for job in @person.employments %>
 
-        <div class="jumbotron">
+        <div class="jumbotron"style="background-color: bisque;color: navy">
           <table class="table table-hover">
             <thead>
             <tr>
@@ -277,11 +285,11 @@
             </tr>
             <tr>
               <td>From </td>
-              <td> <%=h job.from %> </td>
+              <td> <%=h job.from.strftime("%d %b. %Y") %> </td>
             </tr>
             <tr>
               <td>To </td>
-              <td>  <%=h job.to %> </td>
+              <td>  <%=h job.to.strftime("%d %b. %Y") %> </td>
             </tr>
             <tr>
               <td>Role</td>
@@ -313,7 +321,7 @@
     <div>
       <% for reference in @person.employmentreferences %>
 
-        <div class="jumbotron">
+        <div class="jumbotron"style="background-color: palegoldenrod;color: navy">
 
           <table class="table table-hover">
             <thead>
@@ -358,7 +366,7 @@
 </div>
 
 
-<div class="breadcrumb">
+<div class="breadcrumb"style="background-color: khaki">
       <%= link_to 'Edit', edit_person_path(@person), class:'fa fa-edit' %> |
       <%= link_to 'Back', people_path, class:'fa fa-arrow-left' %>
 </div>
@@ -377,7 +385,7 @@
 
   <% for comment in @person.comments %>
 
-    <div class="jumbotron">
+    <div class="jumbotron"style="background-color: lightgoldenrodyellow;color: navy">
 
       <div>
         <textarea rows="4" cols="80" readonly>      <%=h comment.commentary %></textarea>
@@ -393,7 +401,7 @@
 </div>
 </div>
 <br>
-<div class="breadcrumb">
+<div class="breadcrumb"style="background-color: khaki">
   <%= link_to 'Edit', edit_person_path(@person), class:'fa fa-edit' %> |
   <%= link_to 'Back', people_path, class:'fa fa-arrow-left' %>
 </div>

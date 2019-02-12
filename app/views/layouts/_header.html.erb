@@ -42,9 +42,6 @@
               Search Fiancials<b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-              <li><%= link_to "Income   Overview",incomes_path, class:'fa fa-search' %></li>
-              <li class="divider"></li>
-              <li><%= link_to "Expenses Overview",expenses_path, class:'fa fa-search' %></li>
               <li class="divider"></li>
               <li><%= link_to "Inflows  Overview",inflows_path, class:'fa fa-search' %></li>
               <li class="divider"></li>
@@ -80,6 +77,8 @@
               <li class="alert-info"><%= link_to "People", people_path , class: 'fa fa-database'%></li>
               <li class="divider"></li>
               <li class="alert-info"><%= link_to "Issue Management", issue_managements_path , class: 'fa fa-database'%></li>
+              <li class="divider"></li>
+              <li class="alert-info"><%= link_to "Planned Activities", plannedactivities_path , class: 'fa fa-database'%></li>
               <% if current_user.admin == true %>
               <li class="divider"></li>
               <li class="alert-danger"><%= link_to "Backend System", rails_admin_path , class: 'fa fa-database'%></li>

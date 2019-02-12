@@ -2,14 +2,21 @@
 
 <div class="nested-fields">
 
+  <div class="jumbotron"style="background-color: palegoldenrod;color: navy">
+    <div class="form-inputs">
+      <%= f.input :address %>
+      <%= f.input :from ,:start_year =>2000, :end_year => 2030 %>
+      <%= f.input :to ,:start_year =>2000, :end_year => 2030 %>
+      <%= f.input :user_id,:as => :hidden, :input_html => { :value => current_user.id}%>
+      <%= f.input :active %>
+    </div>
 
-  <div class="form-inputs">
-    <%= f.input :address %>
-    <%= f.input :user_id,:as => :hidden, :input_html => { :value => current_user.id}%>
-    <%= f.input :active %>
+    <div class="breadcrumb"style="background-color: khaki">
+      <%= link_to_remove_association 'Remove', f ,class: 'fa fa-close', style:"font-size:15px;color:red"%>
+    </div>
   </div>
 
 
-  <%= link_to_remove_association 'Remove', f ,class: 'fa fa-close', style:"font-size:15px;color:red"%>
+
 
 </div>

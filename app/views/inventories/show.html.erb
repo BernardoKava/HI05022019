@@ -1,17 +1,17 @@
 <% provide(:title, "View Inventory") %>
 <p id="notice"><%= notice %></p>
 
-<div class="breadcrumb">
+<div class="breadcrumb"style="background-color: darkgreen;color: white">
   <h3>Inventory</h3>
 </div>
 
 
 
-<div class="jumbotron">
+<div class="jumbotron"style="background-color: aliceblue;color: navy">
   <div class="row">
     <div class="col-sm-4">
       <div class="border">
-      <table class="table table-striped">
+      <table class="table table-striped"style="background-color: lightgoldenrodyellow">
         <thead>
         <tr>
           <th></th>
@@ -45,7 +45,7 @@
     </div>
     <div class="col-sm-4">
       <div class="border">
-      <div class="jumbotron">
+      <div class="jumbotron"style="background-color: lightgoldenrodyellow;color: navy">
         <div>
           Created on: <%= @inventory.created_at.strftime("%d %b. %Y") %>
         </div>
@@ -70,7 +70,7 @@
         <div><h2 style="font-size: 15px;background-color: forestgreen;color: white"><strong> Iventory Summary</strong></h2></div>
         <br>
 
-        <table class="table table-striped">
+        <table class="table table-striped"style="background-color: lightgoldenrodyellow;color: navy">
           <thead>
           <tr>
             <th>Item</th>
@@ -95,7 +95,7 @@
     </div>
   </div>
 </div>
-<div class="breadcrumb">
+<div class="breadcrumb"style="background-color: khaki">
 
   <%= link_to 'Edit', edit_inventory_path(@inventory), class: 'fa fa-edit' %> |
   <%= link_to 'Back', inventories_path , class: 'fa fa-arrow-left'%>
@@ -111,7 +111,7 @@
       <br>
       <% for item in @inventory.items %>
 
-        <div class="jumbotron">
+        <div class="jumbotron"style="background-color: bisque;color: navy">
 
           <table class="table table-striped">
             <thead>
@@ -157,14 +157,14 @@
       <div><h2 style="font-size: 15px;background-color: navy;color: white"><strong>Section 2: Comments</strong></h2></div>
       <br>
       <% for comment in @inventory.comments %>
-        <div class="jumbotron">
+        <div class="jumbotron"style="background-color: lightgoldenrodyellow;color: navy">
 
           <strong>Comment:</strong><br><br>
           <textarea rows="4" cols="80" readonly>  <%= comment.commentary %></textarea>
 
           <br>
           <div>
-            Registered on:
+            Commented on:
             <%=h comment.created_at.strftime("%d %b. %Y") %>
           </div>
         </div>

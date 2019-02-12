@@ -20,6 +20,7 @@ class Person < ApplicationRecord
   has_many :loan_registrations
   has_many :issue_managements
   has_many :corrective_actions
+  has_many :plannedactivities
 
 
   accepts_nested_attributes_for :emails, allow_destroy: true

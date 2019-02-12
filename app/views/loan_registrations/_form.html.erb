@@ -3,42 +3,50 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="row">
-    <div class="col-sm-2">
-      <div class="control-group">
-        <%= f.label :financialinstitution_id, "Financial Institution" %>
-        <div class ="controls">
-          <%= f.collection_select :financialinstitution_id, Financialinstitution.order(:name), :id, :name, include_blank: true %>
-        </div>
-      </div>
-      <br>
-      <div class="control-group">
-        <%= f.label :person_id, "Booked for" %>
-        <div class ="controls">
-          <%= f.collection_select :person_id, Person.order(:fullname), :id, :fullname, include_blank: true %>
-        </div>
-      </div>
-      <br>
-    </div>
-    <div class="col-sm-4">
-      <div class="form-inputs">
-        <%= f.input :loan_type %>
-        <%= f.input :loan_term %>
-        <%= f.input :rationale %>
-        <%= f.input :amount %>
-        <%= f.input :loan_reference %>
-        <%= f.input :internal_loan %>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="form-inputs">
-        <%= f.input :drawdown_date %>
-        <%= f.input :final_payment_date %>
-        <%= f.input :user_id ,:as => :hidden, :input_html => { :value => current_user.id} %>
-      </div>
 
+  <div class="jumbotron"style="background-color: lightgoldenrodyellow;color: navy">
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="control-group">
+          <div class ="controls">
+            <%= f.association :financialinstitution, collection: Financialinstitution.order(:name),label_method: :name, prompt: "Choose an owner", label:"Financial Institution" %>
+          </div>
+        </div>
+        <br>
+        <div class="control-group">
+          <div class ="controls">
+            <%= f.association :person, collection: Person.order(:fullname),label_method: :fullname, prompt: "Choose an owner", label:"Booked for" %>
+          </div>
+        </div>
+        <br>
+        <br>
+      </div>
+      <div class="col-sm-4">
+        <div class="form-inputs">
+          <%= f.input :loan_type %>
+          <%= f.input :loan_term %>
+          <%= f.input :rationale %>
+          <%= f.input :amount %>
+          <%= f.input :loan_reference %>
+
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="form-inputs">
+          <%= f.input :drawdown_date %>
+          <%= f.input :final_payment_date %>
+          <%= f.input :user_id ,:as => :hidden, :input_html => { :value => current_user.id} %>
+          <%= f.input :internal_loan %>
+          <%= f.input :active %>
+        </div>
+
+      </div>
     </div>
   </div>
+
+
+
+
 
 
   <div class="form-actions">

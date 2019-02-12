@@ -1,5 +1,5 @@
 class InflowsController < ApplicationController
-  before_action :set_inflow, only: [:show, :edit, :update, :destroy]
+
 
   def index
 

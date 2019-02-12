@@ -72,7 +72,7 @@ class IssueManagementsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def issue_management_params
       params.require(:issue_management).permit(:issue_title, :description, :completion_rate, :person_id,:user_id,
-                                               :completion_target_date, :completion_actual_date, corrective_actions_attributes:[:id,:title,
+                                               :completion_target_date, :completion_actual_date, corrective_actions_attributes:[:id,:active,:title,
           :description, :target_completion_date, :actual_completion_date, :person_id, :user_id,:_destroy], comments_attributes:[:id, :commentary, :user_id, :_destroy])
     end
 end

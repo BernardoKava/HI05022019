@@ -4,17 +4,12 @@
 <p id="notice"><%= notice %></p>
 
 
-<div class="breadcrumb">
+<div class="breadcrumb"style="background-color: darkgreen;color: white">
   <h3>Issue Managements</h3>
 </div>
 
 
-
-
-
-
-
-<div class="jumbotron">
+<div class="jumbotron"style="background-color: lightgoldenrodyellow;color: navy">
   <table class="table table-striped">
     <thead>
     <tr>
@@ -45,7 +40,7 @@
 </div>
 <%= will_paginate @issue_managements %>
 <br>
-<div class="breadcrumb">
+<div class="breadcrumb"style="background-color: khaki">
   <%= link_to 'New Issue ', new_issue_management_path, class:'fa fa-plus' %>
 </div>
 

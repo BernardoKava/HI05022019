@@ -1,0 +1,37 @@
+
+<%= simple_form_for(@plannedactivity) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <div class="jumbotron"style="background-color: lightgoldenrodyellow;color: navy">
+      <div class="row">
+        <div class="col-sm-4">
+          <%= f.input :name %>
+          <%= f.input :description %>
+        </div>
+        <div class="col-sm-4">
+          <%= f.input :activity_date %>
+          <%= f.input :target_amount %>
+          <%= f.input :user_id,:as => :hidden, :input_html => { :value => current_user.id} %>
+
+        </div>
+        <div class="col-sm-4">
+          <div class="control-group">
+            <div class ="controls">
+              <%= f.association :person, collection: Person.order(:fullname),label_method: :fullname, prompt: "Choose an Owner", label:"Owner" %>
+            </div>
+          </div>
+          <br>
+          <%= f.input :active %>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

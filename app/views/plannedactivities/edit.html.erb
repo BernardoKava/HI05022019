@@ -1,0 +1,15 @@
+<% provide(:title, "Edit") %>
+
+<div class="breadcrumb">
+  <h3>Editing Planned Activity</h3>
+</div>
+
+
+<%= render 'form', plannedactivity: @plannedactivity %>
+
+<br>
+<div class="breadcrumb">
+  <%= link_to 'view', @plannedactivity, class:'fa fa-eye' %> |
+  <%= link_to 'Back', plannedactivities_path, class:'fa fa-arrow-left' %>
+</div>
+

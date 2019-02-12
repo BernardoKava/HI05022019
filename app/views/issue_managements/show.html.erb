@@ -3,16 +3,16 @@
 <p id="notice"><%= notice %></p>
 
 
-<div class="breadcrumb">
+<div class="breadcrumb"style="background-color: darkgreen;color: white">
   <h3>Issue Viewer</h3>
 </div>
 
 
-<div class="breadcrumb">
+<div class="breadcrumb"style="background-color: darkcyan;color: white">
   Issue: <%= @issue_management.issue_title %>
 </div>
 
-<div class="jumbotron">
+<div class="jumbotron"style="background-color: lightgoldenrodyellow;color: navy">
   <table class="table table-striped">
     <thead>
     <tr>
@@ -55,15 +55,18 @@
 </div>
 
 
-
+<div class="breadcrumb"style="background-color: khaki">
+  <%= link_to 'Edit', edit_issue_management_path(@issue_management), class:'fa fa-edit' %> |
+  <%= link_to 'Back', issue_managements_path, class:'fa fa-arrow-left'  %>
+</div>
 
 
 <div class="row">
   <div class="col-sm-8">
-    <div class="breadcrumb">
-      Correction Actions
+    <div class="breadcrumb"style="background-color: darkcyan;color: white">
+      Corrective Actions
     </div>
-    <div class="jumbotron">
+    <div class="jumbotron"style="background-color: bisque;color: navy">
 
       <table class="table table-hover">
         <thead>
@@ -73,17 +76,19 @@
           <th>Target Completion Date</th>
           <th>Actual Completion Date</th>
           <th>Corrective Action Owner</th>
+          <th>Active</th>
         </tr>
         </thead>
 
         <tbody>
         <% @corrective_actions.each do |action| %>
           <tr>
-            <td><%= link_to action.title %>
+            <td><%= action.title %>
             <td><%= action.description %>
             <td><%= action.target_completion_date.strftime("%d %b. %Y")%>
             <td><%= action.actual_completion_date.strftime("%d %b. %Y")%>
             <td><%= action.person.fullname %></td>
+            <td><%= action.active.humanize %></td>
 
           </tr>
         <% end %>
@@ -94,13 +99,13 @@
 
   </div>
   <div class="col-sm-4">
-    <div class="breadcrumb">
+    <div class="breadcrumb"style="background-color: darkcyan;color: white">
       Comments
     </div>
 
     <% for comment in @issue_management.comments %>
 
-      <div class="jumbotron">
+      <div class="jumbotron"style="background-color: palegoldenrod;color: navy">
 
         <div>
           <strong>Comments:</strong><br><br>
@@ -123,18 +128,18 @@
 </div>
 
 
-
-
-
-
-
-
-
-
-
-<div class="breadcrumb">
+<div class="breadcrumb"style="background-color: khaki">
   <%= link_to 'Edit', edit_issue_management_path(@issue_management), class:'fa fa-edit' %> |
   <%= link_to 'Back', issue_managements_path, class:'fa fa-arrow-left'  %>
 </div>
+
+
+
+
+
+
+
+
+
 
 

@@ -1,16 +1,16 @@
 <% provide(:title, "View Ledger") %>
 <p id="notice"><%= notice %></p>
 
-<div class="breadcrumb">
+<div class="breadcrumb"style="background-color: darkgreen;color: white">
   <h3>The General Ledger - Balance Sheet: <%= @ledger.name %></h3>
 </div>
 
 
 <div>
-  <div class="row">
+  <div class="row"style="color: navy">
     <div class="col-sm-6">
 
-      <div class="jumbotron">
+      <div class="jumbotron"style="background-color: aliceblue">
         <h2 style="font-size: 15px;background-color: navy;color: white"><strong> Ledger Details</strong></h2>
         <table class="table table-striped">
           <thead>
@@ -50,7 +50,7 @@
     </div>
     <div class="col-sm-6">
 
-      <div class="jumbotron">
+      <div class="jumbotron"style="background-color: lightgoldenrodyellow">
         <h2 style="font-size: 15px;background-color: navy;color: white"><strong> Ledger Financial Summary</strong></h2>
 
         <strong> General: </strong><br><br>
@@ -115,23 +115,33 @@
             <td>€ <%= @annual_total_outflow %></td>
             <td><%= @annual_total_outflow.humanize %></td>
           </tr>
+          <tr>
+            <td>Annual Total Budgeted Income (€): </td>
+            <td>€ <%= @annual_total_income %></td>
+            <td><%= @annual_total_income.humanize %></td>
+          </tr>
+          <tr>
+            <td>Annual Total Budgeted Expenses(€)</td>
+            <td>€ <%= @annual_total_expenses %></td>
+            <td><%= @annual_total_expenses.humanize %></td>
+          </tr>
           </tbody>
         </table>
       </div>
     </div>
   </div>
 </div>
-<div class="breadcrumb">
+<div class="breadcrumb"style="background-color: khaki">
   <%= link_to 'Edit', edit_ledger_path(@ledger), class:'fa fa-edit' %> |
   <%= link_to 'Back', ledgers_path, class:'fa fa-arrow-left'  %>
 </div>
 <hr>
 <br>
-<div class="row">
+<div class="row"style="color: navy">
   <div class="col-sm-6">
-    <div class="jumbotron">
+    <div class="jumbotron"style="background-color: bisque">
       <h2 style="font-size: 15px;background-color: navy;color: white"><strong> Actual Income </strong></h2>
-      <table class="table table-striped">
+      <table class="table table-striped"style="background-color: aliceblue">
         <thead>
         <tr>
           <th>Category</th>
@@ -171,10 +181,10 @@
     </div>
   </div>
   <div class="col-sm-6">
-    <div class="jumbotron">
+    <div class="jumbotron"style="background-color: rgba(255,215,0,0.24)">
       <h2 style="font-size: 15px;background-color: navy;color: white"><strong>Budgeted Income</strong></h2>
 
-      <table class="table table-striped">
+      <table class="table table-striped"style="background-color: aliceblue">
         <thead>
         <tr>
           <th>Category</th>
@@ -214,15 +224,15 @@
     </div>
   </div>
 </div>
-<div class="breadcrumb">
+<div class="breadcrumb"style="background-color: khaki">
   <%= link_to 'Edit', edit_ledger_path(@ledger), class:'fa fa-edit' %> |
   <%= link_to 'Back', ledgers_path, class:'fa fa-arrow-left'  %>
 </div>
 <hr>
 <div>
-  <div class="row">
+  <div class="row"style="color: navy">
     <div class="col-sm-6">
-      <div class="jumbotron">
+      <div class="jumbotron"style="background-color: bisque">
         <div><h2 style="font-size: 15px;background-color: goldenrod;color: white"><strong>Actual Expenses:</strong></h2></div>
 
         <table class="table table-striped">
@@ -376,7 +386,7 @@
       </div>
     </div>
     <div class="col-sm-6">
-      <div class="jumbotron">
+      <div class="jumbotron"style="background-color: rgba(255,215,0,0.24)">
         <div><h2 style="font-size: 15px;background-color: goldenrod;color: white"><strong>Budgeted Expenses:</strong></h2></div>
 
         <table class="table table-striped">
@@ -532,12 +542,12 @@
     </div>
   </div>
 </div>
-<div class="breadcrumb">
+<div class="breadcrumb"style="background-color: khaki">
   <%= link_to 'Edit', edit_ledger_path(@ledger), class:'fa fa-edit' %> |
   <%= link_to 'Back', ledgers_path, class:'fa fa-arrow-left'  %>
 </div>
 <hr>
-<div class="breadcrumb">
+<div class="breadcrumb"style="background-color: darkgreen;color: white">
   <div>
     Created on:
     <%=h @ledger.created_at.strftime("%d %b. %Y") %>

@@ -2,13 +2,18 @@
 
 <div class="nested-fields">
 
+  <div class="jumbotron"style="background-color:bisque;color: navy">
+    <div class="form-inputs">
+      <%= f.input :commentary , class:'form-control'%>
+      <%= f.input :user_id,:as => :hidden, :input_html => { :value => current_user.id} , class:'form-control'%>
+    </div>
 
-  <div class="form-inputs">
-    <%= f.input :commentary , class:'form-control'%>
-    <%= f.input :user_id,:as => :hidden, :input_html => { :value => current_user.id} , class:'form-control'%>
+    <div class="breadcrumb"style="background-color: khaki">
+      <%= link_to_remove_association 'Remove', f ,class: 'fa fa-close', style:"font-size:15px;color:red"%>
+    </div>
+
   </div>
 
 
-  <%= link_to_remove_association 'Remove', f ,class: 'fa fa-close', style:"font-size:15px;color:red"%>
 
 </div>

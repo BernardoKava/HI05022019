@@ -1,9 +1,12 @@
 <% provide(:title, "Rents") %>
 <p id="notice"><%= notice %></p>
+<div class="breadcrumb"style="background-color: darkgreen;color: white">
+  <h3>Rent Management</h3>
+</div>
 
-<h1>Rent Management</h1>
 
-<div class="jumbotron">
+
+<div class="jumbotron"style="background-color: lightgoldenrodyellow">
   <table class="table table-hover">
     <thead>
     <tr>
@@ -40,7 +43,7 @@
 
 <%= will_paginate @rent_managements %>
 <br>
-<div class="breadcrumb">
+<div class="breadcrumb"style="background-color: khaki">
   <%= link_to 'New Rent', new_rent_management_path, class:'fa fa-plus' %>
 </div>
 

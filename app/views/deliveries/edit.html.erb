@@ -1,9 +1,14 @@
 <% provide(:title, "Edit Delivery") %>
-<h1>Editing Delivery</h1>
+
+<div class="breadcrumb">
+  <h3>Editing Delivery</h3>
+</div>
+
 
 <%= render 'form', delivery: @delivery %>
 
-<div class="links">
+<br>
+<div class="breadcrumb">
 <%= link_to 'View', @delivery, class:'fa fa-eye' %> |
 <%= link_to 'Back', deliveries_path , class:'fa fa-arrow-left'%>
 </div>
