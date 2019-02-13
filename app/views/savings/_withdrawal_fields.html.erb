@@ -7,7 +7,7 @@
       <div class="col-sm-4">
         <div class="control-group">
           <div class ="controls">
-            <%= f.association :person, collection: Person.order(:fullname),label_method: :fullname, prompt: "Choose an owner", label:"Owner" %>
+            <%= f.association :person, collection: Person.where(:system_item => false).order(:fullname),label_method: :fullname, prompt: "Choose an owner", label:"Owner" %>
           </div>
         </div>
         <br>

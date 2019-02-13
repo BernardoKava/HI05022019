@@ -23,15 +23,20 @@
 </div>
 
 
-<div class="breadcrumb">
+<div class="breadcrumb"style="background-color: khaki">
+  <% if  current_user.admin == true %>
   <%= link_to 'Edit', edit_delivery_path(@delivery), class:'fa fa-edit' %> |
+    <% end %>
   <%= link_to 'Back', deliveries_path, class:'fa fa-arrow-left' %>
 </div>
 <hr>
 <div class="row">
   <div class="col-sm-6">
     <div class="border">
-      <h2 style="font-size: 15px;background-color: navy;color: white"><strong>Posts</strong></h2>
+      <div class="breadcrumb"style="background-color: brown;color: white">
+        <h5><strong>Posts</strong></h5>
+      </div>
+
 
       <% for post in @delivery.posts %>
 
@@ -78,7 +83,9 @@
 
   <div class="col-sm-6">
     <div class="border">
-      <h2 style="font-size: 15px;background-color: navy;color: white"><strong>Comments</strong></h2>
+      <div class="breadcrumb"style="background-color: navy;color: white">
+        <h5><strong>Comments</strong></h5>
+      </div>
       <% for comment in @delivery.comments %>
 
         <div class="jumbotron"style="background-color: lightgoldenrodyellow;color: navy">
@@ -106,8 +113,10 @@
 <br>
 
 <div class="breadcrumb"style="background-color: khaki">
-<%= link_to 'Edit', edit_delivery_path(@delivery), class:'fa fa-edit' %> |
-<%= link_to 'Back', deliveries_path, class:'fa fa-arrow-left' %>
+  <% if  current_user.admin == true %>
+    <%= link_to 'Edit', edit_delivery_path(@delivery), class:'fa fa-edit' %> |
+  <% end %>
+  <%= link_to 'Back', deliveries_path, class:'fa fa-arrow-left' %>
 </div>
 <hr>
 <br>

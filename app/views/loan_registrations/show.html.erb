@@ -79,7 +79,9 @@
 
 
 <div class="breadcrumb"style="background-color: khaki">
+  <% if  current_user.admin == true %>
   <%= link_to 'Edit', edit_loan_registration_path(@loan_registration) , class:'fa fa-edit'%> |
+    <% end %>
   <%= link_to 'Back', loan_registrations_path  , class:'fa fa-arrow-left'%>
 </div>
 

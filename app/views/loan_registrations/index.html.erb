@@ -34,8 +34,10 @@
         <td><%= loan_registration.user.fullname %></td>
         <td><%= loan_registration.person.fullname %></td>
         <td><%= link_to 'View', loan_registration, class:'fa fa-eye' %></td>
+        <% if  current_user.admin == true %>
         <td><%= link_to 'Edit', edit_loan_registration_path(loan_registration) , class:'fa fa-edit' %></td>
         <td><%= link_to 'Delete', loan_registration, method: :delete, data: { confirm: 'Are you sure?' }, class:'fa fa-remove'  %></td>
+          <% end %>
       </tr>
     <% end %>
     </tbody>
@@ -45,8 +47,8 @@
 
 <%= will_paginate @loan_registrations %>
 
-<div class="breadcrumb"style="background-color: khaki">
+<% if  current_user.admin == true %>
+  <div class="breadcrumb"style="background-color: khaki">
   <%= link_to 'New Loan', new_loan_registration_path, class:'fa fa-plus' %>
 </div>
-
-
+<% end %>

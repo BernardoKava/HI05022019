@@ -2,7 +2,7 @@
 
 <p id="notice"><%= notice %></p>
 <div class="breadcrumb" style="background-color: rgba(0,176,0,0.62);color: whitesmoke">
-  <h3>Monthly Cashflow: <%= @cashflow.name %></h3>
+  <h3>Monthly Cash-flow: <%= @cashflow.name %></h3>
 </div>
 
 <% if @inflow_fu_count == 0 && @outflow_fu_count == 0 %>
@@ -19,7 +19,7 @@
 
 
 <div class="breadcrumb" style="background-color: rgba(22,151,168,0.6); color: whitesmoke">
-  <h4>A. Cashflow Details</h4>
+  <h4>A. Cash-flow Details</h4>
 </div>
 
 
@@ -28,7 +28,10 @@
     <div class="col-sm-6">
 
       <div class="jumbotron">
-        <h2 style="font-size: 15px;background-color: navy;color: white"><strong> Cashflow Details</strong></h2>
+        <div class="breadcrumb"style="background-color: brown;color: white">
+          <h5><strong> Cash-flow Details</strong></h5>
+        </div>
+
         <table class="table table-striped"style="background-color: aliceblue;color: navy" >
           <thead>
           <tr>
@@ -61,7 +64,9 @@
     </div>
     <div class="col-sm-6">
         <div class="jumbotron">
-          <h2 style="font-size: 15px;background-color: navy;color: white"><strong> Cashflow Financial Summary</strong></h2>
+          <div class="breadcrumb"style="background-color: navy;color: white">
+            <h5><strong> Cash-flow Financial Summary</strong></h5>
+          </div>
           <table class="table table-striped"style="background-color: aliceblue;color: navy">
             <thead>
             <tr>
@@ -118,9 +123,10 @@
   </div>
 </div>
 <div class="breadcrumb" style="background-color: khaki">
-  <%= link_to 'Edit', edit_cashflow_path(@cashflow), class:' fa fa-edit' %> |
+  <% if current_user.admin == true %>
+    <%= link_to 'Edit', edit_cashflow_path(@cashflow), class:' fa fa-edit' %> |
+  <% end %>
   <%= link_to 'Back', cashflows_path, class:' fa fa-arrow-left' %>
-
 </div>
 <hr>
 
@@ -133,7 +139,10 @@
   <div class="row">
     <div class="col-sm-6">
       <div class="jumbotron">
-        <div><h2 style="font-size: 15px;background-color: goldenrod;color: white"><strong>Follow-up Income:</strong></h2></div>
+        <div class="breadcrumb"style="background-color: brown;color: white">
+          <h5><strong> Follow-up Income</strong></h5>
+        </div>
+
 
         <table class="table table-striped" style="background-color: aliceblue;color: darkgreen">
           <thead>
@@ -176,14 +185,16 @@
           <% end %>
           </tbody>
         </table>
-        <div class="alert-warning">
+        <div class="breadcrumb"style="background-color: darkgreen;color: white">
           <%= @message_for_empty1 %>
         </div>
       </div>
     </div>
     <div class="col-sm-6">
       <div class="jumbotron">
-        <div><h2 style="font-size: 15px;background-color: goldenrod;color: white"><strong>Follow-up Expenses:</strong></h2></div>
+        <div class="breadcrumb"style="background-color: navy;color: white">
+          <h5><strong>Follow-up Expenses</strong></h5>
+        </div>
 
         <table class="table table-striped"style="background-color: aliceblue;color: darkred">
           <thead>
@@ -227,18 +238,18 @@
           <% end %>
           </tbody>
         </table>
-        <div class="alert-warning">
+        <div class="breadcrumb"style="background-color: darkgreen;color: white">
           <%= @message_for_empty2 %>
         </div>
       </div>
     </div>
   </div>
 </div>
-
 <div class="breadcrumb" style="background-color: khaki">
-  <%= link_to 'Edit', edit_cashflow_path(@cashflow), class:' fa fa-edit' %> |
+  <% if current_user.admin == true %>
+    <%= link_to 'Edit', edit_cashflow_path(@cashflow), class:' fa fa-edit' %> |
+  <% end %>
   <%= link_to 'Back', cashflows_path, class:' fa fa-arrow-left' %>
-
 </div>
 <hr>
 
@@ -251,7 +262,10 @@
   <div class="row">
     <div class="col-sm-6">
       <div class="jumbotron">
-        <div><h2 style="font-size: 15px;background-color: goldenrod;color: white"><strong>Income:</strong></h2></div>
+
+        <div class="breadcrumb"style="background-color: brown;color: white">
+          <h5><strong>Income</strong></h5>
+        </div>
 
         <table class="table table-striped" style="color: darkgreen;background-color: aliceblue">
           <thead>
@@ -294,7 +308,10 @@
     </div>
     <div class="col-sm-6">
       <div class="jumbotron">
-        <div><h2 style="font-size: 15px;background-color: goldenrod;color: white"><strong>Expenses:</strong></h2></div>
+
+        <div class="breadcrumb"style="background-color: navy;color: white">
+          <h5><strong>Expenses</strong></h5>
+        </div>
 
         <table class="table table-striped" style="color: darkred;background-color: aliceblue">
           <thead>
@@ -338,9 +355,10 @@
   </div>
 </div>
 <div class="breadcrumb" style="background-color: khaki">
-  <%= link_to 'Edit', edit_cashflow_path(@cashflow), class:' fa fa-edit' %> |
+  <% if current_user.admin == true %>
+    <%= link_to 'Edit', edit_cashflow_path(@cashflow), class:' fa fa-edit' %> |
+  <% end %>
   <%= link_to 'Back', cashflows_path, class:' fa fa-arrow-left' %>
-
 </div>
 <hr>
 
@@ -352,7 +370,10 @@
 <div class="row">
   <div class="col-sm-6">
     <div class="jumbotron">
-      <h2 style="font-size: 15px;background-color: navy;color: white"><strong> Income Breakdown</strong></h2>
+      <div class="breadcrumb"style="background-color: brown;color: white">
+        <h5><strong>Income Breakdown</strong></h5>
+      </div>
+
       <table class="table table-striped"style="background-color: aliceblue;color: darkgreen">
         <thead>
         <tr>
@@ -395,7 +416,11 @@
   </div>
   <div class="col-sm-6">
     <div class="jumbotron">
-      <h2 style="font-size: 15px;background-color: navy;color: white"><strong> Expenses Breakdown</strong></h2>
+
+      <div class="breadcrumb"style="background-color: navy;color: white">
+        <h5><strong>Expenses Breakdown</strong></h5>
+      </div>
+
 
       <table class="table table-striped"style="background-color: aliceblue;color: darkred">
         <thead>
@@ -553,7 +578,11 @@
 
 
 <div class="jumbotron"style="background-color: palegoldenrod">
-  <h2 style="font-size: 15px;background-color: navy;color: white"><strong> Cashflow Financial Summary</strong></h2>
+
+  <div class="breadcrumb"style="background-color: brown;color: white">
+    <h5><strong>Cash-flow Financial Summary</strong></h5>
+  </div>
+
   <table class="table table-striped"style="background-color: aliceblue;color: navy">
     <thead>
     <tr>
@@ -608,9 +637,10 @@
 </div>
 
 <div class="breadcrumb" style="background-color: khaki">
+  <% if current_user.admin == true %>
   <%= link_to 'Edit', edit_cashflow_path(@cashflow), class:' fa fa-edit' %> |
+  <% end %>
   <%= link_to 'Back', cashflows_path, class:' fa fa-arrow-left' %>
-
 </div>
 <hr>
 
@@ -619,7 +649,7 @@
 </div>
 
 <div>
-  <h2 style="font-size: 15px;background-color: navy;color: white"><strong> Comments</strong></h2>
+
 
   <div>
 
@@ -651,11 +681,11 @@
 
 
 <br>
-
 <div class="breadcrumb" style="background-color: khaki">
-  <%= link_to 'Edit', edit_cashflow_path(@cashflow), class:' fa fa-edit' %> |
+  <% if current_user.admin == true %>
+    <%= link_to 'Edit', edit_cashflow_path(@cashflow), class:' fa fa-edit' %> |
+  <% end %>
   <%= link_to 'Back', cashflows_path, class:' fa fa-arrow-left' %>
-
 </div>
 <hr>
 

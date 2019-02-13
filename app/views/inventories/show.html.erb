@@ -96,8 +96,9 @@
   </div>
 </div>
 <div class="breadcrumb"style="background-color: khaki">
-
+  <% if  current_user.admin == true %>
   <%= link_to 'Edit', edit_inventory_path(@inventory), class: 'fa fa-edit' %> |
+    <% end %>
   <%= link_to 'Back', inventories_path , class: 'fa fa-arrow-left'%>
 
 </div>
@@ -174,9 +175,10 @@
   </div>
 </div>
 <br>
-<div class="breadcrumb">
-
-  <%= link_to 'Edit', edit_inventory_path(@inventory), class: 'fa fa-edit' %> |
+<div class="breadcrumb"style="background-color: khaki">
+  <% if  current_user.admin == true %>
+    <%= link_to 'Edit', edit_inventory_path(@inventory), class: 'fa fa-edit' %> |
+  <% end %>
   <%= link_to 'Back', inventories_path , class: 'fa fa-arrow-left'%>
 
 </div>

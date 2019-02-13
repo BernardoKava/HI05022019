@@ -70,7 +70,7 @@ class BankaccountsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bankaccount_params
-      params.require(:bankaccount).permit(:financialinstitution_id,:account_name, :account_number, :sort_code, :iban, :bic, :person_id,
+      params.require(:bankaccount).permit(:financialinstitution_id,:active ,:account_name, :account_number, :sort_code, :iban, :bic, :person_id,
                                           bankcards_attributes:[:id, :bankaccount_id, :person_id,:card_number,
                                                                 :expiry_date,:security_code,:active,:note, :_destroy])
     end

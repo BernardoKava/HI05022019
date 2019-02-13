@@ -1,18 +1,27 @@
 <% provide(:title, "Home") %>
 <br><br>
 <br><br>
+<div class="breadcrumb"style="background-color: brown;color: white">
+  <p class="notice"><%= notice %></p>
+</div>
 
-<div class="center jumbotron">
-  <h1>Home Intelligence</h1>
+<div class="center jumbotron"style="background-color: darkgray">
+  <div class="jumbotron"style="background-color: rgba(0,0,128,0.5);color: white">
+    <h1>Home Intelligence</h1>
+  </div>
 
-  <h2>
-    Welcome to Home Intelligence Database.
-  </h2>
+  <div class="breadcrumb"style="background-color: rgba(229,60,60,0.56) ">
+    <h3>
+      Welcome to the Home Intelligence.
+    </h3>
+  </div>
+  <div class="breadcrumb"style="background-color: goldenrod">
+    <%= link_to "Request Access!", new_user_registration_path, class: "btn btn-lg btn-default" %>
+  </div>
 
-  <%= link_to "Request Access!", new_user_registration_path, class: "btn btn-lg btn-default" %>
 
 </div>
 
-<div class="jumbotron">
-  <%= image_tag("atom.png", alt: "atom logo", :size => "200x200") %>
+<div class="jumbotron"style="background-color: darkgray">
+  <%= image_tag("atom.png", alt: "atom logo", :size => "150x150") %>
 </div>

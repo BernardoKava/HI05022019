@@ -32,17 +32,19 @@
         <td><%= rule.active.humanize %></td>
         <td><%= rule.user.fullname %></td>
         <td><%= link_to 'View', rule ,class:'fa fa-eye'%></td>
+        <% if  current_user.admin == true %>
         <td><%= link_to 'Edit', edit_rule_path(rule),class:'fa fa-edit' %></td>
         <td><%= link_to 'Delete', rule, method: :delete, data: { confirm: 'Are you sure?' }, class:'fa fa-remove' %></td>
+          <% end  %>
       </tr>
     <% end %>
     </tbody>
   </table>
 </div>
 
-
+<% if  current_user.admin == true %>
 <br>
 <div class="breadcrumb"style="background-color: khaki">
   <%= link_to 'New Rule', new_rule_path, class:'fa fa-plus' %>
 </div>
-
+<% end %>

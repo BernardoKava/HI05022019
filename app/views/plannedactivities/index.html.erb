@@ -28,8 +28,10 @@
         <td><%= plannedactivity.target_amount %></td>
         <td><%= plannedactivity.person.fullname %></td>
         <td><%= link_to 'View', plannedactivity , class:'fa fa-eye'%></td>
+        <% if current_user.admin == true %>
         <td><%= link_to 'Edit', edit_plannedactivity_path(plannedactivity),class:'fa fa-edit' %></td>
         <td><%= link_to 'Delete', plannedactivity, method: :delete, data: { confirm: 'Are you sure?' },class:'fa fa-remove' %></td>
+          <% end %>
       </tr>
     <% end %>
     </tbody>
@@ -40,8 +42,9 @@
 
 
 <br>
-
+<% if current_user.admin == true %>
 <div class="breadcrumb"style="background-color: khaki">
   <%= link_to 'New Planned Activity', new_plannedactivity_path,class:'fa fa-plus' %>
 </div>
 
+<% end %>

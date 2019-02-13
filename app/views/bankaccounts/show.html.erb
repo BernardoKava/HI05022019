@@ -40,6 +40,10 @@
       <td>Owner:</td>
       <td><%= @bankaccount.person.fullname %> </td>
     </tr>
+    <tr>
+      <td>Active:</td>
+      <td><%= @bankaccount.active.humanize %> </td>
+    </tr>
     </tbody>
   </table>
 </div>

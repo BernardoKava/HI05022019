@@ -24,8 +24,10 @@
         <td><%= inventory.period_from %></td>
         <td><%= inventory.period_to %></td>
         <td><%= link_to 'View', inventory ,class:'fa fa-eye'%></td>
+        <% if  current_user.admin == true %>
         <td><%= link_to 'Edit', edit_inventory_path(inventory), class:'fa fa-edit' %></td>
         <td><%= link_to 'Delete', inventory, method: :delete, data: { confirm: 'Are you sure?' } , class:'fa fa-close'%></td>
+        <% end %>
       </tr>
     <% end %>
     </tbody>
@@ -36,9 +38,9 @@
 
 
 </div>
-
+<% if  current_user.admin == true %>
 
 <div class="breadcrumb"style="background-color: khaki">
   <%= link_to 'New Inventory', new_inventory_path, class:'fa fa-plus' %>
 </div>
-
+<% end %>

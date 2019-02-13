@@ -5,7 +5,7 @@
   <h3><%= @person.fullname %>'s Profile [PN: <%=h @person_number %>]</h3>
 </div>
 <hr>
-
+<div class="row">
   <div class="col-sm-4">
     <div class="breadcrumb">
       <table class="table table-striped"style="background-color: lightgoldenrodyellow;color: navy">
@@ -59,7 +59,9 @@
 </div>
 <br>
 <div class="breadcrumb"style="background-color: khaki">
+  <% if  current_user.admin == true %>
   <%= link_to 'Edit', edit_person_path(@person), class:'fa fa-edit' %> |
+    <% end %>
   <%= link_to 'Back', people_path, class:'fa fa-arrow-left' %>
 </div>
 <hr>
@@ -74,7 +76,10 @@
 <div class="row">
   <div class="col-sm-4">
     <div class="border">
-      <div><h2 style="font-size: 15px;background-color: navy;color: white"><strong>Section 1: Emails</strong></h2></div>
+      <div class="breadcrumb" style="background-color: navy;color: white">
+        <div><h5><strong>Section 1: Emails</strong></h5></div>
+      </div>
+
       <br>
 
       <div>
@@ -111,7 +116,9 @@
   </div>
   <div class="col-sm-4">
     <div class="border">
-    <div><h2 style="font-size: 15px;background-color: navy;color: white"><strong>Section 2: Telephones</strong></h2></div>
+      <div class="breadcrumb" style="background-color: navy;color: white">
+        <div><h5><strong>Section 2: Telephones</strong></h5></div>
+      </div>
     <br>
 
     <div>
@@ -149,7 +156,10 @@
   </div>
   <div class="col-sm-4">
     <div class="border">
-    <div><h2 style="font-size: 15px;background-color: navy;color: white"><strong>Section 3: Postal Address</strong></h2></div>
+      <div class="breadcrumb" style="background-color: navy;color: white">
+        <div><h5><strong>Section 3: Postal Addresses</strong></h5></div>
+      </div>
+
     <br>
     <div>
 
@@ -194,7 +204,9 @@
 </div>
 <br>
 <div class="breadcrumb"style="background-color: khaki">
-  <%= link_to 'Edit', edit_person_path(@person), class:'fa fa-edit' %> |
+  <% if  current_user.admin == true %>
+    <%= link_to 'Edit', edit_person_path(@person), class:'fa fa-edit' %> |
+  <% end %>
   <%= link_to 'Back', people_path, class:'fa fa-arrow-left' %>
 </div>
 <hr>
@@ -207,7 +219,10 @@
 <div class="row">
   <div class="col-sm-4">
     <div class="border">
-    <div><h2 style="font-size: 15px;background-color: navy;color: white"><strong>Section 4: Education</strong></h2></div>
+      <div class="breadcrumb" style="background-color: navy;color: white">
+        <div><h5><strong>Section 4: Education</strong></h5></div>
+      </div>
+
     <br>
     <div>
 
@@ -260,7 +275,9 @@
   </div>
   <div class="col-sm-4">
     <div class="border">
-    <div><h2 style="font-size: 15px;background-color: navy;color: white"><strong>Section 5: Employment</strong></h2></div>
+      <div class="breadcrumb" style="background-color: navy;color: white">
+        <div><h5><strong>Section 5: Employment</strong></h5></div>
+      </div>
     <br>
     <div>
 
@@ -316,7 +333,9 @@
   </div>
   <div class="col-sm-4">
     <div class="border">
-    <div><h2 style="font-size: 15px;background-color: navy;color: white"><strong>Section 6: References</strong></h2></div>
+      <div class="breadcrumb" style="background-color: navy;color: white">
+        <div><h5><strong>Section 6: References</strong></h5></div>
+      </div>
     <br>
     <div>
       <% for reference in @person.employmentreferences %>
@@ -364,11 +383,12 @@
   </div>
 </div>
 </div>
-
-
+<br>
 <div class="breadcrumb"style="background-color: khaki">
-      <%= link_to 'Edit', edit_person_path(@person), class:'fa fa-edit' %> |
-      <%= link_to 'Back', people_path, class:'fa fa-arrow-left' %>
+  <% if  current_user.admin == true %>
+    <%= link_to 'Edit', edit_person_path(@person), class:'fa fa-edit' %> |
+  <% end %>
+  <%= link_to 'Back', people_path, class:'fa fa-arrow-left' %>
 </div>
 <hr>
 
@@ -378,7 +398,11 @@
 </div>
 
 <div class="border">
-<div><h2 style="font-size: 15px;background-color: navy;color: white"><strong>Section 7: General Comments</strong></h2></div>
+
+  <div class="breadcrumb" style="background-color: navy;color: white">
+    <div><h5><strong>Section 7: Comments</strong></h5></div>
+  </div>
+
 <br>
 
 <div>
@@ -402,9 +426,11 @@
 </div>
 <br>
 <div class="breadcrumb"style="background-color: khaki">
-  <%= link_to 'Edit', edit_person_path(@person), class:'fa fa-edit' %> |
+  <% if  current_user.admin == true %>
+    <%= link_to 'Edit', edit_person_path(@person), class:'fa fa-edit' %> |
+  <% end %>
   <%= link_to 'Back', people_path, class:'fa fa-arrow-left' %>
 </div>
-
+<hr>
 
 

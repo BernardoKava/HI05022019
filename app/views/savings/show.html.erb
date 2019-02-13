@@ -15,7 +15,10 @@
     <div class="col-sm-6">
 
       <div class="jumbotron"style="background-color: aliceblue;color: navy">
-        <h2 style="font-size: 15px;background-color: navy;color: white"><strong> Saving Details</strong></h2>
+        <div class="breadcrumb"style="background-color: brown;color: white">
+          <h5><strong> Saving Details</strong></h5>
+        </div>
+
         <table class="table table-striped">
           <thead>
           <tr>
@@ -49,7 +52,10 @@
     <div class="col-sm-6">
 
       <div class="jumbotron"style="background-color: aliceblue;color: navy">
-        <h2 style="font-size: 15px;background-color: navy;color: white"><strong> Savings Financial Summary</strong></h2>
+        <div class="breadcrumb"style="background-color: navy;color: white">
+          <h5><strong> Savings Financial Summary</strong></h5>
+        </div>
+
         <table class="table table-striped">
           <thead>
           <tr>
@@ -87,7 +93,9 @@
   </div>
 </div>
 <div class="breadcrumb"style="background-color: khaki">
+  <% if current_user.admin == true %>
   <%= link_to 'Edit', edit_saving_path(@saving), class:'fa fa-edit' %> |
+    <% end %>
   <%= link_to 'Back', savings_path, class:'fa fa-arrow-left' %>
 </div>
 <hr>
@@ -100,7 +108,9 @@
   <div class="row">
     <div class="col-sm-6">
       <div class="jumbotron"style="background-color: rgba(0,176,0,0.15);color: navy">
-        <div><h2 style="font-size: 15px;background-color: goldenrod;color: white"><strong>Lodgements:</strong></h2></div>
+        <div class="breadcrumb"style="background-color: brown;color: white">
+          <h5><strong> Lodgements</strong></h5>
+        </div>
 
         <table class="table table-hover">
           <thead>
@@ -133,7 +143,9 @@
     </div>
     <div class="col-sm-6">
       <div class="jumbotron"style="background-color: mistyrose;color: navy">
-        <div><h2 style="font-size: 15px;background-color: goldenrod;color: white"><strong>Withdrawal:</strong></h2></div>
+        <div class="breadcrumb"style="background-color: navy;color: white">
+          <h5><strong> Withdrawals</strong></h5>
+        </div>
 
         <table class="table table-hover">
           <thead>
@@ -168,7 +180,9 @@
 </div>
 
 <div class="jumbotron"style="background-color: bisque;color: navy">
-  <h2 style="font-size: 15px;background-color: navy;color: white"><strong> Savings Financial Summary</strong></h2>
+  <div class="breadcrumb"style="background-color: brown;color: white">
+    <h5><strong> Saving Financial Summary</strong></h5>
+  </div>
   <table class="table table-striped"style="background-color: aliceblue">
     <thead>
     <tr>
@@ -202,12 +216,12 @@
     </tbody>
   </table>
 </div>
-
-<div class="breadcrumb" style="background-color: khaki">
-  <%= link_to 'Edit', edit_saving_path(@saving), class:'fa fa-edit' %> |
+<div class="breadcrumb"style="background-color: khaki">
+  <% if current_user.admin == true %>
+    <%= link_to 'Edit', edit_saving_path(@saving), class:'fa fa-edit' %> |
+  <% end %>
   <%= link_to 'Back', savings_path, class:'fa fa-arrow-left' %>
 </div>
-
 <hr>
 <div class="breadcrumb" style="background-color: rgba(22,151,168,0.6); color: whitesmoke">
   <h4>C. Comments:</h4>
@@ -215,7 +229,7 @@
 
 
 <div>
-  <h2 style="font-size: 15px;background-color: navy;color: white"><strong> Comments</strong></h2>
+
 
   <div>
 
@@ -244,11 +258,12 @@
 
 </div>
 
-<div class="breadcrumb" style="background-color: khaki">
-  <%= link_to 'Edit', edit_saving_path(@saving), class:'fa fa-edit' %> |
+<div class="breadcrumb"style="background-color: khaki">
+  <% if current_user.admin == true %>
+    <%= link_to 'Edit', edit_saving_path(@saving), class:'fa fa-edit' %> |
+  <% end %>
   <%= link_to 'Back', savings_path, class:'fa fa-arrow-left' %>
 </div>
-
 <hr>
 
 

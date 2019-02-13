@@ -27,8 +27,10 @@
         <td><%= cashflow.accounting_date.strftime("%d, %b  %Y") %></td>
         <td><%= cashflow.name %></td>
         <td><%= link_to 'View', cashflow, class:'fa fa-eye' %></td>
+        <% if current_user.admin == true %>
         <td><%= link_to 'Edit', edit_cashflow_path(cashflow), class:'fa fa-edit' %></td>
         <td><%= link_to 'Delete', cashflow, method: :delete, data: { confirm: 'Are you sure?' }, class:'fa fa-remove' %></td>
+        <% end %>
       </tr>
     <% end %>
     </tbody>
@@ -38,8 +40,10 @@
 
 </div>
 
-
+<% if current_user.admin == true %>
 
 <div class="breadcrumb" style="background-color: khaki">
 <%= link_to 'New Cashflow', new_cashflow_path, class:'fa fa-plus' %>
 </div>
+
+<% end %>

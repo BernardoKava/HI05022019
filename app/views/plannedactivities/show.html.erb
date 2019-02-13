@@ -42,7 +42,9 @@
 </div>
 
 <div class="breadcrumb"style="background-color: khaki">
+  <% if current_user.admin == true %>
   <%= link_to 'Edit', edit_plannedactivity_path(@plannedactivity),class:'fa fa-edit' %> |
+    <% end %>
   <%= link_to 'Back', plannedactivities_path , class:'fa fa-arrow-left'%>
 </div>
 

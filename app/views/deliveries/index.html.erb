@@ -25,8 +25,10 @@
       <tr>
         <td><%= link_to delivery.delivery_date.strftime("%d, %b  %Y"),delivery %></td>
         <td><%= link_to 'View', delivery , class:'fa fa-eye' %></td>
+        <% if  current_user.admin == true %>
         <td><%= link_to 'Edit', edit_delivery_path(delivery), class:'fa fa-edit' %></td>
         <td><%= link_to 'Delete', delivery, method: :delete, data: { confirm: 'Are you sure?' }, class:'fa fa-remove' %></td>
+          <% end %>
       </tr>
     <% end %>
     </tbody>
@@ -36,7 +38,8 @@
 
 </div>
 
-
+<% if  current_user.admin == true %>
 <div class="breadcrumb"style="background-color: khaki">
 <%= link_to 'New Delivery', new_delivery_path, class:'fa fa-plus' %>
 </div>
+<% end %>

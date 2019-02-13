@@ -28,8 +28,10 @@
         <td><%= budget.budget_date.strftime("%d %b. %Y") %></td>
         <td><%= budget.name %></td>
         <td><%= link_to 'View', budget, class:'fa fa-eye' %></td>
+        <% if current_user == true %>
         <td><%= link_to 'Edit', edit_budget_path(budget), class:'fa fa-edit' %></td>
         <td><%= link_to 'Delete', budget, method: :delete, data: { confirm: 'Are you sure?' }, class:'fa fa-remove' %></td>
+        <% end %>
       </tr>
     <% end %>
     </tbody>
@@ -39,8 +41,9 @@
 
 </div>
 
-
+<% if current_user.admin == true %>
 <div class="breadcrumb"style="background-color: khaki">
   <%= link_to 'New Budget', new_budget_path, class: 'fa fa-plus' %>
 </div>
 
+<% end %>

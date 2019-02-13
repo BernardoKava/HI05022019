@@ -10,7 +10,7 @@
 
         <div class="control-group">
           <div class ="controls">
-            <%= f.association :loan_registration, collection: LoanRegistration.order(:loan_reference),label_method: :loan_reference, prompt: "Choose a loan Ref.", label:"Loan Reference" %>
+            <%= f.association :loan_registration, collection: LoanRegistration.where(:active => true).order(:loan_reference),label_method: :loan_reference, prompt: "Choose a loan Ref.", label:"Loan Reference" %>
           </div>
         </div>
         <br>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_12_224032) do
+ActiveRecord::Schema.define(version: 2019_02_12_231853) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2019_02_12_224032) do
     t.datetime "updated_at", null: false
     t.string "account_code"
     t.string "account_name"
+    t.boolean "active"
   end
 
   create_table "bankcards", force: :cascade do |t|
@@ -309,6 +310,7 @@ ActiveRecord::Schema.define(version: 2019_02_12_224032) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "system_item"
+    t.boolean "active"
   end
 
   create_table "inventories", force: :cascade do |t|
@@ -521,6 +523,7 @@ ActiveRecord::Schema.define(version: 2019_02_12_224032) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "system_item"
+    t.boolean "active"
   end
 
   create_table "passwordrepositories", force: :cascade do |t|

@@ -5,23 +5,26 @@
 
 <div class="breadcrumb"style="background-color: aliceblue ">
   <h2 class="fa fa-dashboard">Dashboard</h2>
+
+  <p class="notice"><%= notice %></p>
+
 </div>
 
   <% if current_user.admin == true %>
-    <div class="breadcrumb">
-      <h5 class="alert-warning">You have system administrative permissions </h5>
+    <div class="breadcrumb"style="background-color: khaki;color: darkred">
+      <h5>You have system-admin permissions. </h5>
     </div>
   <% else %>
 
   <% end %>
 
   <% if @inflow_fu_count == 0 && @outflow_fu_count == 0 %>
-    <div class="breadcrumb">
+    <div class="breadcrumb"style="background-color: darkgreen;color: white">
       <h5>Great - <%= @inflow_fu_count %> income record(s) and <%= @outflow_fu_count %> expense record(s) to follow-up!</h5>
     </div>
   <% else %>
-    <div class="breadcrumb">
-      <h5 class="alert-danger">Warning : <%= @inflow_fu_count %> income record(s) and <%= @outflow_fu_count %> expense record(s) to follow-up! Please check all cashflows. </h5>
+    <div class="breadcrumb"style="background-color: darkred;color: white">
+      <h5>Warning : <%= @inflow_fu_count %> income record(s) and <%= @outflow_fu_count %> expense record(s) to follow-up! Please check all cashflows. </h5>
     </div>
   <% end %>
 
@@ -35,7 +38,7 @@
     <div class="col-sm-4">
 
       <div class="breadcrumb"style="background-color: khaki;color: navy">
-        Ledger | <%= @dash_year %>
+        Ledger | <%= @dash_year %> | <%= link_to "Go to Ledgers", ledgers_path, style:'color:darkred' %>
       </div>
       <div class="jumbotron"style="background-color: lightgoldenrodyellow;color: navy">
         <table class="table table-striped">
@@ -81,7 +84,7 @@
     </div>
     <div class="col-sm-4">
       <div class="breadcrumb"style="background-color: khaki;color: navy">
-        Budget | Month: <%= @dash_month %> | <%= @dash_year %>
+        Budget | Month: <%= @dash_month %> | <%= @dash_year %> | <%= link_to "Go to Budgets", budgets_path, style:'color:darkred' %>
       </div>
       <div class="jumbotron"style="background-color: lightgoldenrodyellow;color: navy">
         <table class="table table-striped">
@@ -113,7 +116,7 @@
     </div>
     <div class="col-sm-4">
       <div class="breadcrumb"style="background-color: khaki;color: navy">
-        Savings | <%= @dash_year %>
+        Savings | <%= @dash_year %> | <%= link_to "Go to Savings", savings_path, style:'color:darkred' %>
       </div>
       <div class="jumbotron"style="background-color: lightgoldenrodyellow;color: navy">
         <table class="table table-striped">
@@ -156,6 +159,9 @@
     <div class="col-sm-4">
       <div class="breadcrumb"style="background-color: khaki;color: navy">
         Active Loans | <%= @dash_year %>
+        <% if current_user.admin == true %>
+         | <%= link_to "Go to Repayments", loan_managements_path, style:'color:darkred' %>
+          <% end %>
       </div>
       <div class="jumbotron"style="background-color: lightgoldenrodyellow;color: navy">
         <table class="table table-striped">
@@ -184,6 +190,9 @@
     <div class="col-sm-4">
       <div class="breadcrumb"style="background-color: khaki;color: navy" >
         Rent | <%= @dash_year %>
+        <% if current_user.admin == true %>
+         | <%= link_to "Go to Rent Management", rent_managements_path, style:'color:darkred' %>
+        <% end %>
       </div>
       <div class="jumbotron"style="background-color: lightgoldenrodyellow;color: navy">
         <table class="table table-striped">
@@ -212,7 +221,7 @@
     </div>
     <div class="col-sm-4">
       <div class="breadcrumb"style="background-color: khaki;color: navy">
-        Activities | <%= @dash_year %>
+        Activities | <%= @dash_year %> | <%= link_to "Go to Activities", plannedactivities_path , style:'color:darkred' %>
       </div>
       <div class="jumbotron"style="background-color: lightgoldenrodyellow;color: navy">
         <table class="table table-striped">
@@ -241,7 +250,7 @@
     Incoming Postal Documents | Outstanding Issues
   </div>
   <div class="breadcrumb" style="background-color: khaki;color: navy">
-    Incoming Postal Documents | <%= @dash_year %>
+    Incoming Postal Documents | <%= @dash_year %> | <%= link_to " Go to Deliveries", deliveries_path, style:'color:darkred' %>
   </div>
   <div class="jumbotron"style="background-color: lightgoldenrodyellow;color: navy">
 
@@ -269,7 +278,7 @@
   </div>
 
   <div class="breadcrumb" style="background-color: khaki;color: navy">
-    Outstanding Issues | <%= @dash_year %>
+    Outstanding Issues | <%= @dash_year %> | <%= link_to "Go to Issue Management", issue_managements_path, style:'color:darkred' %>
   </div>
   <div class="jumbotron"style="background-color: lightgoldenrodyellow;color: navy">
     <table class="table table-striped">
@@ -328,7 +337,11 @@
 
 <% else %>
 
-  <p> Your account setup request is being reviewed. Your request will be approved within 24 hours.</p>
+  <div class="jumbotron" style="background-color: brown;color: white">
+    <p> Your account setup request is being reviewed. Your request will be approved within 24 hours.</p>
+  </div>
+
+
 
 <% end %>
 
