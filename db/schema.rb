@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(version: 2019_02_12_231853) do
     t.string "account_name"
     t.boolean "active"
   end
-
   create_table "bankcards", force: :cascade do |t|
     t.integer "bankaccount_id"
     t.integer "person_id"
@@ -552,8 +551,9 @@ ActiveRecord::Schema.define(version: 2019_02_12_231853) do
     t.string "name"
     t.text "description"
     t.date "activity_date"
-    t.decimal "target_amount"
-    t.integer "user_id"
+
+
+#''    t.integer "user_id"
     t.integer "person_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

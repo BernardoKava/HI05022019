@@ -2,6 +2,8 @@
 <div class="nested-fields">
   <div class="jumbotron" style="background-color: lightgoldenrodyellow;color: darkgoldenrod">
 
+        <%= f.input :id, :readonly => true, label: "Income Ref #" %>
+
         <div class="control-group">
           <div class ="controls">
             <%= f.association :inflowtype, collection: Inflowtype.where(:system_item => false).order(:name),label_method: :name, prompt: "Choose a flowtype", label:"Type" %>
@@ -23,15 +25,15 @@
         </div>
         <br>
           <div>
-            <%= f.input :year,placeholder:'Year...' %>
-            <%= f.input :month,placeholder:'Month...'%>
+            <%= f.input :year,placeholder:'Year...' , :readonly => true%>
+            <%= f.input :month,placeholder:'Month...', :readonly => true%>
             <%= f.input :date_posted %>
             <%= f.input :user_id,:as => :hidden, :input_html => { :value => current_user.id}%>
-            <%= f.input :amount ,placeholder:'Amount...'%>
+            <%= f.input :amount ,placeholder:'Amount...', :readonly => true%>
             <%= f.input :follow_up %>
 
             <hr>
-            <%= f.input :details ,placeholder:'Details...'%>
+            <%= f.input :details ,placeholder:'Details...', :readonly => true%>
             <%= f.input :rationale,placeholder:'Add Rationale...' %>
           </div>
           <hr>
