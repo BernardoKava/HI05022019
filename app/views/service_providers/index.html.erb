@@ -11,6 +11,7 @@
   <table class="table tabel-hover">
     <thead>
     <tr>
+      <th>Ref</th>
       <th>Name</th>
       <th>Logged by</th>
       <th>Active</th>
@@ -21,6 +22,7 @@
     <tbody>
     <% @service_providers.each do |service_provider| %>
       <tr>
+        <td><%= link_to service_provider.id, service_provider %></td>
         <td><%= link_to service_provider.name, service_provider %></td>
         <td><%= service_provider.user.fullname %></td>
         <td><%= service_provider.active.humanize %></td>

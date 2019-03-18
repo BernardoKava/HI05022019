@@ -13,6 +13,7 @@
   <table class="table table-striped">
     <thead>
     <tr>
+      <th>Ref</th>
       <th>Issue title</th>
       <th>Completion rate</th>
       <th>Issue owner</th>
@@ -25,6 +26,7 @@
     <tbody>
     <% @issue_managements.each do |issue_management| %>
       <tr>
+        <td><%= link_to issue_management.id,issue_management %></td>
         <td><%= link_to issue_management.issue_title,issue_management %></td>
         <td><%= issue_management.completion_rate %></td>
         <td><%= issue_management.person.fullname %></td>

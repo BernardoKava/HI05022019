@@ -2,7 +2,7 @@
 <p id="notice"><%= notice %></p>
 
 <div class="breadcrumb" style="background-color: darkgreen;color: white">
-<h3>Monthly Savings: <%= @saving.name %></h3>
+<h3>Monthly Savings: <%= @saving.name %> - Ref#: <%= @saving.id %></h3>
 </div>
 
 <div class="breadcrumb" style="background-color: rgba(22,151,168,0.6); color: whitesmoke">
@@ -115,6 +115,7 @@
         <table class="table table-hover">
           <thead>
           <tr>
+            <th>Ref</th>
             <th>Year</th>
             <th>Month</th>
             <th>Day</th>
@@ -128,6 +129,7 @@
           <tbody>
           <% @lodgments.each do |income| %>
             <tr>
+              <td><%= income.id %></td>
               <td><%= income.year %></td>
               <td><%= income.month %></td>
               <td><%= income.day %></td>
@@ -150,6 +152,7 @@
         <table class="table table-hover">
           <thead>
           <tr>
+            <th>Ref</th>
             <th>Year</th>
             <th>Month</th>
             <th>Day</th>
@@ -163,6 +166,7 @@
           <tbody>
           <% @withdrawals.each do |expense| %>
             <tr>
+              <td><%= expense.id %></td>
               <td><%= expense.year %></td>
               <td><%= expense.month %></td>
               <td><%= expense.day %></td>

@@ -3,7 +3,7 @@
 
 
 <div class="breadcrumb"style="background-color: darkgreen;color: white">
-<h3>Daily Postal Delivery</h3>
+<h3>Daily Postal Delivery - Ref#: <%= @delivery.id %></h3>
 </div>
 <div class="jumbotron"style="background-color: lightgoldenrodyellow;color: navy">
   <table class="table table-striped">
@@ -52,6 +52,10 @@
             </tr>
             </thead>
             <tbody>
+            <tr>
+              <td>Ref</td>
+              <td><%=h post.id %> </td>
+            </tr>
             <tr>
               <td>Type</td>
               <td><%=h post.post_type.name %> </td>

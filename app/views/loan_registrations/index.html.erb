@@ -12,6 +12,7 @@
   <table class="table table-striped">
     <thead>
     <tr>
+      <th>Ref</th>
       <th>Loan reference</th>
       <th>Loan type</th>
       <th>Loan term</th>
@@ -24,6 +25,7 @@
     <tbody>
     <% @loan_registrations.each do |loan_registration| %>
       <tr>
+        <td><%= loan_registration.id %></td>
         <td data-toggle= "tooltip"  data-placement="top"
             title="Active: <%= loan_registration.active.humanize %>" >
           <%= link_to loan_registration.loan_reference,loan_registration %>

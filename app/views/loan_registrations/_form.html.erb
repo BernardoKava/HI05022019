@@ -5,11 +5,13 @@
 
 
   <div class="jumbotron"style="background-color: lightgoldenrodyellow;color: navy">
+
+    <%= f.input :id, readonly: true, label: "Ref" %>
     <div class="row">
       <div class="col-sm-2">
         <div class="control-group">
           <div class ="controls">
-            <%= f.association :financialinstitution, collection: Financialinstitution.order(:name),label_method: :name, prompt: "Choose an owner", label:"Financial Institution" %>
+            <%= f.association :financialinstitution, collection: Financialinstitution.order(:name),label_method: :name, prompt: "Choose a Fin. Inst.", label:"Financial Institution" %>
           </div>
         </div>
         <br>
