@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_12_231853) do
+ActiveRecord::Schema.define(version: 2019_05_01_142146) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2019_02_12_231853) do
     t.string "account_name"
     t.boolean "active"
   end
+
   create_table "bankcards", force: :cascade do |t|
     t.integer "bankaccount_id"
     t.integer "person_id"
@@ -93,6 +94,17 @@ ActiveRecord::Schema.define(version: 2019_02_12_231853) do
     t.decimal "outflow_work_lunch"
     t.decimal "outflow_pharmacy"
     t.decimal "outflow_furniture"
+  end
+
+  create_table "cashboxes", force: :cascade do |t|
+    t.string "name"
+    t.date "accounting_date"
+    t.boolean "active"
+    t.string "month"
+    t.string "year"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "notes"
   end
 
   create_table "cashflow_recons", force: :cascade do |t|
@@ -514,6 +526,7 @@ ActiveRecord::Schema.define(version: 2019_02_12_231853) do
     t.text "rationale"
     t.integer "bankaccount_id"
     t.boolean "follow_up"
+    t.boolean "cash_withdrawal"
   end
 
   create_table "outflowtypes", force: :cascade do |t|
@@ -551,9 +564,8 @@ ActiveRecord::Schema.define(version: 2019_02_12_231853) do
     t.string "name"
     t.text "description"
     t.date "activity_date"
-
-
-#''    t.integer "user_id"
+    t.decimal "target_amount"
+    t.integer "user_id"
     t.integer "person_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -684,8 +696,17 @@ ActiveRecord::Schema.define(version: 2019_02_12_231853) do
     t.integer "person_id"
   end
 
-  create_table "test", id: false, force: :cascade do |t|
-    t.text "name"
+  create_table "transactions", force: :cascade do |t|
+    t.date "t_date"
+    t.string "details"
+    t.decimal "amount"
+    t.text "rationale"
+    t.text "note"
+    t.integer "cashbox_id"
+    t.integer "person_id"
+    t.integer "cashflow_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

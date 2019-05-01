@@ -10,7 +10,7 @@ default: &default
   timeout: 5000
   username: postgres
   password: Ghaniel12
-  host: 10.1.10.12
+  host: 10.1.10.13
   port: 5432
 
 
