@@ -6,19 +6,19 @@
         <%= f.input :id, :readonly => true, label: "Expense Ref #" %>
         <div class="control-group">
           <div class ="controls">
-            <%= f.association :outflowtype, collection: Outflowtype.where(:system_item => false).order(:name),label_method: :name, prompt: "Choose a flowtype", label:"Type" %>
+            <%= f.association :outflowtype, collection: Outflowtype.order(:name),label_method: :name, prompt: "Choose a flowtype", label:"Type" %>
           </div>
         </div>
         <br>
         <div class="control-group">
           <div class ="controls">
-            <%= f.association :person, collection: Person.where(:system_item => false).order(:fullname), label_method: :fullname, prompt: "Choose an owner", label:"Owner" %>
+            <%= f.association :person, collection: Person.order(:fullname), label_method: :fullname, prompt: "Choose an owner", label:"Owner" %>
           </div>
         </div>
         <br>
         <div class="control-group">
           <div class ="controls">
-            <%= f.association :bankaccount, collection: Bankaccount.where(:active => true).order(:account_code), label_method: :account_code, prompt: "Choose an origin", label:"Origination" %>
+            <%= f.association :bankaccount, collection: Bankaccount.order(:account_code), label_method: :account_code, prompt: "Choose an origin", label:"Origination" %>
           </div>
         </div>
           <br>

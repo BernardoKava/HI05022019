@@ -6,21 +6,21 @@
 
         <div class="control-group">
           <div class ="controls">
-            <%= f.association :inflowtype, collection: Inflowtype.where(:system_item => false).order(:name),label_method: :name, prompt: "Choose a flowtype", label:"Type" %>
+            <%= f.association :inflowtype, collection: Inflowtype.order(:name),label_method: :name, prompt: "Choose a flowtype", label:"Type" %>
           </div>
         </div>
         <br>
 
         <div class="control-group">
           <div class ="controls">
-            <%= f.association :person, collection: Person.where(:system_item => false).order(:fullname),label_method: :fullname, prompt: "Choose an owner", label:"Owner" %>
+            <%= f.association :person, collection: Person.order(:fullname),label_method: :fullname, prompt: "Choose an owner", label:"Owner" %>
           </div>
         </div>
         <br>
 
         <div class="control-group">
           <div class ="controls">
-            <%= f.association :bankaccount, collection: Bankaccount.where(:active => true).order(:account_code),label_method: :account_code, prompt: "Choose an origin", label:"Origination" %>
+            <%= f.association :bankaccount, collection: Bankaccount.order(:account_code),label_method: :account_code, prompt: "Choose an origin", label:"Origination" %>
           </div>
         </div>
         <br>
@@ -31,7 +31,6 @@
             <%= f.input :user_id,:as => :hidden, :input_html => { :value => current_user.id}%>
             <%= f.input :amount ,placeholder:'Amount...', :readonly => true%>
             <%= f.input :follow_up %>
-
             <hr>
             <%= f.input :details ,placeholder:'Details...', :readonly => true%>
             <%= f.input :rationale,placeholder:'Add Rationale...' %>
