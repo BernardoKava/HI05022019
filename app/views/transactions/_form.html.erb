@@ -1,0 +1,21 @@
+
+<%= simple_form_for(@transaction) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :t_date %>
+    <%= f.input :details %>
+    <%= f.input :amount %>
+    <%= f.input :rationale %>
+    <%= f.input :note %>
+    <%= f.input :cashbox_id %>
+    <%= f.input :person_id %>
+    <%= f.input :outflowtype_id %>
+    <%= f.input :cashflow_id %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

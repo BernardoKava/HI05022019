@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>T date:</strong>
+  <%= @transaction.t_date %>
+</p>
+
+<p>
+  <strong>Details:</strong>
+  <%= @transaction.details %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @transaction.amount %>
+</p>
+
+<p>
+  <strong>Rationale:</strong>
+  <%= @transaction.rationale %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @transaction.note %>
+</p>
+
+<p>
+  <strong>Cashbox:</strong>
+  <%= @transaction.cashbox_id %>
+</p>
+
+<p>
+  <strong>Person:</strong>
+  <%= @transaction.person_id %>
+</p>
+
+<p>
+  <strong>Outflowtype:</strong>
+  <%= @transaction.outflowtype_id %>
+</p>
+
+<p>
+  <strong>Cashflow:</strong>
+  <%= @transaction.cashflow_id %>
+</p>
+
+<%= link_to 'Edit', edit_transaction_path(@transaction) %> |
+<%= link_to 'Back', transactions_path %>

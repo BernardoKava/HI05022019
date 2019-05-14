@@ -24,13 +24,13 @@ class CashflowsController < ApplicationController
     @saving_lodgement = Lodgement.where(year: @year, month: @month).sum(:amount)
     # Only retieve inflows and outflows where the cashflow id belongs to the current cashflow
     @ref = @cashflow.id
-    @totalinflow = Inflow.where(cashflow_id: @ref).sum(:amount)
-    @totaloutflow = Outflow.where(cashflow_id: @ref).sum(:amount)
+
 
 
     # inflow outflow tabels
     @inflows = Inflow.where(cashflow_id: @ref).order("date_posted DESC")
     @outflows = Outflow.where(cashflow_id: @ref).order("date_posted DESC")
+    @transaction = Transaction.where(cashflow_id: @ref).order("date_posted DESC")
 
     # reconciliation calc
 
@@ -42,10 +42,6 @@ class CashflowsController < ApplicationController
 
 
 
-    # balance calculation
-    @i = 0
-    @balance = (((@totalinflow - @saving_lodgement)- @totaloutflow) + @cash_injection) + @recons
-    @cashflow.balance= @balance
 
     # savings dashboard
     @savings = Saving.where(year: @year).sum(:balance)
@@ -70,32 +66,64 @@ class CashflowsController < ApplicationController
     # Totals expense breakdownAmounts
 
     @rent = @month_rent
-    @telecom = @outflows.where(outflowtype_id: 2).sum(:amount)
-    @eflow = @outflows.where(outflowtype_id: 3).sum(:amount)
-    @food = @outflows.where(outflowtype_id: 4).sum(:amount)
-    @electricity = @outflows.where(outflowtype_id: 5).sum(:amount)
-    @transport = @outflows.where(outflowtype_id: 6).sum(:amount)
-    @credit_card_fees = @outflows.where(outflowtype_id: 7).sum(:amount)
-    @current_account_fees = @outflows.where(outflowtype_id: 8).sum(:amount)
-    @allowance_gaelle = @outflows.where(outflowtype_id: 9).sum(:amount)
-    @allowance_herve = @outflows.where(outflowtype_id: 10).sum(:amount)
-    @loan_ptsb = @outflows.where(outflowtype_id: 11).sum(:amount)
-    @loan_chill_money = @outflows.where(outflowtype_id: 12).sum(:amount)
-    @lodgement_credit_union = @outflows.where(outflowtype_id: 13).sum(:amount)
-    @family_support = @outflows.where(outflowtype_id: 14).sum(:amount)
-    @entertainment_nightout = @outflows.where(outflowtype_id: 15).sum(:amount)
-    @entertainment_dayout = @outflows.where(outflowtype_id: 16).sum(:amount)
-    @apple_storage = @outflows.where(outflowtype_id: 17).sum(:amount)
-    @aa_ireland = @outflows.where(outflowtype_id: 18).sum(:amount)
-    @lottery_ticket = @outflows.where(outflowtype_id: 19).sum(:amount)
-    @car_tax = @outflows.where(outflowtype_id: 20).sum(:amount)
-    @heating_oil = @outflows.where(outflowtype_id: 21).sum(:amount)
-    @car_service = @outflows.where(outflowtype_id: 22).sum(:amount)
-    @spiritual_tools = @outflows.where(outflowtype_id: 23).sum(:amount)
-    @other_expenses = @outflows.where(outflowtype_id: 24).sum(:amount)
-    @work_lunch = @outflows.where(outflowtype_id: 25).sum(:amount)
-    @pharmacy = @outflows.where(outflowtype_id: 26).sum(:amount)
-    @furniture = @outflows.where(outflowtype_id: 27).sum(:amount)
+    @telecom = (@outflows.where(outflowtype_id: 2).sum(:amount))+(@transaction.where(outflowtype_id: 2).sum(:amount))
+    @eflow = (@outflows.where(outflowtype_id: 3).sum(:amount))+(@transaction.where(outflowtype_id: 3).sum(:amount))
+    @food = (@outflows.where(outflowtype_id: 4).sum(:amount))+(@transaction.where(outflowtype_id: 4).sum(:amount))
+    @electricity = (@outflows.where(outflowtype_id: 5).sum(:amount))+(@transaction.where(outflowtype_id: 5).sum(:amount))
+    @transport = (@outflows.where(outflowtype_id: 6).sum(:amount))+(@transaction.where(outflowtype_id: 6).sum(:amount))
+    @credit_card_fees = (@outflows.where(outflowtype_id: 7).sum(:amount))+(@transaction.where(outflowtype_id: 7).sum(:amount))
+    @current_account_fees = (@outflows.where(outflowtype_id: 8).sum(:amount))+(@transaction.where(outflowtype_id: 8).sum(:amount))
+    @allowance_gaelle = (@outflows.where(outflowtype_id: 9).sum(:amount))+(@transaction.where(outflowtype_id: 9).sum(:amount))
+    @allowance_herve = (@outflows.where(outflowtype_id: 10).sum(:amount))+(@transaction.where(outflowtype_id: 10).sum(:amount))
+    @loan_ptsb = (@outflows.where(outflowtype_id: 11).sum(:amount))+(@transaction.where(outflowtype_id: 11).sum(:amount))
+    @loan_chill_money = (@outflows.where(outflowtype_id: 12).sum(:amount))+(@transaction.where(outflowtype_id: 12).sum(:amount))
+    @lodgement_credit_union = (@outflows.where(outflowtype_id: 13).sum(:amount))+(@transaction.where(outflowtype_id: 13).sum(:amount))
+    @family_support = (@outflows.where(outflowtype_id: 14).sum(:amount))+(@transaction.where(outflowtype_id: 14).sum(:amount))
+    @entertainment_nightout = (@outflows.where(outflowtype_id: 15).sum(:amount))+(@transaction.where(outflowtype_id: 15).sum(:amount))
+    @entertainment_dayout = (@outflows.where(outflowtype_id: 16).sum(:amount))+(@transaction.where(outflowtype_id: 16).sum(:amount))
+    @cloud_storage = (@outflows.where(outflowtype_id: 17).sum(:amount))+(@transaction.where(outflowtype_id: 17).sum(:amount))
+    @aa_ireland = (@outflows.where(outflowtype_id: 18).sum(:amount))+(@transaction.where(outflowtype_id: 18).sum(:amount))
+    @lottery_ticket = (@outflows.where(outflowtype_id: 19).sum(:amount))+(@transaction.where(outflowtype_id: 19).sum(:amount))
+    @car_tax = (@outflows.where(outflowtype_id: 20).sum(:amount))+(@transaction.where(outflowtype_id: 20).sum(:amount))
+    @heating_oil = (@outflows.where(outflowtype_id: 21).sum(:amount))+(@transaction.where(outflowtype_id: 21).sum(:amount))
+    @car_service = (@outflows.where(outflowtype_id: 22).sum(:amount))+(@transaction.where(outflowtype_id: 22).sum(:amount))
+    @spiritual_tools = (@outflows.where(outflowtype_id: 23).sum(:amount))+(@transaction.where(outflowtype_id: 23).sum(:amount))
+    @other_expenses = (@outflows.where(outflowtype_id: 24).sum(:amount))+(@transaction.where(outflowtype_id: 24).sum(:amount))
+    @work_lunch = (@outflows.where(outflowtype_id: 25).sum(:amount))+(@transaction.where(outflowtype_id: 25).sum(:amount))
+    @pharmacy = (@outflows.where(outflowtype_id: 26).sum(:amount))+(@transaction.where(outflowtype_id: 26).sum(:amount))
+    @furniture = (@outflows.where(outflowtype_id: 27).sum(:amount))+(@transaction.where(outflowtype_id: 27).sum(:amount))
+
+    # averages (It needs to look at the entire table)
+
+    @avg_rent = (Outflow.where(outflowtype_id: 1,year:@year).average(:amount))
+    @avg_telecom = (Outflow.where(outflowtype_id: 2, year:@year).average(:amount))
+    @avg_eflow = Outflow.where(outflowtype_id: 3,year:@year).average(:amount)
+    @avg_food = Outflow.where(outflowtype_id: 4,year:@year).average(:amount)
+    @avg_electricity = Outflow.where(outflowtype_id: 5,year:@year).average(:amount)
+    @avg_transport = Outflow.where(outflowtype_id: 6,year:@year).average(:amount)
+    @avg_credit_card_fees = Outflow.where(outflowtype_id: 7,year:@year).average(:amount)
+    @avg_current_account_fees = Outflow.where(outflowtype_id: 8,year:@year).average(:amount)
+    @avg_allowance_gaelle = Outflow.where(outflowtype_id: 9,year:@year).average(:amount)
+    @avg_allowance_herve = Outflow.where(outflowtype_id: 10,year:@year).average(:amount)
+    @avg_loan_ptsb = Outflow.where(outflowtype_id: 11,year:@year).average(:amount)
+    @avg_loan_chill_money = Outflow.where(outflowtype_id: 12,year:@year).average(:amount)
+    @avg_lodgement_credit_union = Outflow.where(outflowtype_id: 13,year:@year).average(:amount)
+    @avg_family_support = Outflow.where(outflowtype_id: 14,year:@year).average(:amount)
+    @avg_entertainment_nightout = Outflow.where(outflowtype_id: 15,year:@year).average(:amount)
+    @avg_entertainment_dayout = Outflow.where(outflowtype_id: 16,year:@year).average(:amount)
+    @avg_cloud_storage = Outflow.where(outflowtype_id: 17,year:@year).average(:amount)
+    @avg_aa_ireland = Outflow.where(outflowtype_id: 18,year:@year).average(:amount)
+    @avg_lottery_ticket = Outflow.where(outflowtype_id: 19,year:@year).average(:amount)
+    @avg_car_tax = Outflow.where(outflowtype_id: 20,year:@year).average(:amount)
+    @avg_heating_oil = Outflow.where(outflowtype_id: 21,year:@year).average(:amount)
+    @avg_car_service = Outflow.where(outflowtype_id: 22,year:@year).average(:amount)
+    @avg_spiritual_tools = Outflow.where(outflowtype_id: 23,year:@year).average(:amount)
+    @avg_other_expenses = Outflow.where(outflowtype_id: 24,year:@year).average(:amount)
+    @avg_work_lunch = Outflow.where(outflowtype_id: 25,year:@year).average(:amount)
+    @avg_pharmacy = Outflow.where(outflowtype_id: 26,year:@year).average(:amount)
+    @avg_furniture = Outflow.where(outflowtype_id: 27,year:@year).average(:amount)
+
+
 
     # save the breakdown into the table:
 
@@ -119,7 +147,7 @@ class CashflowsController < ApplicationController
     @cashflow.outflow_family_support=@family_support
     @cashflow.outflow_entert_nightout=@entertainment_nightout
     @cashflow.outflow_entert_dayout=@entertainment_dayout
-    @cashflow.outflow_apple_str=@apple_storage
+    @cashflow.outflow_apple_str=@cloud_storage
     @cashflow.outflow_aa_irl=@aa_ireland
     @cashflow.outflow_lottery_ticket=@lottery_ticket
     @cashflow.outflow_car_tax=@car_tax
@@ -131,6 +159,16 @@ class CashflowsController < ApplicationController
     @cashflow.outflow_furniture=@furniture
     @cashflow.outflow_other_exp=@other_expenses
 
+
+
+    @totalinflow = Inflow.where(cashflow_id: @ref).sum(:amount)
+    @totaloutflow = Outflow.where(cashflow_id: @ref).sum(:amount)
+
+
+    # balance calculation
+    @i = 0
+    @balance = (((@totalinflow - @saving_lodgement)- @totaloutflow) + @cash_injection) + @recons
+    @cashflow.balance= @balance
 
     @cashflow.save
 
@@ -146,6 +184,10 @@ class CashflowsController < ApplicationController
     if @outflow_follow_up.empty?
       @message_for_empty2 = "There are no transactions to follow-up!"
     end
+
+
+
+
 
   end
 

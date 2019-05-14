@@ -60,7 +60,7 @@ class BudgetsController < ApplicationController
     @family_support = @expenses.where(outflowtype_id: 14).sum(:amount)
     @entertainment_nightout = @expenses.where(outflowtype_id: 15).sum(:amount)
     @entertainment_dayout = @expenses.where(outflowtype_id: 16).sum(:amount)
-    @apple_storage = @expenses.where(outflowtype_id: 17).sum(:amount)
+    @cloud_storage = @expenses.where(outflowtype_id: 17).sum(:amount)
     @aa_ireland = @expenses.where(outflowtype_id: 18).sum(:amount)
     @lottery_ticket = @expenses.where(outflowtype_id: 19).sum(:amount)
     @car_tax = @expenses.where(outflowtype_id: 20).sum(:amount)
@@ -95,7 +95,7 @@ class BudgetsController < ApplicationController
     @budget.outflow_family_support=@family_support
     @budget.outflow_entert_nightout=@entertainment_nightout
     @budget.outflow_entert_dayout=@entertainment_dayout
-    @budget.outflow_apple_str=@apple_storage
+    @budget.outflow_apple_str=@cloud_storage
     @budget.outflow_aa_irl=@aa_ireland
     @budget.outflow_lottery_ticket=@lottery_ticket
     @budget.outflow_car_tax=@car_tax

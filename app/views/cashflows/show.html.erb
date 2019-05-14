@@ -428,6 +428,7 @@
           <th>Category</th>
           <th>Amount(€)</th>
           <th>Literal</th>
+          <th>YTD Average</th>
         </tr>
         </thead>
 
@@ -436,132 +437,164 @@
           <td>Rent</td>
           <td>€  <%= @rent %> </td>
           <td><%= @rent.humanize %></td>
+          <td><%= @avg_rent%></td>
         </tr>
         <tr>
           <td>Telecom</td>
           <td>€ <%= @telecom %> </td>
           <td><%= @telecom.humanize %></td>
+          <td><%= @avg_telecom%></td>
         </tr>
         <tr>
           <td>eFlow</td>
           <td>€ <%=@eflow%></td>
           <td><%= @eflow.humanize %></td>
+          <td><%= @avg_eflow %></td>
         </tr>
         <tr>
           <td>Food</td>
           <td>€ <%= @food %></td>
           <td><%= @food.humanize %></td>
+          <td><%= @avg_food %></td>
         </tr>
         <tr>
           <td>Electricity</td>
           <td>€ <%= @electricity %></td>
           <td><%= @electricity.humanize %></td>
+          <td><%= @avg_electricity %></td>
+        </tr>
+        <tr>
+          <td>Transport</td>
+          <td>€ <%= @transport %></td>
+          <td><%= @transport.humanize %></td>
+          <td><%= @avg_transport %></td>
         </tr>
         <tr>
           <td>Credit Card Fees</td>
           <td>€ <%= @credit_card_fees %></td>
           <td><%= @credit_card_fees.humanize %></td>
+          <td><%= @avg_credit_card_fees %></td>
         </tr>
         <tr>
           <td>Current Account Fees</td>
           <td>€ <%= @current_account_fees %></td>
           <td><%= @current_account_fees.humanize %></td>
+          <td><%= @avg_current_account_fees %></td>
         </tr>
         <tr>
           <td>Allowance - Gaelle</td>
           <td>€ <%= @allowance_gaelle %></td>
           <td><%= @allowance_gaelle.humanize %></td>
+          <td><%= @avg_allowance_gaelle %></td>
         </tr>
 
         <tr>
           <td>Allowance - Herve</td>
           <td>€ <%= @allowance_herve %></td>
           <td><%= @allowance_herve_account_fees.humanize %></td>
+          <td><%= @avg_allowance_herve %></td>
         </tr>
         <tr>
           <td>Loan  - PTSB</td>
           <td>€ <%= @loan_ptsb %></td>
           <td><%= @loan_ptsb.humanize %></td>
+          <td><%= @avg_loan_ptsb %></td>
         </tr>
         <tr>
           <td>Loan - Chill Money</td>
           <td>€ <%= @loan_chill_money %></td>
           <td><%= @loan_chill_money.humanize %></td>
+          <td><%= @avg_loan_chill_money %></td>
         </tr>
         <tr>
           <td>Lodgement - Credit Union</td>
           <td>€ <%= @lodgement_credit_union %></td>
           <td><%= @lodgement_credit_union.humanize %></td>
+          <td><%= @avg_lodgement_credit_union %></td>
         </tr>
         <tr>
           <td>Family Support</td>
           <td>€ <%= @family_support %></td>
           <td><%= @family_support.humanize %></td>
+          <td><%= @avg_family_support %></td>
         </tr>
         <tr>
           <td>Entertainment - Night Out:</td>
           <td>€ <%= @entertainment_nightout %></td>
           <td><%= @entertainment_nightout.humanize %></td>
+          <td><%= @avg_entertainment_nightout %></td>
         </tr>
         <tr>
           <td>Entertainment - Day Out</td>
           <td>€ <%= @entertainment_dayout %></td>
           <td><%= @entertainment_dayout.humanize %></td>
+          <td><%= @avg_entertainment_dayout %></td>
         </tr>
         <tr>
-          <td>Apple storage</td>
-          <td>€ <%= @apple_storage %></td>
-          <td><%= @apple_storage.humanize %></td>
+          <td>Cloud storage</td>
+          <td>€ <%= @cloud_storage %></td>
+          <td><%= @cloud_storage.humanize %></td>
+          <td><%= @avg_cloud_storage %></td>
         </tr>
         <tr>
           <td>AA Ireland</td>
           <td>€ <%= @aa_ireland %></td>
           <td><%= @aa_ireland.humanize %></td>
+          <td><%= @avg_aa_ireland %></td>
         </tr>
         <tr>
           <td>Lottery Ticket</td>
           <td>€ <%= @lottery_ticket %></td>
           <td><%= @lottery_ticket.humanize %></td>
+          <td><%= @avg_lottery_ticket %></td>
         </tr>
         <tr>
           <td>Car Tax</td>
           <td>€ <%= @car_tax %></td>
           <td><%= @car_tax.humanize %></td>
+          <td><%= @avg_car_tax %></td>
         </tr>
         <tr>
           <td>Heating Oil</td>
           <td>€ <%= @heating_oil %></td>
           <td><%= @heating_oil.humanize %></td>
+          <td><%= @avg_heating_oil %></td>
         </tr>
         <tr>
           <td>Car Service</td>
           <td>€ <%= @car_service %></td>
           <td><%= @car_service.humanize %></td>
+          <td><%= @avg_car_service %></td>
         </tr>
         <tr>
           <td>Spiritual Tools</td>
           <td>€ <%= @spiritual_tools %></td>
           <td><%= @spiritual_tools.humanize %></td>
+          <td><%= @avg_spiritual_tools %></td>
         </tr>
         <tr>
           <td>Other</td>
           <td>€ <%= @other_expenses %></td>
           <td><%= @other_expenses.humanize %></td>
+          <td><%= @avg_other_expenses %></td>
         </tr>
         <tr>
           <td>Work Lunch:</td>
           <td>€ <%= @work_lunch %></td>
           <td><%= @work_lunch.humanize %></td>
+          <td><%= @avg_work_lunch %></td>
         </tr>
         <tr>
           <td>Pharmacy</td>
           <td>€ <%= @pharmacy %></td>
           <td><%= @pharmacy.humanize %></td>
+          <td><%= @avg_pharmacy %></td>
         </tr>
         <tr>
           <td>Furniture</td>
           <td>€ <%= @furniture %></td>
           <td><%= @furniture.humanize %></td>
+          <td><%= @avg_furniture %></td>
         </tr>
         <tr>
           <td class="alert-info">Total Expenses </td>

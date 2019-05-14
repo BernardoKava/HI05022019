@@ -80,7 +80,7 @@ class LedgersController < ApplicationController
     @family_support = @annual_expenses.where(outflowtype_id: 14).sum(:amount)
     @entertainment_nightout = @annual_expenses.where(outflowtype_id: 15).sum(:amount)
     @entertainment_dayout = @annual_expenses.where(outflowtype_id: 16).sum(:amount)
-    @apple_storage = @annual_expenses.where(outflowtype_id: 17).sum(:amount)
+    @cloud_storage = @annual_expenses.where(outflowtype_id: 17).sum(:amount)
     @aa_ireland = @annual_expenses.where(outflowtype_id: 18).sum(:amount)
     @lottery_ticket = @annual_expenses.where(outflowtype_id: 19).sum(:amount)
     @car_tax = @annual_expenses.where(outflowtype_id: 20).sum(:amount)
@@ -118,7 +118,7 @@ class LedgersController < ApplicationController
     @ifamily_support = @annual_outflow.where(outflowtype_id: 14).sum(:amount)
     @ientertainment_nightout = @annual_outflow.where(outflowtype_id: 15).sum(:amount)
     @ientertainment_dayout = @annual_outflow.where(outflowtype_id: 16).sum(:amount)
-    @iapple_storage = @annual_outflow.where(outflowtype_id: 17).sum(:amount)
+    @i_cloud_storage = @annual_outflow.where(outflowtype_id: 17).sum(:amount)
     @iaa_ireland = @annual_outflow.where(outflowtype_id: 18).sum(:amount)
     @ilottery_ticket = @annual_outflow.where(outflowtype_id: 19).sum(:amount)
     @icar_tax = @annual_outflow.where(outflowtype_id: 20).sum(:amount)
@@ -152,7 +152,7 @@ class LedgersController < ApplicationController
     @ledger.bud_outflow_family_support=@family_support
     @ledger.bud_outflow_entert_nightout=@entertainment_nightout
     @ledger.bud_outflow_entert_dayout=@entertainment_dayout
-    @ledger.bud_outflow_apple_str=@apple_storage
+    @ledger.bud_outflow_apple_str=@cloud_storage
     @ledger.bud_outflow_aa_irl=@aa_ireland
     @ledger.bud_outflow_lottery_ticket=@lottery_ticket
     @ledger.bud_outflow_car_tax=@car_tax
@@ -184,7 +184,7 @@ class LedgersController < ApplicationController
     @ledger.act_outflow_family_support=@ifamily_support
     @ledger.act_outflow_entert_nightout=@ientertainment_nightout
     @ledger.act_outflow_entert_dayout=@ientertainment_dayout
-    @ledger.act_outflow_apple_str=@iapple_storage
+    @ledger.act_outflow_apple_str=@i_cloud_storage
     @ledger.act_outflow_aa_irl=@iaa_ireland
     @ledger.act_outflow_lottery_ticket=@ilottery_ticket
     @ledger.act_outflow_car_tax=@icar_tax
