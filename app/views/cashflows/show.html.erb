@@ -254,7 +254,7 @@
 <hr>
 
 <div class="breadcrumb" style="background-color: rgba(22,151,168,0.6); color: whitesmoke">
-  <h4>C. Income and Expenditure</h4>
+  <h4>C-1. Income and Expenditure</h4>
 </div>
 
 
@@ -354,6 +354,53 @@
     </div>
   </div>
 </div>
+
+
+
+  <div class="breadcrumb" style="background-color: rgba(22,151,168,0.6); color: whitesmoke">
+    <h4>C-2. Expenditure [Cash]</h4>
+  </div>
+<div class="jumbotron">
+  <table class="table table-striped" style="color: darkred;background-color: aliceblue">
+    <thead>
+    <tr>
+      <th>Ref</th>
+      <th>Transaction Date</th>
+      <th>Details </th>
+      <th>Owner</th>
+      <th>Amount(€)</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @transactions.each do |expense| %>
+      <tr>
+        <td ><%= expense.id%></td>
+        <td><%= expense.t_date.strftime("%d %b. %Y")%></td>
+
+        <td data-toggle= "tooltip"  data-placement="top" title="<%= expense.rationale %>">
+          <%= expense.details %>
+        </td>
+
+        <td data-toggle= "tooltip"  data-placement="top"
+            title="Expense Type:<%= expense.outflowtype.name %> ">
+          <%= expense.person.fullname %>
+        </td>
+
+        <td data-toggle= "tooltip"  data-placement="top"
+            title="Debited from:<%= expense.amount.humanize %>" >
+          <%= expense.amount %>
+        </td>
+
+
+      </tr>
+
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+
 <div class="breadcrumb" style="background-color: khaki">
   <% if current_user.admin == true %>
     <%= link_to 'Edit', edit_cashflow_path(@cashflow), class:' fa fa-edit' %> |
@@ -363,7 +410,7 @@
 <hr>
 
 <div class="breadcrumb" style="background-color: rgba(22,151,168,0.6); color: whitesmoke">
-  <h4>D. Income and Expenditure Classification</h4>
+  <h4>D-1. Income and Expenditure Classification [EFT]</h4>
 </div>
 
 
@@ -384,31 +431,18 @@
         </thead>
 
         <tbody>
-        <tr>
-          <td>Salary</td>
-          <td>€  <%= @salary %> </td>
-          <td><%= @salary.humanize %></td>
-        </tr>
-        <tr>
-          <td>Child Benefit (€)</td>
-          <td>€ <%= @child_benefit %> </td>
-          <td><%= @child_benefit.humanize %></td>
-        </tr>
-        <tr>
-          <td>Lotto Winnings(€)</td>
-          <td>€ <%=@lotto_winnings%></td>
-          <td><%= @lotto_winnings.humanize %></td>
-        </tr>
-        <tr>
-          <td>Other (€)</td>
-          <td>€ <%= @others %></td>
-          <td><%= @others.humanize %></td>
-        </tr>
-        <tr>
-          <td class="alert-info">Total Income </td>
-          <td class="alert-info" >€ <%= @totalinflow %></td>
-          <td class="alert-info"><%= @totalinflow.humanize %></td>
-        </tr>
+        <% @inflowtypes.each do |type| %>
+          <tr>
+            <td><%= type.name %></td>
+            <td><%= type.inflows.where(cashflow_id: @ref).sum(:amount)%></td>
+            <td><%= type.inflows.where(cashflow_id: @ref).sum(:amount).humanize%></td>
+          </tr>
+        <% end %>
+          <tr class="breadcrumb" style = "background-color: navy; color:white" >
+            <td>Total Expenses</td>
+            <td><%= @totalinflow %> </td>
+            <td><%= @totalinflow.humanize %> </td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -428,187 +462,64 @@
           <th>Category</th>
           <th>Amount(€)</th>
           <th>Literal</th>
-          <th>YTD Average</th>
         </tr>
         </thead>
 
         <tbody>
-        <tr>
-          <td>Rent</td>
-          <td>€  <%= @rent %> </td>
-          <td><%= @rent.humanize %></td>
-          <td><%= @avg_rent%></td>
-        </tr>
-        <tr>
-          <td>Telecom</td>
-          <td>€ <%= @telecom %> </td>
-          <td><%= @telecom.humanize %></td>
-          <td><%= @avg_telecom%></td>
-        </tr>
-        <tr>
-          <td>eFlow</td>
-          <td>€ <%=@eflow%></td>
-          <td><%= @eflow.humanize %></td>
-          <td><%= @avg_eflow %></td>
-        </tr>
-        <tr>
-          <td>Food</td>
-          <td>€ <%= @food %></td>
-          <td><%= @food.humanize %></td>
-          <td><%= @avg_food %></td>
-        </tr>
-        <tr>
-          <td>Electricity</td>
-          <td>€ <%= @electricity %></td>
-          <td><%= @electricity.humanize %></td>
-          <td><%= @avg_electricity %></td>
-        </tr>
-        <tr>
-          <td>Transport</td>
-          <td>€ <%= @transport %></td>
-          <td><%= @transport.humanize %></td>
-          <td><%= @avg_transport %></td>
-        </tr>
-        <tr>
-          <td>Credit Card Fees</td>
-          <td>€ <%= @credit_card_fees %></td>
-          <td><%= @credit_card_fees.humanize %></td>
-          <td><%= @avg_credit_card_fees %></td>
-        </tr>
-        <tr>
-          <td>Current Account Fees</td>
-          <td>€ <%= @current_account_fees %></td>
-          <td><%= @current_account_fees.humanize %></td>
-          <td><%= @avg_current_account_fees %></td>
-        </tr>
-        <tr>
-          <td>Allowance - Gaelle</td>
-          <td>€ <%= @allowance_gaelle %></td>
-          <td><%= @allowance_gaelle.humanize %></td>
-          <td><%= @avg_allowance_gaelle %></td>
-        </tr>
-
-        <tr>
-          <td>Allowance - Herve</td>
-          <td>€ <%= @allowance_herve %></td>
-          <td><%= @allowance_herve_account_fees.humanize %></td>
-          <td><%= @avg_allowance_herve %></td>
-        </tr>
-        <tr>
-          <td>Loan  - PTSB</td>
-          <td>€ <%= @loan_ptsb %></td>
-          <td><%= @loan_ptsb.humanize %></td>
-          <td><%= @avg_loan_ptsb %></td>
-        </tr>
-        <tr>
-          <td>Loan - Chill Money</td>
-          <td>€ <%= @loan_chill_money %></td>
-          <td><%= @loan_chill_money.humanize %></td>
-          <td><%= @avg_loan_chill_money %></td>
-        </tr>
-        <tr>
-          <td>Lodgement - Credit Union</td>
-          <td>€ <%= @lodgement_credit_union %></td>
-          <td><%= @lodgement_credit_union.humanize %></td>
-          <td><%= @avg_lodgement_credit_union %></td>
-        </tr>
-        <tr>
-          <td>Family Support</td>
-          <td>€ <%= @family_support %></td>
-          <td><%= @family_support.humanize %></td>
-          <td><%= @avg_family_support %></td>
-        </tr>
-        <tr>
-          <td>Entertainment - Night Out:</td>
-          <td>€ <%= @entertainment_nightout %></td>
-          <td><%= @entertainment_nightout.humanize %></td>
-          <td><%= @avg_entertainment_nightout %></td>
-        </tr>
-        <tr>
-          <td>Entertainment - Day Out</td>
-          <td>€ <%= @entertainment_dayout %></td>
-          <td><%= @entertainment_dayout.humanize %></td>
-          <td><%= @avg_entertainment_dayout %></td>
-        </tr>
-        <tr>
-          <td>Cloud storage</td>
-          <td>€ <%= @cloud_storage %></td>
-          <td><%= @cloud_storage.humanize %></td>
-          <td><%= @avg_cloud_storage %></td>
-        </tr>
-        <tr>
-          <td>AA Ireland</td>
-          <td>€ <%= @aa_ireland %></td>
-          <td><%= @aa_ireland.humanize %></td>
-          <td><%= @avg_aa_ireland %></td>
-        </tr>
-        <tr>
-          <td>Lottery Ticket</td>
-          <td>€ <%= @lottery_ticket %></td>
-          <td><%= @lottery_ticket.humanize %></td>
-          <td><%= @avg_lottery_ticket %></td>
-        </tr>
-        <tr>
-          <td>Car Tax</td>
-          <td>€ <%= @car_tax %></td>
-          <td><%= @car_tax.humanize %></td>
-          <td><%= @avg_car_tax %></td>
-        </tr>
-        <tr>
-          <td>Heating Oil</td>
-          <td>€ <%= @heating_oil %></td>
-          <td><%= @heating_oil.humanize %></td>
-          <td><%= @avg_heating_oil %></td>
-        </tr>
-        <tr>
-          <td>Car Service</td>
-          <td>€ <%= @car_service %></td>
-          <td><%= @car_service.humanize %></td>
-          <td><%= @avg_car_service %></td>
-        </tr>
-        <tr>
-          <td>Spiritual Tools</td>
-          <td>€ <%= @spiritual_tools %></td>
-          <td><%= @spiritual_tools.humanize %></td>
-          <td><%= @avg_spiritual_tools %></td>
-        </tr>
-        <tr>
-          <td>Other</td>
-          <td>€ <%= @other_expenses %></td>
-          <td><%= @other_expenses.humanize %></td>
-          <td><%= @avg_other_expenses %></td>
-        </tr>
-        <tr>
-          <td>Work Lunch:</td>
-          <td>€ <%= @work_lunch %></td>
-          <td><%= @work_lunch.humanize %></td>
-          <td><%= @avg_work_lunch %></td>
-        </tr>
-        <tr>
-          <td>Pharmacy</td>
-          <td>€ <%= @pharmacy %></td>
-          <td><%= @pharmacy.humanize %></td>
-          <td><%= @avg_pharmacy %></td>
-        </tr>
-        <tr>
-          <td>Furniture</td>
-          <td>€ <%= @furniture %></td>
-          <td><%= @furniture.humanize %></td>
-          <td><%= @avg_furniture %></td>
-        </tr>
-        <tr>
-          <td class="alert-info">Total Expenses </td>
-          <td class="alert-info" >€ <%= @totaloutflow%></td>
-          <td class="alert-info"><%= @totaloutflow.humanize %></td>
-        </tr>
-
+          <% @outflowtypes.each do |type| %>
+            <tr>
+              <td><%= type.name %></td>
+              <td><%= type.outflows.where(cashflow_id: @ref).sum(:amount)%></td>
+              <td><%= type.outflows.where(cashflow_id: @ref).sum(:amount).humanize%></td>
+            </tr>
+          <% end %>
+            <tr class="breadcrumb" style = "background-color: navy; color:white" >
+              <td>Total Expenses</td>
+              <td><%= @totaloutflow %> </td>
+              <td><%= @totaloutflow.humanize %> </td>
+            </tr>
         </tbody>
       </table>
     </div>
+    </div>
   </div>
+
+<div class="breadcrumb" style="background-color: rgba(22,151,168,0.6); color: whitesmoke">
+  <h4>D-2. Expenditure Classification [Cash]</h4>
 </div>
 
+<div class="jumbotron">
+  <table class="table table-striped"style="background-color: aliceblue;color: darkred">
+    <thead>
+    <tr>
+      <th>Category</th>
+      <th>Amount(€)</th>
+      <th>Literal</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
 
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @outflowtypes.each do |type| %>
+      <tr>
+        <td><%= type.name %></td>
+        <% if type.transactions.where(cashflow_id: @ref).sum(:amount) == 0 %>
+          <td class="alert-success"><%= type.transactions.where(cashflow_id: @ref).sum(:amount)%></td>
+        <% else %>
+          <td><%= type.transactions.where(cashflow_id: @ref).sum(:amount)%></td>
+        <% end %>
+        <td><%= type.transactions.where(cashflow_id: @ref).sum(:amount).humanize%></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
 
 <div class="jumbotron"style="background-color: palegoldenrod">
 

@@ -21,6 +21,7 @@ class Person < ApplicationRecord
   has_many :issue_managements
   has_many :corrective_actions
   has_many :plannedactivities
+  has_many :transactions
 
 
   accepts_nested_attributes_for :emails, allow_destroy: true

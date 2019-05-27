@@ -2,8 +2,12 @@
   <dictionary name="bkava">
     <words>
       <w>fullname</w>
+      <w>inflowtype</w>
+      <w>inflowtypes</w>
       <w>lodgement</w>
       <w>lodgements</w>
+      <w>outflowtype</w>
+      <w>outflowtypes</w>
       <w>plannedactivities</w>
       <w>plannedactivity</w>
     </words>
