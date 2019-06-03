@@ -23,6 +23,8 @@
               <li class="divider"></li>
               <li class="alert-info"><%= link_to "Savings", savings_path , class: 'fa fa-database'%></li>
               <li class="divider"></li>
+              <li class="alert-info"><%= link_to "PayPal Transactions", paypals_path , class: 'fa fa-database'%></li>
+              <li class="divider"></li>
               <% if current_user.admin == true %>
               <li class="alert-info"><%= link_to "Rent Management", rent_managements_path , class: 'fa fa-database'%></li>
               <li class="divider"></li>

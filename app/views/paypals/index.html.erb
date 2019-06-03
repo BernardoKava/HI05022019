@@ -1,0 +1,47 @@
+<% provide(:title, "PayPal Transactions") %>
+<p id="notice"><%= notice %></p>
+
+
+<div class="breadcrumb"style="background-color: darkgreen;color: white">
+  <h3>Paypal Transactions</h3>
+</div>
+
+<div class="jumbotron"style="background-color: lightgoldenrodyellow;color: navy">
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th>T date</th>
+      <th>T time</th>
+      <th>Timezone</th>
+      <th>Name</th>
+      <th>T type</th>
+      <th>Status</th>
+      <th>Currency</th>
+      <th>Amount</th>
+      <th colspan="3"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @paypals.each do |paypal| %>
+      <tr>
+        <td><%= paypal.t_date.strftime("%d %b. %Y") %></td>
+        <td><%= paypal.t_time %></td>
+        <td><%= paypal.timezone %></td>
+        <td><%= paypal.name %></td>
+        <td><%= paypal.t_type %></td>
+        <td><%= paypal.status %></td>
+        <td><%= paypal.currency %></td>
+        <td><%= paypal.amount %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+  <br>
+  <%= will_paginate @paypals %>
+</div>
+
+
+<div class="breadcrumb"style="background-color: khaki">
+</div>

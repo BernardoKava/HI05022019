@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>T date:</strong>
+  <%= @paypal.t_date %>
+</p>
+
+<p>
+  <strong>T time:</strong>
+  <%= @paypal.t_time %>
+</p>
+
+<p>
+  <strong>Timezone:</strong>
+  <%= @paypal.timezone %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @paypal.name %>
+</p>
+
+<p>
+  <strong>T type:</strong>
+  <%= @paypal.t_type %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @paypal.status %>
+</p>
+
+<p>
+  <strong>Currency:</strong>
+  <%= @paypal.currency %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @paypal.amount %>
+</p>
+
+<%= link_to 'Edit', edit_paypal_path(@paypal) %> |
+<%= link_to 'Back', paypals_path %>

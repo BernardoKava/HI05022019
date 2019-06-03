@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @cashbox.name %>
+</p>
+
+<p>
+  <strong>Accounting date:</strong>
+  <%= @cashbox.accounting_date %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @cashbox.active %>
+</p>
+
+<p>
+  <strong>Month:</strong>
+  <%= @cashbox.month %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @cashbox.year %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @cashbox.notes %>
+</p>
+
+<p>
+  <strong>Balance:</strong>
+  <%= @cashbox.balance %>
+</p>
+
+<%= link_to 'Edit', edit_cashbox_path(@cashbox) %> |
+<%= link_to 'Back', cashboxes_path %>

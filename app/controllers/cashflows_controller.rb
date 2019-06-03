@@ -76,11 +76,12 @@ class CashflowsController < ApplicationController
     # transaction from pettycash
 
     @transactions = Transaction.where(cashflow_id: @ref )
+    @transactions_amount = Transaction.where(cashflow_id:@ref).sum(:amount)
 
 
     # balance calculation
     @i = 0
-    @balance = (((@totalinflow - @saving_lodgement)- @totaloutflow) + @cash_injection) + @recons
+    @balance = ((((@totalinflow - @saving_lodgement)- @totaloutflow) + @cash_injection) + @recons)-@transactions_amount
     @cashflow.balance= @balance
 
     @cashflow.save
@@ -97,13 +98,6 @@ class CashflowsController < ApplicationController
     if @outflow_follow_up.empty?
       @message_for_empty2 = "There are no transactions to follow-up!"
     end
-
-
-
-
-
-
-
   end
 
 

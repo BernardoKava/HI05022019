@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  t_date: 2019-06-03
+  t_time: MyString
+  timezone: MyString
+  name: MyString
+  t_type: MyString
+  status: MyString
+  currency: MyString
+  amount: 
+
+two:
+  t_date: 2019-06-03
+  t_time: MyString
+  timezone: MyString
+  name: MyString
+  t_type: MyString
+  status: MyString
+  currency: MyString
+  amount: 

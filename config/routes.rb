@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :cashboxes
+  resources :paypals
   resources :transactions
   resources :plannedactivities
   resources :bankcards

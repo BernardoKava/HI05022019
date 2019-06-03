@@ -19,8 +19,11 @@ class LedgersController < ApplicationController
     @ledger.month = @month
     @ref = @year
 
+
+
+
     @budget_balance = Budget.where(year: @ref).sum(:balance)
-    @cashflow_balance = Cashflow.where(year: @ref).sum(:balance)
+    @cashflow_balance = (Cashflow.where(year: @ref).sum(:balance))+(Cashbox.where(year:@year).sum(:balance))
     @saving_balance = Saving.where(year: @ref).sum(:balance)
 
     @budget_vs_cashflow = @budget_balance - @cashflow_balance
@@ -86,7 +89,7 @@ class LedgersController < ApplicationController
 
 
 
-  # GET /ledgers/new
+  # GET /ledgers/newr
   def new
     @ledger = Ledger.new
   end

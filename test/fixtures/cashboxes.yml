@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  accounting_date: 2019-06-03
+  active: false
+  month: MyString
+  year: MyString
+  notes: MyText
+  balance: 
+
+two:
+  name: MyString
+  accounting_date: 2019-06-03
+  active: false
+  month: MyString
+  year: MyString
+  notes: MyText
+  balance: 
