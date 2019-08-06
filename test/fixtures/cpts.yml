@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cpt_code: MyString
+  clinician_descriptor_id: MyString
+  clinician_descriptor: MyText
+  consumer_friendly_descriptor: MyText
+  notes: MyText
+
+two:
+  cpt_code: MyString
+  clinician_descriptor_id: MyString
+  clinician_descriptor: MyText
+  consumer_friendly_descriptor: MyText
+  notes: MyText

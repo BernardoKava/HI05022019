@@ -22,7 +22,7 @@ class Person < ApplicationRecord
   has_many :corrective_actions
   has_many :plannedactivities
   has_many :transactions
-
+  has_many :health_cases
 
   accepts_nested_attributes_for :emails, allow_destroy: true
   accepts_nested_attributes_for :telephones, allow_destroy: true

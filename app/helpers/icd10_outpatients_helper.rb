@@ -1,0 +1,2 @@
+module Icd10OutpatientsHelper
+end

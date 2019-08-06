@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :cpts
+  resources :icd10_outpatients
+  resources :icd10_inpatients
+  resources :health_cases
+  resources :medical_establishments
+  resources :medical_personels
   resources :cashboxes
   resources :paypals
   resources :transactions

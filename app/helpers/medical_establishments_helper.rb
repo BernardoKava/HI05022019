@@ -1,0 +1,2 @@
+module MedicalEstablishmentsHelper
+end

@@ -1,0 +1,50 @@
+<% provide(:title, "Health Cases") %>
+
+
+
+<div class="breadcrumb">
+  <h4>Health Cases</h4>
+</div>
+
+<div class="jumbotron">
+  <table class="table table-bordered" style="background-color: silver">
+    <thead>
+    <tr>
+      <th>Treatment Date</th>
+      <th>Internal reference</th>
+      <th>External reference</th>
+      <th>Patient</th>
+      <th>Medical personel</th>
+      <th>Medical establishment</th>
+      <th>Case closed</th>
+      <th colspan="3"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @health_cases.each do |health_case| %>
+      <tr>
+        <td><%= health_case.treatment_date.strftime("%d %b. %Y")  %></td>
+        <td><%= health_case.internal_reference %></td>
+        <td><%= health_case.external_reference %></td>
+        <td><%= health_case.person.fullname %></td>
+        <td><%= health_case.medical_personel.name %></td>
+        <td><%= health_case.medical_establishment.name %></td>
+        <td><%= health_case.case_closed.humanize %></td>
+        <td><%= link_to 'View', health_case %></td>
+        <td><%= link_to 'Edit', edit_health_case_path(health_case) %></td>
+        <% if current_user.admin? %>
+          <td><%= link_to 'Delete', health_case, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= will_paginate @health_cases %>
+<br>
+<div class="breadcrumb">
+  <%= link_to 'New Health Case', new_health_case_path %>
+</div>
+

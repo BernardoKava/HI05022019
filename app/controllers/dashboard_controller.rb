@@ -40,10 +40,13 @@ class DashboardController < ApplicationController
 
     @corrective_actions = CorrectiveAction.where(active:true)
 
+    # raw inflows and outflows
+
+    @inflows = Inflow.all
+    @outlfows= Outflow.all
 
 
-
-
+    # Follow items count
     @inflow_fu_count    = Inflow.where(follow_up: true).count
     @outflow_fu_count   = Outflow.where(follow_up: true).count
 

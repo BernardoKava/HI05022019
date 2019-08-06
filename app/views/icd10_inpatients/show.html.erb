@@ -1,0 +1,37 @@
+<% provide(:title, "PCS ICD10") %>
+
+<div class="breadcrumb">
+  <%= @icd10_inpatient.diagnosis_code %>
+</div>
+
+
+<div class="jumbotron">
+  <table class=" table table-bordered" style="background-color: floralwhite" >
+    <tbody>
+    <tr>
+      <td>Diagnosis code:</td>
+      <td> <%= @icd10_inpatient.diagnosis_code %></td>
+    </tr>
+    <tr>
+      <td>Medium description:</td>
+      <td> <%= @icd10_inpatient.short_description %></td>
+    </tr>
+    <tr>
+      <td>Long description:</td>
+      <td> <%= @icd10_inpatient.long_description %></td>
+    </tr>
+    <tr>
+      <td>Notes:</td>
+      <td><%= @icd10_inpatient.notes %></td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
+
+
+<div class="breadcrumb">
+  <%= link_to 'Edit', edit_icd10_inpatient_path(@icd10_inpatient) %> |
+  <%= link_to 'Back', icd10_inpatients_path %>
+</div>
+

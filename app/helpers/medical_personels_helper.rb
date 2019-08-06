@@ -1,0 +1,2 @@
+module MedicalPersonelsHelper
+end

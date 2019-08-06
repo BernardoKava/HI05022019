@@ -1,0 +1,55 @@
+
+<%= simple_form_for(@health_case) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+
+
+
+  <div class="jumbotron" style="background-color: silver; color:black">
+    <div class="form-inputs">
+      <div class="row">
+        <div class="col-sm-4">
+          <%= f.input :internal_reference, placeholder:"Save the record to generate a reference", :readonly => true  %>
+          <%= f.input :external_reference %>
+          <%= f.association :person, collection: Person.order(:fullname),label_method: :fullname, prompt: "Select", label:"Patient" %>
+          <%= f.association :medical_personel, collection: MedicalPersonel.order(:name),label_method:
+              :name, prompt: "Select", label:"Medical Personel" %>
+          <%= f.association :medical_establishment, collection: MedicalEstablishment.order(:name),label_method:
+              :name, prompt: "Select", label:"Medical Establishment" %>
+
+          <%= f.input :treatment_date %>
+          <%= f.input :inpatient_admission_date %>
+          <%= f.input :inpatient_discharge_date %>
+        </div>
+        <div class="col-sm-4">
+          <%= link_to "In-patient ICD10 Lookup",icd10_inpatients_path ,class: 'fa fa-database',style:'color:darkred',:target => "_blank"  %>
+          <%= f.input :icd10_inpatient_id %>
+          <%= link_to "Out-patient ICD10 Lookup", icd10_outpatients_path , class: 'fa fa-database',style:'color:darkred',:target => "_blank" %>
+          <%= f.input :icd10_outpatient_id %>
+          <%= f.input :diagnosis_details %>
+          <%= link_to "CPT Lookup", cpts_path , class: 'fa fa-database',style:'color:darkred',:target => "_blank" %>
+          <%= f.input :cpt_id %>
+          <%= f.input :treatment_details %>
+        </div>
+        <div class="col-sm-4">
+          <%= f.input :precedent_case_id, label:"Preceding Case ID" %>
+          <%= f.input :comments %>
+          <%= f.input :out_of_pocket_amount %>
+          <%= f.input :insurance_cover %>
+          <%= f.input :insurance_cover_amount %>
+          <%= f.input :case_closed %>
+
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Save" %>
+  </div>
+<% end %>
+
+<br>

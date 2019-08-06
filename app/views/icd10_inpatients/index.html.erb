@@ -1,0 +1,43 @@
+<% provide(:title, "CPT") %>
+
+<div class="breadcrumb">
+  <h4>Icd10 Inpatients</h4>
+</div>
+
+<div class="breadcrumb" style="background-color: silver">
+  <%= simple_form_for :search, url: icd10_inpatients_path, method: "GET", html: { class: 'form-inline' } do |f|%>
+    <%= f.input :short_description, input_html: {value: ""} ,label:"Descriptor"  %> <hr>
+    <%= f.submit "Search", class: "btn btn-primary" %>
+  <% end %>
+</div>
+
+<div class="jumbotron">
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Short description</th>
+      <th colspan="1"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @icd10_inpatients.each do |icd10_inpatient| %>
+      <tr>
+        <td><%= icd10_inpatient.id %></td>
+        <td><%= icd10_inpatient.short_description %></td>
+        <td><%= link_to 'Show', icd10_inpatient %></td>
+        <td><%# link_to 'Edit', edit_icd10_inpatient_path(icd10_inpatient) %></td>
+        <td><%# link_to 'Destroy', icd10_inpatient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+  <%= will_paginate @icd10_inpatients %>
+</div>
+
+
+<br>
+
+<%# link_to 'New Icd10 Inpatient', new_icd10_inpatient_path %>

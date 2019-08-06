@@ -1,0 +1,17 @@
+
+<%= simple_form_for(@cpt) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :cpt_code %>
+    <%= f.input :clinician_descriptor_id %>
+    <%= f.input :clinician_descriptor %>
+    <%= f.input :consumer_friendly_descriptor %>
+    <%= f.input :notes %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

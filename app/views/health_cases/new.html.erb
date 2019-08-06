@@ -1,0 +1,13 @@
+<% provide(:title, "New") %>
+
+<div class="breadcrumb" style="background-color: silver">
+  New Health Case
+</div>
+
+<%= render 'form', health_case: @health_case %>
+
+
+<div class="breadcrumb"style="background-color: silver">
+  <%= link_to 'Back', health_cases_path %>
+</div>
+

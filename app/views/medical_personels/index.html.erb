@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Medical Personels</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Designation</th>
+      <th>Name</th>
+      <th>Specialisation</th>
+      <th>Active</th>
+      <th>Comments</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @medical_personels.each do |medical_personel| %>
+      <tr>
+        <td><%= medical_personel.designation %></td>
+        <td><%= medical_personel.name %></td>
+        <td><%= medical_personel.specialisation %></td>
+        <td><%= medical_personel.active %></td>
+        <td><%= medical_personel.comments %></td>
+        <td><%= link_to 'Show', medical_personel %></td>
+        <td><%= link_to 'Edit', edit_medical_personel_path(medical_personel) %></td>
+        <td><%= link_to 'Destroy', medical_personel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Medical Personel', new_medical_personel_path %>

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @medical_establishment.name %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @medical_establishment.country %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @medical_establishment.active %>
+</p>
+
+<p>
+  <strong>Comments:</strong>
+  <%= @medical_establishment.comments %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @medical_establishment.location %>
+</p>
+
+<%= link_to 'Edit', edit_medical_establishment_path(@medical_establishment) %> |
+<%= link_to 'Back', medical_establishments_path %>

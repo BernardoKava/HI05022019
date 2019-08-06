@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Designation:</strong>
+  <%= @medical_personel.designation %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @medical_personel.name %>
+</p>
+
+<p>
+  <strong>Specialisation:</strong>
+  <%= @medical_personel.specialisation %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @medical_personel.active %>
+</p>
+
+<p>
+  <strong>Comments:</strong>
+  <%= @medical_personel.comments %>
+</p>
+
+<%= link_to 'Edit', edit_medical_personel_path(@medical_personel) %> |
+<%= link_to 'Back', medical_personels_path %>

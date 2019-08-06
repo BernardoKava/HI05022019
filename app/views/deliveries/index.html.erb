@@ -33,9 +33,10 @@
     <% end %>
     </tbody>
   </table>
-  <%= will_paginate @deliveries %>
+
   <br>
 
+  <%= will_paginate @deliveries %>
 </div>
 
 <% if  current_user.admin == true %>

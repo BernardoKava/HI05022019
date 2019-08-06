@@ -1,0 +1,41 @@
+<% provide(:title, "CPT") %>
+
+<div class="breadcrumb">
+  <h4>Cpts</h4>
+</div>
+
+<div class="breadcrumb" style="background-color: silver">
+  <%= simple_form_for :search, url: cpts_path, method: "GET", html: { class: 'form-inline' } do |f|%>
+    <%= f.input :clinician_descriptor, input_html: {value: ""} ,label:"Descriptor"  %> <hr>
+    <%= f.submit "Search", class: "btn btn-primary" %>
+  <% end %>
+</div>
+
+<div class="breadcrumb">
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Clinician descriptor</th>
+      <th colspan="3"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @cpts.each do |cpt| %>
+      <tr>
+        <td><%= cpt.id %></td>
+        <td><%= cpt.clinician_descriptor %></td>
+        <td><%= link_to 'Show', cpt %></td>
+        <td><%# link_to 'Edit', edit_cpt_path(cpt) %></td>
+        <td><%# link_to 'Destroy', cpt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= will_paginate @cpts %>
+<br>
+
+<%# link_to 'New Cpt', new_cpt_path %>

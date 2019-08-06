@@ -5,7 +5,7 @@
     <%=link_to image_tag("atom.png", alt: "atom logo", :size => "50x50") , root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li class="alert-warning"><%= link_to "Centralis",   'http://centralis.herga.net' %></li>
+        <li class="alert-warning"><%= link_to "Herga",   'http://herga.net' %></li>
         <li><%= link_to "Home", root_path, class: 'fa fa-home' %></li>
         <li><%= link_to "Help", help_path, class: 'fa fa-question-circle-o' %></li>
         <% if current_user %>
@@ -43,7 +43,7 @@
           </li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              Search Fiancials<b class="caret"></b>
+              Search Financials<b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
               <li class="divider"></li>
@@ -81,6 +81,8 @@
               <li class="alert-info"><%= link_to "Home Occupants", people_path , class: 'fa fa-database'%></li>
               <li class="divider"></li>
               <li class="alert-info"><%= link_to "Issue Management", issue_managements_path , class: 'fa fa-database'%></li>
+              <li class="divider"></li>
+              <li class="alert-info"><%= link_to "Health Management", health_cases_path , class: 'fa fa-database'%></li>
               <li class="divider"></li>
               <li class="alert-info"><%= link_to "Planned Activities", plannedactivities_path , class: 'fa fa-database'%></li>
               <% if current_user.admin == true %>

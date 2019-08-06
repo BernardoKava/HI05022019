@@ -1,0 +1,44 @@
+<% provide(:title, "CM ICD10") %>
+
+<div class="breadcrumb">
+  <h4>Icd10 Outpatients</h4>
+</div>
+
+<div class="breadcrumb" style="background-color: silver">
+  <%= simple_form_for :search, url: icd10_outpatients_path, method: "GET", html: { class: 'form-inline' } do |f|%>
+    <%= f.input :short_description, input_html: {value: ""} ,label:"Descriptor"  %> <hr>
+    <%= f.submit "Search", class: "btn btn-primary" %>
+  <% end %>
+</div>
+
+
+<div class="jumbotron">
+  <table class=" table table-bordered">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Short description</th>
+
+      <th colspan="3"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @icd10_outpatients.each do |icd10_outpatient| %>
+      <tr>
+        <td><%= icd10_outpatient.id %></td>
+        <td><%= icd10_outpatient.short_description %></td>
+        <td><%= link_to 'Show', icd10_outpatient %></td>
+        <td><%# link_to 'Edit', edit_icd10_outpatient_path(icd10_outpatient) %></td>
+        <td><%# link_to 'Destroy', icd10_outpatient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+
+<br>
+<%= will_paginate @icd10_outpatients %>
+
+<%# link_to 'New Icd10 Outpatient', new_icd10_outpatient_path %>

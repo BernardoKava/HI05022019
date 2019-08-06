@@ -1,0 +1,42 @@
+
+<% provide(:title, "CPT") %>
+
+<div class="breadcrumb">
+  <%= @cpt.cpt_code %>
+</div>
+
+
+<div class="jumbotron">
+  <table class=" table table-bordered" style="background-color: floralwhite" >
+    <tbody>
+    <tr>
+      <td>Cpt code:</td>
+      <td> <%= @cpt.cpt_code %></td>
+    </tr>
+    <tr>
+      <td>Clinician descriptor:</td>
+      <td> <%= @cpt.clinician_descriptor %></td>
+    </tr>
+    <tr>
+      <td>Clinician descriptor:</td>
+      <td><%= @cpt.clinician_descriptor %></td>
+    </tr>
+    <tr>
+      <td>Consumer friendly descriptor:</td>
+      <td><%= @cpt.consumer_friendly_descriptor %></td>
+    </tr>
+    <tr>
+      <td>Notes:</td>
+      <td><%= @cpt.notes %></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<div class="breadcrumb">
+  <%= link_to 'Edit', edit_cpt_path(@cpt) %> |
+  <%= link_to 'Back', cpts_path %>
+</div>
+
+

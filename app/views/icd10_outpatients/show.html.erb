@@ -1,0 +1,42 @@
+<% provide(:title, "CM ICD10") %>
+
+<div class="breadcrumb">
+  <%= @icd10_outpatient.diagnosis_code %>
+</div>
+
+
+<div class="jumbotron">
+  <table class=" table table-bordered" style="background-color: floralwhite" >
+    <tbody>
+    <tr>
+      <td>Diagnosis code:</td>
+      <td> <%= @icd10_outpatient.diagnosis_code %></td>
+    </tr>
+    <tr>
+      <td>Medium description:</td>
+      <td> <%= @icd10_outpatient.short_description %></td>
+    </tr>
+    <tr>
+      <td>Long description:</td>
+      <td> <%= @icd10_outpatient.long_description %></td>
+    </tr>
+    <tr>
+      <td>Notes:</td>
+      <td><%= @icd10_outpatient.notes %></td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
+
+
+<div class="breadcrumb">
+  <%= link_to 'Edit', edit_icd10_outpatient_path(@icd10_outpatient) %> |
+  <%= link_to 'Back', icd10_outpatients_path %>
+</div>
+
+
+
+
+
+

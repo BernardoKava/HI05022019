@@ -1,7 +1,7 @@
 <% provide(:title, "My Dashboard") %>
 
 
-<% if current_user.access_granted == true %>
+<% if current_user.access_granted? && current_user.homeintel_access? %>
 
 <div class="breadcrumb"style="background-color: aliceblue ">
   <h2 class="fa fa-dashboard">Dashboard</h2>
@@ -28,11 +28,53 @@
     </div>
   <% end %>
 
-  <div class="breadcrumb" style="background-color: cadetblue; color: white">
-    Budget | Cashflow | Ledger
+
+
+  <div class="jumbotron" style="background-color: lightgoldenrodyellow">
+    <div class="jumbotron" style="background-color: antiquewhite">
+      <div class="breadcrumb">
+        TYD Inflow Total
+      </div>
+      <div class="breadcrumb">
+        <%= pie_chart Inflow.where(year:Date.today.year).group(:flowtype).sum(:amount) %>
+      </div>
+
+    </div>
+    <div class="jumbotron" style="background-color: antiquewhite">
+      <div class="breadcrumb">
+        YTD Inflow Trend
+      </div>
+      <div class="breadcrumb">
+        <%= line_chart Inflow.where(year:Date.today.year).group(:flowtype).group_by_month(:date_posted).sum(:amount) %>
+      </div>
+    </div>
   </div>
 
 
+  <div class="jumbotron" style="background-color: lightgoldenrodyellow">
+    <div class="jumbotron" style="background-color: antiquewhite">
+      <div class="breadcrumb">
+        TYD Outflow Total
+      </div>
+      <div class="breadcrumb">
+        <%= column_chart Outflow.where(year:Date.today.year).group(:flowtype).sum(:amount) %>
+      </div>
+
+    </div>
+    <div class="jumbotron" style="background-color: antiquewhite">
+      <div class="breadcrumb">
+        YTD Outflow Trend
+      </div>
+      <div class="breadcrumb">
+        <%= line_chart Outflow.where(year:Date.today.year).group(:flowtype).group_by_month(:date_posted).sum(:amount) %>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="breadcrumb" style="background-color: cadetblue; color: white">
+    Budget | Cashflow | Ledger
+  </div>
 
   <div class="row">
     <div class="col-sm-4">
@@ -82,6 +124,7 @@
 
 
     </div>
+
     <div class="col-sm-4">
       <div class="breadcrumb"style="background-color: khaki;color: navy">
         Budget | Month: <%= @dash_month %> | <%= @dash_year %> | <%= link_to "Go to Budgets", budgets_path, style:'color:darkred' %>
@@ -337,7 +380,7 @@
 
 <% else %>
 
-  <div class="jumbotron" style="background-color: brown;color: white">
+  <div class="jumbotron" style="background-color: darkred;color: white">
     <p> Your account setup request is being reviewed. Your request will be approved within 24 hours.</p>
   </div>
 

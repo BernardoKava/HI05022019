@@ -1,0 +1,102 @@
+<% provide(:title, "Health Case") %>
+
+<div class="breadcrumb">
+  <%= @health_case.internal_reference %> | <%= @health_case.external_reference %> | <%= @health_case.person.fullname %>
+</div>
+
+
+<div class="jumbotron">
+  <table class=" table table-bordered" style="background-color: silver" >
+
+    <tbody>
+    <tr>
+      <td>Internal reference:</td>
+      <td> <%= @health_case.internal_reference %></td>
+    </tr>
+    <tr>
+      <td>External reference:</td>
+      <td><%= @health_case.external_reference %></td>
+    </tr>
+    <tr>
+      <td>Patient:</td>
+      <td><%= @health_case.person.fullname %></td>
+    </tr>
+    <tr>
+      <td>Medical personal:</td>
+      <td><%= @health_case.medical_personel.name %></td>
+    </tr>
+    <tr>
+      <td>Treatment Date:</td>
+      <td> <%= @health_case.treatment_date.strftime("%d %b. %Y")  %></td>
+    </tr>
+    <tr>
+      <td>Medical establishment:</td>
+      <td><%= @health_case.medical_establishment.name %></td>
+    </tr>
+    <tr>
+      <td>Icd10 inpatient:</td>
+      <td>Short Desk: <%= @health_case.icd10_inpatient.short_description%></td>
+      <td>Long Desc: <%= @health_case.icd10_inpatient.long_description%></td>
+    </tr>
+    <tr>
+      <td>Icd10 outpatient:</td>
+      <td>Short Desc: <%= @health_case.icd10_outpatient.short_description %></td>
+      <td>Long Desc: <%= @health_case.icd10_outpatient.long_description%></td>
+    </tr>
+    <tr>
+      <td>Diagnosis details:</td>
+      <td><%= @health_case.diagnosis_details %></td>
+    </tr>
+    <tr>
+      <td>Cpt:</td>
+      <td>Clinician Desc: <%= @health_case.cpt.clinician_descriptor %></td>
+      <td>Consumer Desc: <%= @health_case.cpt.consumer_friendly_descriptor %></td>
+    </tr>
+    <tr>
+      <td>Treatment details:</td>
+      <td><%= @health_case.treatment_details %></td>
+    </tr>
+    <tr>
+      <td>Precedent case:</td>
+      <td><%= @health_case.precedent_case_id %></td>
+    </tr>
+    <tr>
+      <td>Comments:</td>
+      <td><%= @health_case.comments %></td>
+    </tr>
+    <tr>
+      <td>Out of pocket amount:</td>
+      <td><%= @health_case.out_of_pocket_amount %></td>
+    </tr>
+    <tr>
+      <td>Insurance cover:</td>
+      <td> <%= @health_case.insurance_cover.humanize %></td>
+    </tr>
+    <tr>
+      <td>Insurance cover amount:</td>
+      <td><%= @health_case.insurance_cover_amount %></td>
+    </tr>
+    <tr>
+      <td>Case closed:</td>
+      <td><%= @health_case.case_closed.humanize %></td>
+    </tr>
+    <tr>
+      <td>Inpatient admission date:</td>
+      <td><%= @health_case.inpatient_admission_date %></td>
+    </tr>
+    <tr>
+      <td>Inpatient Discharge Date:</td>
+      <td><%= @health_case.inpatient_admission_date %></td>
+    </tr>
+
+    </tbody>
+  </table>
+
+</div>
+
+
+<div class="breadcrumb">
+  <%= link_to 'Edit', edit_health_case_path(@health_case) %> |
+  <%= link_to 'Back', health_cases_path %>
+</div>
+

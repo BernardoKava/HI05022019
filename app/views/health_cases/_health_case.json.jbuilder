@@ -1,0 +1,2 @@
+json.extract! health_case, :id, :internal_reference, :external_reference, :person_id, :medical_personal_id, :medical_establishment_id, :icd10_inpatient_id, :icd10_outpatient_id, :diagnosis_details, :cpt_id, :treatment_details, :precedent_case_id, :comments, :out_of_pocket_amount, :insurance_cover, :insurance_cover_amount, :case_closed, :created_at, :updated_at
+json.url health_case_url(health_case, format: :json)

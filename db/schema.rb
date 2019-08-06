@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_03_133822) do
+ActiveRecord::Schema.define(version: 2019_08_02_205231) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accessories", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.boolean "active"
+    t.boolean "hard_disk"
+    t.boolean "network_card"
+    t.text "notes"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "quantity"
+  end
 
   create_table "addresses", force: :cascade do |t|
     t.string "address"
@@ -103,6 +116,31 @@ ActiveRecord::Schema.define(version: 2019_06_03_133822) do
     t.integer "reference_number"
   end
 
+  create_table "client_accessories", force: :cascade do |t|
+    t.integer "client_record_id"
+    t.integer "accessory_id"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "client_records", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.boolean "virtual"
+    t.integer "operating_system_id"
+    t.integer "person_id"
+    t.date "deployment_date"
+    t.text "notes"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "active"
+    t.boolean "on_hold"
+    t.string "ip"
+    t.boolean "dhcp_address"
+  end
+
   create_table "comments", force: :cascade do |t|
     t.bigint "inventory_id"
     t.integer "user_id"
@@ -131,6 +169,16 @@ ActiveRecord::Schema.define(version: 2019_06_03_133822) do
     t.boolean "active"
   end
 
+  create_table "cpts", force: :cascade do |t|
+    t.string "cpt_code"
+    t.string "clinician_descriptor_id"
+    t.text "clinician_descriptor"
+    t.text "consumer_friendly_descriptor"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "deliveries", force: :cascade do |t|
     t.date "delivery_date"
     t.integer "user_id"
@@ -148,6 +196,16 @@ ActiveRecord::Schema.define(version: 2019_06_03_133822) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "person_id"
+  end
+
+  create_table "deployment_statuses", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.boolean "active"
+    t.text "notes"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "emails", force: :cascade do |t|
@@ -190,7 +248,7 @@ ActiveRecord::Schema.define(version: 2019_06_03_133822) do
     t.text "role"
   end
 
-  create_table "expenses", force: :cascade do |t|
+  create_table "expenses", id: :bigint, default: nil, comment: "budget expenses - new ", force: :cascade do |t|
     t.string "owner"
     t.decimal "amount"
     t.string "expense_type"
@@ -200,11 +258,9 @@ ActiveRecord::Schema.define(version: 2019_06_03_133822) do
     t.string "month"
     t.string "year"
     t.integer "person_id"
-    t.integer "yeartitle_id"
-    t.integer "monthtitle_id"
     t.integer "outflowtype_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "financialinstitutions", force: :cascade do |t|
@@ -220,6 +276,80 @@ ActiveRecord::Schema.define(version: 2019_06_03_133822) do
     t.string "institution_code"
   end
 
+  create_table "functional_levels", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.boolean "active"
+    t.text "notes"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "health_cases", force: :cascade do |t|
+    t.string "internal_reference"
+    t.string "external_reference"
+    t.integer "person_id"
+    t.integer "medical_personel_id"
+    t.integer "medical_establishment_id"
+    t.integer "icd10_inpatient_id"
+    t.integer "icd10_outpatient_id"
+    t.text "diagnosis_details"
+    t.integer "cpt_id"
+    t.text "treatment_details"
+    t.string "precedent_case_id"
+    t.text "comments"
+    t.decimal "out_of_pocket_amount"
+    t.boolean "insurance_cover"
+    t.decimal "insurance_cover_amount"
+    t.boolean "case_closed"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date "treatment_date"
+    t.string "inpatient_admission_date"
+    t.string "inpatient_discharge_date"
+  end
+
+  create_table "herga_applications", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "dev_framework"
+    t.text "framework_description"
+    t.string "framework_version"
+    t.integer "deployment_status_id"
+    t.date "deployment_date"
+    t.date "decomissioned_date"
+    t.integer "person_id"
+    t.integer "server_record_id"
+    t.boolean "inhouse_build"
+    t.boolean "third_party_build"
+    t.text "notes"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "active"
+  end
+
+  create_table "icd10_inpatients", force: :cascade do |t|
+    t.string "diagnosis_code"
+    t.text "short_description"
+    t.text "medium_description"
+    t.text "long_description"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "icd10_outpatients", force: :cascade do |t|
+    t.string "diagnosis_code"
+    t.text "short_description"
+    t.text "medium_description"
+    t.text "long_description"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "incomes", force: :cascade do |t|
     t.string "owner"
     t.decimal "amount"
@@ -233,8 +363,6 @@ ActiveRecord::Schema.define(version: 2019_06_03_133822) do
     t.string "month"
     t.integer "person_id"
     t.integer "inflowtype_id"
-    t.integer "yeartitle_id"
-    t.integer "monthtitle_id"
   end
 
   create_table "inflows", force: :cascade do |t|
@@ -252,6 +380,12 @@ ActiveRecord::Schema.define(version: 2019_06_03_133822) do
     t.text "rationale"
     t.integer "bankaccount_id"
     t.boolean "follow_up"
+    t.string "picture"
+    t.string "attachment"
+    t.string "flowtype"
+    t.string "owner"
+    t.string "cf_name"
+    t.string "bank_account"
   end
 
   create_table "inflowtypes", force: :cascade do |t|
@@ -383,8 +517,54 @@ ActiveRecord::Schema.define(version: 2019_06_03_133822) do
     t.integer "plannedactivity_id"
   end
 
+  create_table "medical_establishments", force: :cascade do |t|
+    t.string "name"
+    t.string "country"
+    t.boolean "active"
+    t.text "comments"
+    t.string "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "medical_personels", force: :cascade do |t|
+    t.string "designation"
+    t.string "name"
+    t.string "specialisation"
+    t.boolean "active"
+    t.text "comments"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "monthtitles", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "network_switches", force: :cascade do |t|
+    t.string "code_name"
+    t.string "branding"
+    t.integer "number_of_ports"
+    t.string "s_location"
+    t.string "ip_address"
+    t.string "user_name"
+    t.string "password"
+    t.boolean "active"
+    t.text "notes"
+    t.integer "user_id"
+    t.integer "person_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "operating_systems", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.boolean "active"
+    t.text "notes"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -405,6 +585,11 @@ ActiveRecord::Schema.define(version: 2019_06_03_133822) do
     t.integer "bankaccount_id"
     t.boolean "follow_up"
     t.boolean "cash_withdrawal"
+    t.string "picture"
+    t.string "flowtype"
+    t.string "owner"
+    t.string "cf_name"
+    t.string "bank_account"
   end
 
   create_table "outflowtypes", force: :cascade do |t|
@@ -449,6 +634,7 @@ ActiveRecord::Schema.define(version: 2019_06_03_133822) do
     t.string "person_number"
     t.string "pps_number"
     t.boolean "system_item"
+    t.integer "User_id"
   end
 
   create_table "plannedactivities", force: :cascade do |t|
@@ -510,6 +696,26 @@ ActiveRecord::Schema.define(version: 2019_06_03_133822) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "request_statuses", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.boolean "active"
+    t.text "notes"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "request_types", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.boolean "active"
+    t.text "notes"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "resources", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -518,6 +724,13 @@ ActiveRecord::Schema.define(version: 2019_06_03_133822) do
     t.boolean "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "role_featureds", force: :cascade do |t|
+    t.integer "server_role_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "server_record_id"
   end
 
   create_table "rules", force: :cascade do |t|
@@ -565,6 +778,61 @@ ActiveRecord::Schema.define(version: 2019_06_03_133822) do
     t.integer "reference_number"
   end
 
+  create_table "server_accessories", force: :cascade do |t|
+    t.integer "accessory_id"
+    t.integer "server_record_id"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "server_events", force: :cascade do |t|
+    t.integer "server_record_id"
+    t.string "event_type"
+    t.string "event_level"
+    t.date "date_and_time"
+    t.string "event_source"
+    t.string "eventid"
+    t.string "task_category"
+    t.text "details"
+    t.text "comments"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "server_records", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.boolean "virtual"
+    t.integer "operating_system_id"
+    t.integer "person_id"
+    t.integer "deployment_status_id"
+    t.date "deployment_date"
+    t.boolean "domain_controller"
+    t.integer "functional_level_id"
+    t.text "notes"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "active"
+    t.date "decomissioned_date"
+    t.string "backup_frequency"
+    t.string "backup_time"
+    t.string "server_ip"
+    t.boolean "vdi"
+    t.string "host_hypervisor"
+  end
+
+  create_table "server_roles", force: :cascade do |t|
+    t.string "name"
+    t.text "role_description"
+    t.boolean "active"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "service_providers", force: :cascade do |t|
     t.string "name"
     t.string "address"
@@ -574,6 +842,42 @@ ActiveRecord::Schema.define(version: 2019_06_03_133822) do
     t.integer "user_id"
     t.boolean "active"
     t.string "link"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "service_requests", force: :cascade do |t|
+    t.integer "ticket_number"
+    t.integer "request_type_id"
+    t.integer "tech_service_id"
+    t.text "problem_description"
+    t.integer "request_status_id"
+    t.text "case_notes"
+    t.text "case_resolution"
+    t.boolean "resolved"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "switch_ports", force: :cascade do |t|
+    t.integer "network_switch_id"
+    t.integer "port_number"
+    t.integer "server_record_id"
+    t.integer "client_record_id"
+    t.text "notes"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "accessory_id"
+  end
+
+  create_table "tech_services", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.boolean "active"
+    t.text "notes"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -612,6 +916,10 @@ ActiveRecord::Schema.define(version: 2019_06_03_133822) do
     t.boolean "admin"
     t.boolean "access_granted"
     t.string "fullname"
+    t.boolean "homeintel_access"
+    t.boolean "cfanalyser_access"
+    t.boolean "pettycash_access"
+    t.boolean "techweb_access"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

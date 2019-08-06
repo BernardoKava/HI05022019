@@ -1,3 +1,0 @@
-class Yeartitle < ApplicationRecord
-
-end

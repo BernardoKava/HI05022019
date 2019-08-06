@@ -55,12 +55,7 @@ class CashflowsController < ApplicationController
     #save whatever can be saved on the table
     @cashflow.save
 
-    # Totals income breakdownAmounts
 
-    @salary = @inflows.where(inflowtype_id: 1).sum(:amount)
-    @child_benefit = @inflows.where(inflowtype_id: 2).sum(:amount)
-    @lotto_winnings = @inflows.where(inflowtype_id: 3).sum(:amount)
-    @others = @inflows.where(inflowtype_id: 4).sum(:amount)
 
 
     # Income and Expense accounts/ types
@@ -157,7 +152,6 @@ class CashflowsController < ApplicationController
     def set_cashflow
       @cashflow = Cashflow.find(params[:id])
     end
-
 
 
 
